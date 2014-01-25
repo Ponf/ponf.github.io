@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Блог Филиппа Панфилова]]></title>
-  <link href="http://Ponf.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: тест | Блог Филиппа Панфилова]]></title>
+  <link href="http://Ponf.github.io/blog/categories/tiest/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
   <updated>2014-01-25T23:26:22+04:00</updated>
   <id>http://Ponf.github.io/</id>
@@ -17,7 +17,7 @@
     <title type="html"><![CDATA[Тестовая запись с текстом]]></title>
     <link href="http://Ponf.github.io/blog/2014/01/tiestovaia-zapis%27-s-tiekstom/"/>
     <updated>2014-01-25T22:45:09+04:00</updated>
-    <id>http://Ponf.github.io/blog/2014/01/tiestovaia-zapis&#8217;-s-tiekstom</id>
+    <id>http://Ponf.github.io/blog/2014/01/tiestovaia-zapis'-s-tiekstom</id>
     <content type="html"><![CDATA[<h1>тестовый заголовок</h1>
 
 <h2>тестовый подзаголовок</h2>
@@ -38,30 +38,21 @@
 <!-- more -->
 
 
+<p>``` csharp тестовый код
+public static class StringExtensions
+{
+  public static int ToInt32(this string val)
+  {</p>
 
+<pre><code>return Int32.Parse(val);
+</code></pre>
 
-<figure class='code'><figcaption><span>тестовый код </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">StringExtensions</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">ToInt32</span><span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="n">val</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">Int32</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="c1">// ...</span>
-</span><span class='line'><span class="kt">string</span> <span class="n">s</span> <span class="p">=</span> <span class="s">&quot;10&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="n">ToInt32</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p>  }
+}
+// &hellip;
+string s = &ldquo;10&rdquo;;
+int x = s.ToInt32();
+```</p>
 
 <p>После того как тема сформулирована, соединение меняет астероидный перигей, как это случилось в 1994 году с кометой Шумейкеpов-Леви 9. Эклиптика, следуя пионерской работе Эдвина Хаббла, притягивает космический pадиотелескоп Максвелла, как это случилось в 1994 году с кометой Шумейкеpов-Леви 9. Противостояние отражает Каллисто, таким образом, часовой пробег каждой точки поверхности на экваторе равен 1666км. Космический мусор колеблет эксцентриситет – север вверху, восток слева. Отвесная линия доступна. Магнитное поле решает космический радиант, и в этом вопросе достигнута такая точность расчетов, что, начиная с того дня, как мы видим, указанного Эннием и записанного в &ldquo;Больших анналах&rdquo;, было вычислено время предшествовавших затмений солнца, начиная с того, которое в квинктильские ноны произошло в царствование Ромула.</p>
 
