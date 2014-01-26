@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Все о Splash Screen в Windows Phone - blog.ponfius.com</title>
+  <meta name="author" content="Filipp Panfilov">
+
+  
+  <meta name="description" content="Какое бы вы приложение не писали, даже самое простое, его запуск на телефоне будет занимать некоторое время, поэтому хорошей идеей будет показывать &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="blog.ponfius.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">blog.ponfius.com</a></h1>
+  
+    <h2>.NET, Obj-C, Travelling</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Ponf.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Все о Splash Screen в Windows Phone</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-25T13:17:00+04:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Какое бы вы приложение не писали, даже самое простое, его запуск на телефоне будет занимать некоторое время, поэтому хорошей идеей будет показывать какой-нибудь Splash Screen во время загрузки. Существует несколько вариантов использования Splash Screen:</p>
+
+<ul>
+    *<span>Использовать изображение</span>
+    *<span>Использовать анимированный Splash Screen</span>
+    *<span>Не использовать Splash Screen</span>
+</ul>
+
+
+<p>&nbsp;</p>
+
+<p>Давайте поподробнее остановимся на каждом из этих пунктов.</p>
+
+<!--more-->
+
+
+<p></p>
+
+<p><span>Использование изображения </span>
+При создании проекта в Visual Studio у вашего приложения уже есть Splash Screen по-умолчанию:</p>
+
+<p><a href="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s1600/SplashScreenImage.jpg"><img alt="" src="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s200/SplashScreenImage.jpg" width="120" height="200" border="0" /></a>
+&nbsp;</p>
+
+<p>Для замены его на свой Splash Screen необходимо просто добавить в проект файл с именем <span>SplashScreenImage.jpg</span> (<strong>внимание</strong>: имя должно быть именно таким). Также у вашего Splash Screen  разрешение должно быть 480х800<span lang="EN-US">px</span> (480 пикселей в ширину и 800, соответственно, в высоту), и не забудьте указать в свойствах изображения <span><span lang="EN-US">Build</span><span lang="EN-US">Action</span>: <span lang="EN-US">Content</span></span>.</p>
+
+<p><span>Использование анимированного Splash Screen</span></p>
+
+<p>Если загрузка первой страницы вашего приложения занимает некоторое время (например, используются какие-то данные из Интернета), то создание анимированного экрана загрузки – так же хорошая идея. Итак, алгоритм работы  будет следующий:</p>
+
+<ol>
+    *При загрузке изображения показывается <span>SplashScreenImage.jpg </span>
+    *После загрузки открывается **MainPage **с открытым **Popup **окном, развернутым на весь экран. Этот **Popup **может быть основан на вашем **SplashScreenImage **для создания наилучшего эффекта
+    *Как только загрузка данных закончится – **Popup **закроется, и пользователь увидит содержимое **MainPage**.
+</ol>
+
+
+<p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.
+&nbsp;</p>
+
+<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.
+&nbsp;</p>
+
+<p>Для начала давайте создадим свой UserControl, для примера назовем его <strong>AnimatedSplashScreen</strong>.</p>
+
+<p>Далее нам нужно добавить обработку <strong>Popup </strong>в <span>MainPage.xaml.cs</span>. Для этого добавим следующие пространства имен:</p>
+
+<pre>using System.Threading;
+using System.Windows.Controls.Primitives;
+using System.ComponentModel;</pre>
+
+
+<p>Теперь необходимо создать <span lang="EN-US">BackgroundWorker </span>и наш <span lang="EN-US"><span lang="EN-US">Popup:</span></span></p>
+
+<pre>BackgroundWorker backroungWorker;
+        Popup myPopup;
+        // Constructor
+        public MainPage()
+        {
+            InitializeComponent();
+            myPopup = new Popup() { IsOpen = true, Child = new AnimatedSplashScreen() };
+            backroungWorker = new BackgroundWorker();
+            RunBackgroundWorker();
+        }
+
+        private void RunBackgroundWorker()
+        {
+            backroungWorker.DoWork += ((s, args) =&gt;
+            {
+                Thread.Sleep(5000);
+            });
+
+            backroungWorker.RunWorkerCompleted += ((s, args) =&gt;
+            {
+                this.Dispatcher.BeginInvoke(() =&gt;
+                {
+                    this.myPopup.IsOpen = false;
+                }
+            );
+            });
+            backroungWorker.RunWorkerAsync();
+        }</pre>
+
+
+<p>Что мы здесь делаем:</p>
+
+<ol>
+    *Создаем **Popup**, по-умолчанию открытый, который содержит наш UserContol – **AnimatedSplashScreen**;
+    *Создаем **BackgroundWorker**, который в фоне замораживает поток на 5000 мс.
+    *Как только 5 секунд проходит, **BackgroundWorker **переходит в состояние **RunWorkerCompleted **и наш **Popup **закрывается.
+</ol>
+
+
+<p>&nbsp;</p>
+
+<p>Основная логика есть, теперь давайте вернемся к содержимому нашего <strong>Popup</strong>. У себя в примере я использую изображение <strong>SplashScreenImage</strong>, <strong><span lang="EN-US">TextBlock</span> </strong>и <strong><span lang="EN-US">PerformanceProgressBar</span> </strong>из <strong><a href="http://silverlight.codeplex.com/releases/view/75888">WP7 Toolkit</a></strong>.</p>
+
+<p>Для того чтобы немного оживить загрузку, я в <strong>Expression Blend</strong>создал анимацию мигания для текста:</p>
+
+<p>Теперь осталось только добавить и запустить эту анимацию в конструкторе класса AnimatedSplashScreen:</p>
+
+<pre>        public AnimatedSplashScreen()
+        {
+            InitializeComponent();
+            Storyboard Blinking = this.Resources["Blinking"] as Storyboard;
+            Blinking.Begin();
+        }</pre>
+
+
+<p>&nbsp;</p>
+
+<p><span lang="EN-US">Всё, наш анимированный <strong>Splash Screen</strong> готов! </span>Запустив проект, мы увидим следующую картину:</p>
+
+<p><a href="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s1600/screen.png"><img alt="" src="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s320/screen.png" width="192" height="320" border="0" /></a></p>
+
+<p>Пример моего анимированного<strong> Splash Screen</strong> вы можете скачать по ссылке: <a href="https://skydrive.live.com/redir.aspx?cid=a2567e038f37be43&amp;amp;resid=A2567E038F37BE43!512&amp;amp;parid=A2567E038F37BE43!463">SkyDrive</a>.</p>
+
+<p>В качестве альтернативы <strong><span lang="EN-US">Popup</span> </strong>можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
+
+<pre>if (NavigationService.CanGoBack == true)
+ {
+ NavigationService.RemoveBackEntry();
+ }</pre>
+
+
+<p><span>Не использовать Splash Screen </span>
+Для того чтобы убрать у вашего приложения экран заставки, достаточно просто удалить файл <span>SplashScreenImage.jpg</span> из вашего решения.</p>
+
+<p>Итак, мы рассмотрели различные варианты создания Splash Screen в Windows Phone. Надеюсь, что эта статья оказалась для вас полезной :).</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Filipp Panfilov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-25T13:17:00+04:00" pubdate data-updated="true">Feb 25<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/" data-via="" data-counturl="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/" title="Previous Post: Шпаргалка по сертификации приложения на WP7">&laquo; Шпаргалка по сертификации приложения на WP7</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview/" title="Next Post: Краткий обзор Windows 8 Consumer Preview">Краткий обзор Windows 8 Consumer Preview &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/Materialy-k-moemu-dokladu-na-%23yamobile-%2B%23rwpug/">Материалы к моему докладу на</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8/">Немного о разработке под Win8</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview/">Краткий обзор Windows 8 Consumer Preview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/">Все о Splash Screen в Windows Phone</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/">Шпаргалка по сертификации приложения на WP7</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Filipp Panfilov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Шпаргалка по сертификации приложений на Windows Phone 7 - blog.ponfius.com</title>
+  <meta name="author" content="Filipp Panfilov">
+
+  
+  <meta name="description" content="Всем привет! Сегодня я представлю вашему вниманию вольный перевод статьи Peter Kuhn &ldquo;Windows Phone 7 Application Certification Cheat Sheet& &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Ponf.github.io/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="blog.ponfius.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">blog.ponfius.com</a></h1>
+  
+    <h2>.NET, Obj-C, Travelling</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Ponf.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Шпаргалка по сертификации приложений на Windows Phone 7</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-31T10:45:00+04:00" pubdate data-updated="true">Aug 31<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Всем привет! Сегодня я представлю вашему вниманию вольный перевод статьи Peter Kuhn <a href="http://www.silverlightshow.net/items/Windows-Phone-7-Application-Certification-Cheat-Sheet.aspx">&ldquo;Windows Phone 7 Application Certification Cheat Sheet&rdquo;</a>, в которой описываются основные моменты, на которые стоит обратить внимание перед публикацией приложения в Marketplace.<span><strong>Приложение в целом</strong></span>
+Перечислены некоторые основные требования к приложениям:<!--more-->
+&nbsp;</p>
+
+<ul>
+    *В приложении должны быть: название, номер версии и контакты техподдержки ([5.6](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение должно быть полностью работоспособным после установки из Marketplace (не может требовать какой-то дополнительной оплаты для активации, разблокировки и т.п.) ([2.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение не должно продавать или рекламировать тарифные планы мобильных операторов ([2.2](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Если приложению требуется скачать большой объем данных, оно должно предупреждать об этом в описании ([2.5](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Вся реклама в приложении должна соответствовать [Microsoft Advertising Creative Acceptance Policy Guide](http://go.microsoft.com/fwlink/?LinkID=216913) ([2.4](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Если в приложении предусмотрено общение между людьми, приложение должно удостовериться в том, что пользователю больше 13 лет ([2.6](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Если в приложении планируется использовать личную информацию о пользователе необходимо: предоставить пользователю вашу политику конфиденциальности, спросить у пользователя разрешение на использование его информации и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться ([2.8](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно быть чем-то большим, чем просто запуск веб-страницы ([2.10](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Разработчик должен убедиться, что все элементы управления видны и легко читаемые со всеми темами телефона (темной/светлой) ([5.5.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+</ul>
+
+
+<p><span> </span></p>
+
+<p><span><strong>XAP пакет (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.1.1</a>.aspx))</strong></span></p>
+
+<p>В требованиях к пакету, содержащему ваше приложение, есть следующие пункты:</p>
+
+<p><strong>Максимальный размер:</strong> 225 МБ;</p>
+
+<p><strong>Требуемое содержимое:</strong></p>
+
+<ul>
+    *WMAppManifest.xml
+    *AppManifest.xml
+    *Файлы для сборки, указанные в AppManifest.xml
+    *Большая и маленькая иконки приложения
+</ul>
+
+
+<p><strong>Требования к <span> </span>WMAppManifest.xml:</strong></p>
+
+<ul>
+    *Поле названия не должно быть пустым
+    *Название должно совпадать с названием, указанным при загрузке приложения в Marketplace
+</ul>
+
+
+<p>Пожалуйста учтите, что эти требования иногда меняются. Так, ранее размер файлов не должен был превышать 400 МБ.</p>
+
+<p><span><strong>Проверка кода</strong></span></p>
+
+<p>Чтобы успешно пройти проверку кода приложение должно соответствовать следующим требованиям:</p>
+
+<ul>
+    *Приложение не должно вызывать нативный код с помощью P/Invoke или COM-совместимостей ([4.2.2](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx));
+    *Приложение должно быть собрано в режиме &#8220;Release&#8221;; не должна содержаться отладочная информация ([4.2.3](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx));
+    *Приложение не должно копировать функции телефона ([4.2.4](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx)); (?)
+    *Приложение не должно использовать XNA Game или Graphics одновременно с System.Windows.Controls ([4.2.5](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx)).
+</ul>
+
+
+<p><span> </span></p>
+
+<p><span><strong>Возможности телефона (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.3</a>.aspx))</strong></span></p>
+
+<p>Возможности, которые использует приложение, содержатся в файле WMAppManifest.xml и автоматически определяются во время отправки приложения в Marketplace.</p>
+
+<ul>
+    *Приложение должно работать с использованием автоматически распознанных возможностей. Майкрософт рекомендует вам использовать [Capability Detection Tool](http://msdn.microsoft.com/en-us/library/gg180730(v=VS.92).aspx) для проверки работоспособности с возможностями, распознанными во время отправки приложения ([4.3](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx)).
+</ul>
+
+
+<p><span> </span></p>
+
+<p><span><strong>Языки</strong></span></p>
+
+<p>Каждое приложение должно поддерживать как минимум один из перечисленных языков (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.4</a>.aspx)):</p>
+
+<ul>
+    *Английский
+    *Французский
+    *Итальянский
+    *Немецкий
+    *Испанский
+</ul>
+
+
+<p>Так же есть дополнительные требования:</p>
+
+<ul>
+    *Должен быть установлен нейтральный язык ([4.4](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx));
+    *Для каждого поддерживаемого языка должны быть переведены описание и пользовательский интерфейс <span> </span>([5.5.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+</ul>
+
+
+<p><span><strong>Иконки/изображения (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.5, 4.6, 4.7</a>.aspx))</strong></span></p>
+
+<p>Для более детального изучения иконографии Windows Phone 7 вы можете изучить статью
+<a href="http://www.silverlightshow.net/items/Windows-Phone-7-Iconography-.aspx">Windows Phone 7 Iconography</a>, здесь же находится кратка информация по изображениям и иконкам:</p>
+
+<table border="1" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td valign="top">Изображение</td>
+<td valign="top">Обязательно</td>
+<td valign="top">Формат</td>
+<td valign="top">Прозрачный фон</td>
+<td valign="top">Размер</td>
+</tr>
+<tr>
+<td valign="top">Маленькая иконка приложения</td>
+<td valign="top">Да</td>
+<td valign="top">PNG</td>
+<td valign="top">Да</td>
+<td valign="top">62x62</td>
+</tr>
+<tr>
+<td valign="top">Большая иконка приложения</td>
+<td valign="top">Да</td>
+<td valign="top">PNG</td>
+<td valign="top">Да</td>
+<td valign="top">173x173</td>
+</tr>
+<tr>
+<td valign="top">Маленькая иконка для Marketplace</td>
+<td valign="top">Да</td>
+<td valign="top">PNG</td>
+<td valign="top">Нет</td>
+<td valign="top">99x99</td>
+</tr>
+<tr>
+<td valign="top">Большая иконка для Marketplace</td>
+<td valign="top">Да</td>
+<td valign="top">PNG</td>
+<td valign="top">Нет</td>
+<td valign="top">173x173</td>
+</tr>
+<tr>
+<td valign="top">Большая иконка для Marketplace для PC</td>
+<td valign="top">Да</td>
+<td valign="top">PNG</td>
+<td valign="top">Нет</td>
+<td valign="top">200x200</td>
+</tr>
+<tr>
+<td valign="top">Задний фон</td>
+<td valign="top">Нет</td>
+<td valign="top">PNG</td>
+<td valign="top">Нет</td>
+<td valign="top">1000x800</td>
+</tr>
+<tr>
+<td valign="top">Скриншот приложения</td>
+<td valign="top">Минимум 1, максимум 8</td>
+<td valign="top">PNG</td>
+<td valign="top">Нет</td>
+<td valign="top">480x800</td>
+</tr>
+<tr>
+<td valign="top">Иконка для Application Bar</td>
+<td valign="top">Нет</td>
+<td valign="top">PNG</td>
+<td valign="top">Да</td>
+<td valign="top">48x48 (Содержимое 26x26)</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Тайлы и иконки должны соответствовать приложению (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.7</a>.aspx)).</p>
+
+<p><span><strong>Временные рамки</strong></span>
+Присутствуют следующие специальные временнЫе ограничения:</p>
+
+<ul>
+    *Приложение должно появляться на экране в течении 5 секунд (экрана заставки достаточно) ([5.2.1 – 5.2.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение должно быть доступно для пользовательского ввода не позднее, чем через 20 секунд после запуска ([5.2.1 – 5.2.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *При блокировке интерфейса более чем на 3 секунды необходимо показывать Progress Bar или Busy Indicator ([5.1.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+</ul>
+
+
+<p><span><strong>Кнопка Назад</strong></span>
+При использовании кнопки Назад необходимо учитывать следующие требования:</p>
+
+<ul>
+    *При нажатии на кнопку Назад приложение должно переходить на предыдущую страницу ([5.2.4, 5.2.4.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Нажатие должно закрывать диалоговое/контекстное меню и оставаться на текущей странице ([5.2.4.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Если нажатие происходит на первой странице приложения, оно должно закрыться ([5.2.4.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Для игр: во время игры нажатие на кнопку Назад может вызывать меню паузы ([5.2.4.4](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+</ul>
+
+
+<p>Кнопку Назад нельзя использовать для каких-либо функций, не обозначенных выше.</p>
+
+<p><span><strong>Надежность, безопасность и прочее</strong></span>
+Следующие требования связаны с безопасностью, надежностью и встроенными в телефон функциями:</p>
+
+<ul>
+    *Приложение должно работать на любом устройстве с Windows Phone 7 ([5.1.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение не должно неожиданно закрываться из-за необработанных исключений или других причин ([5.1.2, 5.3.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *При обработке ошибок приложение должно предоставлять понятные пользователю сообщения ([5.1.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение не должно препятствовать использованию функций телефона (звонки, SMS/MMS) ([5.3.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение должно продолжать работу после использования функций телефона (звонки, SMS/MMS) ([5.3.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение не должно содержать вирусы, вредоносный код или вредоносные функции ([5.4.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение не должно запускать небезопасный код или пытаться обойти механизм песочницы ([5.4.2, 5.4.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение не должно ставить под угрозу безопасность телефона или Marketplace ([2.3](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение не должно использовать более 90 МБ оперативной памяти в телефонах с 256 (или менее) МБ ([5.2.5](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
+    *Приложение не должно использовать Trial API в цикле (например, игровом). То есть API должен вызываться редко, а значение им возвращенное - кэшироваться ([5.2.6](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+</ul>
+
+
+<p><span><strong>Приложения, использующие местоположение</strong></span>
+К приложениям, использующим местоположение устройства пользователя предъявляются следующие требования:</p>
+
+<ul>
+    *Приложение должно использовать Microsoft Location Service API ([2.7.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Информацию о местоположении можно использовать только для функций самого приложения (нельзя использовать для показа таргетированной рекламы) ([2.7.7](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно предупреждать пользователя об использовании данных о его местоположении ([2.7.2](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно предоставлять возможность отключения использования данных о местоположении ([2.7.3](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно обеспечивать возможность отказа от использования данных о местоположении, если эти данные станут доступны третьим лицам ([2.7.4](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно защищать полученные данные о местоположении от несанкционированного доступа ([2.7.8](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Если сервис определения местоположения недоступен, приложение должно оставаться отзывчивым (продолжать реагировать на пользовательский ввод) ([6.1](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx));
+    *Приложение не должно вмешиваться в системные функции, связанные с Location Service API <span> </span>([2.7.5](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение не должно нарушать работу устройства, делая Location Service недоступным ([2.7.6](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx), [6.1](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx)).
+</ul>
+
+
+<p><span><strong>Служба Push-уведомлений</strong></span>
+Для использования Push-уведомлений ваше приложение должно удовлетворять следующим требованиям:</p>
+
+<ul>
+    *У всех используемых Push-уведомлений должно быть описание ([2.9.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно спросить у пользователя разрешение на использование Push-уведомлений и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться от них <span> </span>([2.9.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Запрещается злоупотреблять Push-уведомлениями ([2.9.2](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Не разрешается использовать Push-уведомления в отношении вопросов жизни и смерти или других критически важных данных, изменяющихся в реальном времени ([2.9.3](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
+    *Приложение должно предоставить возможность самостоятельно отключить всплывающие уведомления ([6.2.1](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx));
+    *Приложение должно спрашивать разрешение для использования всплывающих уведомлений ([6.2.2](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx)).
+</ul>
+
+
+<p>На этом основные требования подходят к концу. С полным перечнем требований вы можете ознакомиться по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843(v=VS.92">Application Certification Requirements for Windows Phone</a>.aspx).</p>
+
+<p><strong>Всем удачного прохождения сертификации! :)</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Filipp Panfilov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-31T10:45:00+04:00" pubdate data-updated="true">Aug 31<span>st</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ponf.github.io/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7/" data-via="" data-counturl="http://Ponf.github.io/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/08/Vidy-InputScope-v-Windows-Phone-7/" title="Previous Post: Виды InputScope в Windows Phone 7">&laquo; Виды InputScope в Windows Phone 7</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/09/Vecherniaia-shkola-po-Windows-Phone-7/" title="Next Post: Вечерняя школа по Windows Phone 7">Вечерняя школа по Windows Phone 7 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/Materialy-k-moemu-dokladu-na-%23yamobile-%2B%23rwpug/">Материалы к моему докладу на</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8/">Немного о разработке под Win8</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview/">Краткий обзор Windows 8 Consumer Preview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/">Все о Splash Screen в Windows Phone</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/">Шпаргалка по сертификации приложения на WP7</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Filipp Panfilov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

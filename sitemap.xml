@@ -1,28 +1,120 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://Ponf.github.io/blog/2014/01/tiestovaia-zapis%27-s-tiekstom/</loc>
-        <lastmod>2014-01-26T10:48:19+04:00</lastmod>
+        <loc>
+            http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
     </url>
     <url>
-        <loc>http://Ponf.github.io/blog/2014/01/vtoroi-post/</loc>
-        <lastmod>2014-01-26T10:48:19+04:00</lastmod>
+        <loc>http://Ponf.github.io/blog/2011/08/Kstati/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/08/Vidy-InputScope-v-Windows-Phone-7/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/09/Vecherniaia-shkola-po-Windows-Phone-7/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2011/09/Sozdanie-igr-na-Silverlight-%2B-XNA-Chastj-1-Otlichiia-ot-XNA/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/09/Konferentciia-TechEd-Russia-2011/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/09/SilverLife/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2011/10/Rabota-s-bazoi-dannykh-v-WP7-dlia-lenivykh-%29/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/11/TechEd-Russia/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/11/Noiabrjskii-nomer-zhurnala-MSDeveloperRU/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/11/ICQ-MRA-i-Twitter-dlia-Windows-Phone/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2011/11/Kak-razrabotchiku-WP7-besplatno-popastj-na-toster/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/12/Integratciia-prilozheniia-s-khabom-Foto/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D--Howto-merge-few-Texture2D/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2011/12/Skrytye-smaily-v-Windows-Phone/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Ponf.github.io/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8/</loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-%23yamobile-%2B%23rwpug/
+        </loc>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
     </url>
     <url>
         <loc>http://Ponf.github.io/archives/</loc>
-        <lastmod>2014-01-26T10:48:19+04:00</lastmod>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
     </url>
     <url>
         <loc>http://Ponf.github.io/blog/archives/</loc>
-        <lastmod>2014-01-26T10:48:20+04:00</lastmod>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
     </url>
     <url>
         <loc>http://Ponf.github.io/blog/</loc>
-        <lastmod>2014-01-26T10:48:19+04:00</lastmod>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
     </url>
     <url>
         <loc>http://Ponf.github.io/</loc>
-        <lastmod>2014-01-26T10:48:20+04:00</lastmod>
+        <lastmod>2014-01-26T19:20:50+04:00</lastmod>
     </url>
     <url>
         <loc>http://Ponf.github.io/obo-mnie/</loc>

@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Как склеить несколько Texture2D / Howto merge few Texture2D - blog.ponfius.com</title>
+  <meta name="author" content="Filipp Panfilov">
+
+  
+  <meta name="description" content="Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата Texture2D &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D--Howto-merge-few-Texture2D">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="blog.ponfius.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">blog.ponfius.com</a></h1>
+  
+    <h2>.NET, Obj-C, Travelling</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Ponf.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Как склеить несколько Texture2D / Howto Merge Few Texture2D</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-16T18:19:00+04:00" pubdate data-updated="true">Dec 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><div dir="ltr">
+<div dir="ltr">Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата <span>Texture2D</span> и сохранить результат, но не нашел ничего подходящего: либо метод не поддерживался в Windows Phone, либо меня не устраивала его производительность.&nbsp;</p>
+
+<p><span><strong>Проблема</strong></span>
+Есть несколько текстур с разными координатами, находящиеся на разных уровнях и никак друг с другом не связанные. Необходимо экспортировать это в фото галерею в виде изображения.</p>
+
+<p><span><strong>Решение</strong></span>
+В общем-то задача действительно не сложная, но сходу не понятно, как её решить. Нужно как-то склеить все текстуры в одну. И тут нам на помощь приходит класс из XNA под названием <a href="http://msdn.microsoft.com/en-us/library/bb198676.aspx"><span>RenderTarget2D</span></a>.
+<!--more--></p>
+
+<p><ol start="42"></p>
+
+<pre><code>*&lt;span&gt;RenderTarget2D&lt;/span&gt; imageResult;
+</code></pre>
+
+<p></ol></p>
+
+<p>Как можно понять из названия, с помощью этого класса, наследующегося от <span>Texture2D</span>, мы создаем двумерную текстуру, которую потом можно использовать в выборе цели для рендеринга.
+По-умолчанию целью для рендеринга является дисплей:</p>
+
+<p><ol start="75"></p>
+
+<pre><code>*&lt;span&gt;// Set the sharing mode of the graphics device to turn on XNA rendering&lt;/span&gt;
+*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetSharingMode(&lt;span&gt;true&lt;/span&gt;);
+*
+*&lt;span&gt;// Create a new SpriteBatch, which can be used to draw textures.&lt;/span&gt;
+*spriteBatch = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;SpriteBatch&lt;/span&gt;(&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice);
+</code></pre>
+
+<p></ol></p>
+
+<p>При разработки игры с использованием XNA+Silverlight установка цели для рендера происходит в методе <span>OnNavigatedTo()</span>, и вся дальнейшая отрисовка будет производиться, соответственно, на дисплей. Так что для того, чтобы отрендерить все на другую текстуру достаточно просто указать её в <span>SpriteBatch</span>:</p>
+
+<p><ol start="462"></p>
+
+<pre><code>*imageResult = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;RenderTarget2D&lt;/span&gt;(&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice, photoW, photoH);
+*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetRenderTarget(imageResult);
+</code></pre>
+
+<p></ol></p>
+
+<p>Если мы вставим этот код так же в метод <span>OnNavigatedTo()</span>, то весь вывод информации будет производиться не на дисплей, а в нашу текстуру. Нам этого не нужно, так что необходимо менять цель для рендеринга по какому-то определенному событию, например, по нажатию на кнопку. Далее мы отрисовываем все наши текстуры, как мы бы это делали обычно в методе <span>OnDraw()</span>:</p>
+
+<p><ol start="464"></p>
+
+<pre><code>*spriteBatch.Begin();
+*bg.Draw(spriteBatch, &lt;span&gt;new&lt;/span&gt; &lt;span&gt;Vector2&lt;/span&gt;((&lt;span&gt;int&lt;/span&gt;)(photoW / 2), (&lt;span&gt;int&lt;/span&gt;)(photoH / 2)));
+*&lt;span&gt;foreach&lt;/span&gt; (&lt;span&gt;Sprite&lt;/span&gt; sprite &lt;span&gt;in&lt;/span&gt; sprites)
+*{
+*    sprite.Draw(spriteBatch, &lt;span&gt;new&lt;/span&gt; &lt;span&gt;Vector2&lt;/span&gt;((&lt;span&gt;int&lt;/span&gt;)(photoW / 2), (&lt;span&gt;int&lt;/span&gt;)(photoH / 2)), bg.Scale);
+*}
+*spriteBatch.End();
+</code></pre>
+
+<p></ol></p>
+
+<p>После того, как мы закончили отрисовывать наши текстуры необходимо освободить наше устройство для рендеринга, чтобы оно вернулось к отрисовке на экране. Для этого достаточно передать в <span>null </span>в метод <span>SetRenderTarget</span>:</p>
+
+<p><ol start="471"></p>
+
+<pre><code>*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetRenderTarget(&lt;span&gt;null&lt;/span&gt;);
+</code></pre>
+
+<p></ol></p>
+
+<p>Всё! Теперь мы можем сохранить наше изображение в изолированном хранилище, галерее или использовать его где-нибудь ещё.</p>
+
+<p><ol start="474"></p>
+
+<pre><code>*&lt;span&gt;IsolatedStorageFileStream&lt;/span&gt; stream = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;IsolatedStorageFileStream&lt;/span&gt;(&lt;span&gt;"/image.jpg"&lt;/span&gt;, System.IO.&lt;span&gt;FileMode&lt;/span&gt;.OpenOrCreate, iso);
+*imageResult.SaveAsJpeg(stream, imageResult.Width, imageResult.Height);
+*stream.Close();
+</code></pre>
+
+<p></ol></p>
+
+<p>О том, как сохранить наше изображение в галерее вы можете прочитать в моей предыдущей статье &ldquo;<a href="http://mne.p0x.ru/2011/12/blog-post.html">Интеграция приложения с хабом Фото</a>&rdquo;.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Filipp Panfilov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-16T18:19:00+04:00" pubdate data-updated="true">Dec 16<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D--Howto-merge-few-Texture2D/" data-via="" data-counturl="http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D--Howto-merge-few-Texture2D/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/12/Integratciia-prilozheniia-s-khabom-Foto/" title="Previous Post: Интеграция приложения с хабом "Фото"">&laquo; Интеграция приложения с хабом "Фото"</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/12/Skrytye-smaily-v-Windows-Phone/" title="Next Post: Скрытые смайлы в Windows Phone">Скрытые смайлы в Windows Phone &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/05/Materialy-k-moemu-dokladu-na-%23yamobile-%2B%23rwpug/">Материалы к моему докладу на</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8/">Немного о разработке под Win8</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview/">Краткий обзор Windows 8 Consumer Preview</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/">Все о Splash Screen в Windows Phone</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/">Шпаргалка по сертификации приложения на WP7</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Filipp Panfilov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
