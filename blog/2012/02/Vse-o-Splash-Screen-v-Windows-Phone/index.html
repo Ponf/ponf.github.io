@@ -94,13 +94,11 @@
 <div class="entry-content"><p>Какое бы вы приложение не писали, даже самое простое, его запуск на телефоне будет занимать некоторое время, поэтому хорошей идеей будет показывать какой-нибудь Splash Screen во время загрузки. Существует несколько вариантов использования Splash Screen:</p>
 
 <ul>
-    *<span>Использовать изображение</span>
-    *<span>Использовать анимированный Splash Screen</span>
-    *<span>Не использовать Splash Screen</span>
+<li>Использовать изображение</li>
+<li>Использовать анимированный Splash Screen</li>
+<li>Не использовать Splash Screen</li>
 </ul>
 
-
-<p>&nbsp;</p>
 
 <p>Давайте поподробнее остановимся на каждом из этих пунктов.</p>
 
@@ -109,115 +107,151 @@
 
 <p></p>
 
-<p><span>Использование изображения </span>
-При создании проекта в Visual Studio у вашего приложения уже есть Splash Screen по-умолчанию:</p>
+<h3>Использование изображения </h3>
 
-<p><a href="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s1600/SplashScreenImage.jpg"><img alt="" src="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s200/SplashScreenImage.jpg" width="120" height="200" border="0" /></a>
-&nbsp;</p>
+<p>При создании проекта в Visual Studio у вашего приложения уже есть Splash Screen по-умолчанию:</p>
 
-<p>Для замены его на свой Splash Screen необходимо просто добавить в проект файл с именем <span>SplashScreenImage.jpg</span> (<strong>внимание</strong>: имя должно быть именно таким). Также у вашего Splash Screen  разрешение должно быть 480х800<span lang="EN-US">px</span> (480 пикселей в ширину и 800, соответственно, в высоту), и не забудьте указать в свойствах изображения <span><span lang="EN-US">Build</span><span lang="EN-US">Action</span>: <span lang="EN-US">Content</span></span>.</p>
+<p><img src="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s200/SplashScreenImage.jpg"></p>
 
-<p><span>Использование анимированного Splash Screen</span></p>
+<p>Для замены его на свой Splash Screen необходимо просто добавить в проект файл с именем SplashScreenImage.jpg (<strong>внимание</strong>: имя должно быть именно таким). Также у вашего Splash Screen  разрешение должно быть 480х800px (480 пикселей в ширину и 800, соответственно, в высоту), и не забудьте указать в свойствах изображения Build Action: Content.</p>
+
+<h3>Использование анимированного Splash Screen</h3>
 
 <p>Если загрузка первой страницы вашего приложения занимает некоторое время (например, используются какие-то данные из Интернета), то создание анимированного экрана загрузки – так же хорошая идея. Итак, алгоритм работы  будет следующий:</p>
 
-<ol>
-    *При загрузке изображения показывается <span>SplashScreenImage.jpg </span>
-    *После загрузки открывается **MainPage **с открытым **Popup **окном, развернутым на весь экран. Этот **Popup **может быть основан на вашем **SplashScreenImage **для создания наилучшего эффекта
-    *Как только загрузка данных закончится – **Popup **закроется, и пользователь увидит содержимое **MainPage**.
-</ol>
+<ul>
+<li>При загрузке изображения показывается SplashScreenImage.jpg </li>
+<li>После загрузки открывается <strong>MainPage</strong> с открытым <strong>Popup </strong>окном, развернутым на весь экран. Этот <strong>Popup</strong> может быть основан на вашем <strong>SplashScreenImage</strong> для создания наилучшего эффекта</li>
+<li>Как только загрузка данных закончится – <strong>Popup</strong> закроется, и пользователь увидит содержимое <strong>MainPage</strong>.</li>
+</ul>
 
 
-<p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.
-&nbsp;</p>
+<p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.</p>
 
-<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.
-&nbsp;</p>
+<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.</p>
 
 <p>Для начала давайте создадим свой UserControl, для примера назовем его <strong>AnimatedSplashScreen</strong>.</p>
 
-<p>Далее нам нужно добавить обработку <strong>Popup </strong>в <span>MainPage.xaml.cs</span>. Для этого добавим следующие пространства имен:</p>
+<p>Далее нам нужно добавить обработку <strong>Popup</strong> в MainPage.xaml.cs. Для этого добавим следующие пространства имен:</p>
 
-<pre>using System.Threading;
-using System.Windows.Controls.Primitives;
-using System.ComponentModel;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Windows.Controls.Primitives</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Теперь необходимо создать <span lang="EN-US">BackgroundWorker </span>и наш <span lang="EN-US"><span lang="EN-US">Popup:</span></span></p>
+<p>Теперь необходимо создать BackgroundWorker и наш Popup:</p>
 
-<pre>BackgroundWorker backroungWorker;
-        Popup myPopup;
-        // Constructor
-        public MainPage()
-        {
-            InitializeComponent();
-            myPopup = new Popup() { IsOpen = true, Child = new AnimatedSplashScreen() };
-            backroungWorker = new BackgroundWorker();
-            RunBackgroundWorker();
-        }
-
-        private void RunBackgroundWorker()
-        {
-            backroungWorker.DoWork += ((s, args) =&gt;
-            {
-                Thread.Sleep(5000);
-            });
-
-            backroungWorker.RunWorkerCompleted += ((s, args) =&gt;
-            {
-                this.Dispatcher.BeginInvoke(() =&gt;
-                {
-                    this.myPopup.IsOpen = false;
-                }
-            );
-            });
-            backroungWorker.RunWorkerAsync();
-        }</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">BackgroundWorker</span> <span class="n">backroungWorker</span><span class="p">;</span>
+</span><span class='line'><span class="n">Popup</span> <span class="n">myPopup</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// Constructor</span>
+</span><span class='line'><span class="k">public</span> <span class="nf">MainPage</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">InitializeComponent</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">myPopup</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Popup</span><span class="p">()</span> <span class="p">{</span> <span class="n">IsOpen</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">Child</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AnimatedSplashScreen</span><span class="p">()</span> <span class="p">};</span>
+</span><span class='line'>    <span class="n">backroungWorker</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BackgroundWorker</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">RunBackgroundWorker</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">RunBackgroundWorker</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">backroungWorker</span><span class="p">.</span><span class="n">DoWork</span> <span class="p">+=</span> <span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">backroungWorker</span><span class="p">.</span><span class="n">RunWorkerCompleted</span> <span class="p">+=</span> <span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">Dispatcher</span><span class="p">.</span><span class="n">BeginInvoke</span><span class="p">(()</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="n">myPopup</span><span class="p">.</span><span class="n">IsOpen</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="n">backroungWorker</span><span class="p">.</span><span class="n">RunWorkerAsync</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Что мы здесь делаем:</p>
 
-<ol>
-    *Создаем **Popup**, по-умолчанию открытый, который содержит наш UserContol – **AnimatedSplashScreen**;
-    *Создаем **BackgroundWorker**, который в фоне замораживает поток на 5000 мс.
-    *Как только 5 секунд проходит, **BackgroundWorker **переходит в состояние **RunWorkerCompleted **и наш **Popup **закрывается.
-</ol>
+<ul>
+<li>Создаем <strong>Popup</strong>, по-умолчанию открытый, который содержит наш UserContol – <strong>AnimatedSplashScreen</strong>;</li>
+<li>Создаем <strong>BackgroundWorker</strong>, который в фоне замораживает поток на 5000 мс.</li>
+<li>Как только 5 секунд проходит, <strong>BackgroundWorker </strong>переходит в состояние <strong>RunWorkerCompleted </strong>и наш <strong>Popup </strong>закрывается.</li>
+</ul>
 
 
-<p>&nbsp;</p>
-
-<p>Основная логика есть, теперь давайте вернемся к содержимому нашего <strong>Popup</strong>. У себя в примере я использую изображение <strong>SplashScreenImage</strong>, <strong><span lang="EN-US">TextBlock</span> </strong>и <strong><span lang="EN-US">PerformanceProgressBar</span> </strong>из <strong><a href="http://silverlight.codeplex.com/releases/view/75888">WP7 Toolkit</a></strong>.</p>
+<p>Основная логика есть, теперь давайте вернемся к содержимому нашего <strong>Popup</strong>. У себя в примере я использую изображение <strong>SplashScreenImage</strong>, <strong>TextBlock</strong> и <strong>PerformanceProgressBar</strong> из <strong><a href="http://silverlight.codeplex.com/releases/view/75888">WP7 Toolkit</a></strong>.</p>
 
 <p>Для того чтобы немного оживить загрузку, я в <strong>Expression Blend</strong>создал анимацию мигания для текста:</p>
 
 <p>Теперь осталось только добавить и запустить эту анимацию в конструкторе класса AnimatedSplashScreen:</p>
 
-<pre>        public AnimatedSplashScreen()
-        {
-            InitializeComponent();
-            Storyboard Blinking = this.Resources["Blinking"] as Storyboard;
-            Blinking.Begin();
-        }</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="nf">AnimatedSplashScreen</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">InitializeComponent</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">Storyboard</span> <span class="n">Blinking</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">&quot;Blinking&quot;</span><span class="p">]</span> <span class="k">as</span> <span class="n">Storyboard</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Blinking</span><span class="p">.</span><span class="n">Begin</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>&nbsp;</p>
+<p>Всё, наш анимированный <strong>Splash Screen</strong> готов! Запустив проект, мы увидим следующую картину:</p>
 
-<p><span lang="EN-US">Всё, наш анимированный <strong>Splash Screen</strong> готов! </span>Запустив проект, мы увидим следующую картину:</p>
-
-<p><a href="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s1600/screen.png"><img alt="" src="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s320/screen.png" width="192" height="320" border="0" /></a></p>
+<p><img src="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s320/screen.png"></p>
 
 <p>Пример моего анимированного<strong> Splash Screen</strong> вы можете скачать по ссылке: <a href="https://skydrive.live.com/redir.aspx?cid=a2567e038f37be43&amp;amp;resid=A2567E038F37BE43!512&amp;amp;parid=A2567E038F37BE43!463">SkyDrive</a>.</p>
 
-<p>В качестве альтернативы <strong><span lang="EN-US">Popup</span> </strong>можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
+<p>В качестве альтернативы <strong>Popup</strong> можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
 
-<pre>if (NavigationService.CanGoBack == true)
+<p><code>csharp
+if (NavigationService.CanGoBack == true)
  {
  NavigationService.RemoveBackEntry();
- }</pre>
+ }
+</code></p>
 
+<h3>Не использовать Splash Screen</h3>
 
-<p><span>Не использовать Splash Screen </span>
-Для того чтобы убрать у вашего приложения экран заставки, достаточно просто удалить файл <span>SplashScreenImage.jpg</span> из вашего решения.</p>
+<p>Для того чтобы убрать у вашего приложения экран заставки, достаточно просто удалить файл SplashScreenImage.jpg из вашего решения.</p>
 
 <p>Итак, мы рассмотрели различные варианты создания Splash Screen в Windows Phone. Надеюсь, что эта статья оказалась для вас полезной :).</p>
 </div>

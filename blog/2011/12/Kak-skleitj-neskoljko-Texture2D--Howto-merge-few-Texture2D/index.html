@@ -91,81 +91,86 @@
   </header>
 
 
-<div class="entry-content"><p><div dir="ltr">
-<div dir="ltr">Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата <span>Texture2D</span> и сохранить результат, но не нашел ничего подходящего: либо метод не поддерживался в Windows Phone, либо меня не устраивала его производительность.&nbsp;</p>
+<div class="entry-content"><p>Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата Texture2D и сохранить результат, но не нашел ничего подходящего: либо метод не поддерживался в Windows Phone, либо меня не устраивала его производительность.</p>
 
-<p><span><strong>Проблема</strong></span>
+<p><strong>Проблема</strong>
 Есть несколько текстур с разными координатами, находящиеся на разных уровнях и никак друг с другом не связанные. Необходимо экспортировать это в фото галерею в виде изображения.</p>
 
-<p><span><strong>Решение</strong></span>
-В общем-то задача действительно не сложная, но сходу не понятно, как её решить. Нужно как-то склеить все текстуры в одну. И тут нам на помощь приходит класс из XNA под названием <a href="http://msdn.microsoft.com/en-us/library/bb198676.aspx"><span>RenderTarget2D</span></a>.
-<!--more--></p>
+<p><strong>Решение</strong>
+В общем-то задача действительно не сложная, но сходу не понятно, как её решить. Нужно как-то склеить все текстуры в одну. И тут нам на помощь приходит класс из XNA под названием <a href="http://msdn.microsoft.com/en-us/library/bb198676.aspx">RenderTarget2D</a>.</p>
 
-<p><ol start="42"></p>
+<!--more-->
 
-<pre><code>*&lt;span&gt;RenderTarget2D&lt;/span&gt; imageResult;
-</code></pre>
 
-<p></ol></p>
+<p></p>
 
-<p>Как можно понять из названия, с помощью этого класса, наследующегося от <span>Texture2D</span>, мы создаем двумерную текстуру, которую потом можно использовать в выборе цели для рендеринга.
-По-умолчанию целью для рендеринга является дисплей:</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">RenderTarget2D</span> <span class="n">imageResult</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p><ol start="75"></p>
 
-<pre><code>*&lt;span&gt;// Set the sharing mode of the graphics device to turn on XNA rendering&lt;/span&gt;
-*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetSharingMode(&lt;span&gt;true&lt;/span&gt;);
-*
-*&lt;span&gt;// Create a new SpriteBatch, which can be used to draw textures.&lt;/span&gt;
-*spriteBatch = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;SpriteBatch&lt;/span&gt;(&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice);
-</code></pre>
+<p>Как можно понять из названия, с помощью этого класса, наследующегося от Texture2D, мы создаем двумерную текстуру, которую потом можно использовать в выборе цели для рендеринга.</p>
 
-<p></ol></p>
+<p>По-умолчанию целью для рендеринга является дисплей:</p>
 
-<p>При разработки игры с использованием XNA+Silverlight установка цели для рендера происходит в методе <span>OnNavigatedTo()</span>, и вся дальнейшая отрисовка будет производиться, соответственно, на дисплей. Так что для того, чтобы отрендерить все на другую текстуру достаточно просто указать её в <span>SpriteBatch</span>:</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// Set the sharing mode of the graphics device to turn on XNA rendering</span>
+</span><span class='line'><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetSharingMode</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Create a new SpriteBatch, which can be used to draw textures.</span>
+</span><span class='line'><span class="n">spriteBatch</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SpriteBatch</span><span class="p">(</span><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p><ol start="462"></p>
 
-<pre><code>*imageResult = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;RenderTarget2D&lt;/span&gt;(&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice, photoW, photoH);
-*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetRenderTarget(imageResult);
-</code></pre>
+<p>При разработки игры с использованием XNA+Silverlight установка цели для рендера происходит в методе OnNavigatedTo(), и вся дальнейшая отрисовка будет производиться, соответственно, на дисплей. Так что для того, чтобы отрендерить все на другую текстуру достаточно просто указать её в SpriteBatch:</p>
 
-<p></ol></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">imageResult</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RenderTarget2D</span><span class="p">(</span><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">photoW</span><span class="p">,</span> <span class="n">photoH</span><span class="p">);</span>
+</span><span class='line'><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetRenderTarget</span><span class="p">(</span><span class="n">imageResult</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Если мы вставим этот код так же в метод <span>OnNavigatedTo()</span>, то весь вывод информации будет производиться не на дисплей, а в нашу текстуру. Нам этого не нужно, так что необходимо менять цель для рендеринга по какому-то определенному событию, например, по нажатию на кнопку. Далее мы отрисовываем все наши текстуры, как мы бы это делали обычно в методе <span>OnDraw()</span>:</p>
 
-<p><ol start="464"></p>
+<p>Если мы вставим этот код так же в метод OnNavigatedTo(), то весь вывод информации будет производиться не на дисплей, а в нашу текстуру. Нам этого не нужно, так что необходимо менять цель для рендеринга по какому-то определенному событию, например, по нажатию на кнопку. Далее мы отрисовываем все наши текстуры, как мы бы это делали обычно в методе OnDraw():</p>
 
-<pre><code>*spriteBatch.Begin();
-*bg.Draw(spriteBatch, &lt;span&gt;new&lt;/span&gt; &lt;span&gt;Vector2&lt;/span&gt;((&lt;span&gt;int&lt;/span&gt;)(photoW / 2), (&lt;span&gt;int&lt;/span&gt;)(photoH / 2)));
-*&lt;span&gt;foreach&lt;/span&gt; (&lt;span&gt;Sprite&lt;/span&gt; sprite &lt;span&gt;in&lt;/span&gt; sprites)
-*{
-*    sprite.Draw(spriteBatch, &lt;span&gt;new&lt;/span&gt; &lt;span&gt;Vector2&lt;/span&gt;((&lt;span&gt;int&lt;/span&gt;)(photoW / 2), (&lt;span&gt;int&lt;/span&gt;)(photoH / 2)), bg.Scale);
-*}
-*spriteBatch.End();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">spriteBatch</span><span class="p">.</span><span class="n">Begin</span><span class="p">();</span>
+</span><span class='line'><span class="n">bg</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">spriteBatch</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoW</span> <span class="p">/</span> <span class="m">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoH</span> <span class="p">/</span> <span class="m">2</span><span class="p">)));</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="n">Sprite</span> <span class="n">sprite</span> <span class="k">in</span> <span class="n">sprites</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">sprite</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">spriteBatch</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoW</span> <span class="p">/</span> <span class="m">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoH</span> <span class="p">/</span> <span class="m">2</span><span class="p">)),</span> <span class="n">bg</span><span class="p">.</span><span class="n">Scale</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">spriteBatch</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p></ol></p>
 
-<p>После того, как мы закончили отрисовывать наши текстуры необходимо освободить наше устройство для рендеринга, чтобы оно вернулось к отрисовке на экране. Для этого достаточно передать в <span>null </span>в метод <span>SetRenderTarget</span>:</p>
+<p>После того, как мы закончили отрисовывать наши текстуры необходимо освободить наше устройство для рендеринга, чтобы оно вернулось к отрисовке на экране. Для этого достаточно передать в null в метод SetRenderTarget:</p>
 
-<p><ol start="471"></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetRenderTarget</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetRenderTarget(&lt;span&gt;null&lt;/span&gt;);
-</code></pre>
-
-<p></ol></p>
 
 <p>Всё! Теперь мы можем сохранить наше изображение в изолированном хранилище, галерее или использовать его где-нибудь ещё.</p>
 
-<p><ol start="474"></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">IsolatedStorageFileStream</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IsolatedStorageFileStream</span><span class="p">(</span><span class="s">&quot;/image.jpg&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileMode</span><span class="p">.</span><span class="n">OpenOrCreate</span><span class="p">,</span> <span class="n">iso</span><span class="p">);</span>
+</span><span class='line'><span class="n">imageResult</span><span class="p">.</span><span class="n">SaveAsJpeg</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+</span><span class='line'><span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>*&lt;span&gt;IsolatedStorageFileStream&lt;/span&gt; stream = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;IsolatedStorageFileStream&lt;/span&gt;(&lt;span&gt;"/image.jpg"&lt;/span&gt;, System.IO.&lt;span&gt;FileMode&lt;/span&gt;.OpenOrCreate, iso);
-*imageResult.SaveAsJpeg(stream, imageResult.Width, imageResult.Height);
-*stream.Close();
-</code></pre>
-
-<p></ol></p>
 
 <p>О том, как сохранить наше изображение в галерее вы можете прочитать в моей предыдущей статье &ldquo;<a href="http://mne.p0x.ru/2011/12/blog-post.html">Интеграция приложения с хабом Фото</a>&rdquo;.</p>
 </div>

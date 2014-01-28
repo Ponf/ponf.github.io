@@ -9,7 +9,7 @@
   <meta name="author" content="Filipp Panfilov">
 
   
-  <meta name="description" content="Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией: *Добавление приложения &hellip;">
+  <meta name="description" content="Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией: Добавление приложения на &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,32 +91,38 @@
   </header>
 
 
-<div class="entry-content"><p><span><span>Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией:</span></span></p>
+<div class="entry-content"><p>Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией:</p>
 
-<ol start="1" type="1">
-    *<span><span>Добавление приложения на главную страницу хаба;</span></span>
-    *<span><span>Добавление приложения в меню &#8220;Программы&#8221; (программы, которыми можно отредактировать изображение);</span></span>
-    *<span><span>Выбор в программе изображения из галереи и с камеры;</span></span>
-    *<span><span>Сохранение отредактированного изображения в галерее.</span></span>
-</ol>
+<ul>
+<li>Добавление приложения на главную страницу хаба;</li>
+<li>Добавление приложения в меню &ldquo;Программы&rdquo; (программы, которыми можно отредактировать изображение);</li>
+<li>Выбор в программе изображения из галереи и с камеры;</li>
+<li>Сохранение отредактированного изображения в галерее.</li>
+</ul>
 
 
-<p><span><span>Вроде бы все понятно, в интернете много информации и никаких проблем возникнуть не должно, но на практике, к сожалению, не всё так просто.</span></span></p>
+<p>Вроде бы все понятно, в интернете много информации и никаких проблем возникнуть не должно, но на практике, к сожалению, не всё так просто.</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p><span><strong><span>1. Добавление приложения на главную страницу хаба Фото</span></strong></span></p>
+<h2>1. Добавление приложения на главную страницу хаба Фото</h2>
 
-<p><span>Беглый поиск <a href="http://programming4.us/mobile/3758.aspx"><span>показал</span></a>, что для интеграции приложения в хаб Pictures нам необходимо создать файл </span><span><span>Extra.xml</span></span><span><span> со следующим содержимым:</span></span></p>
+<p>Беглый поиск <a href="http://programming4.us/mobile/3758.aspx">показал</a>, что для интеграции приложения в хаб Pictures нам необходимо создать файл Extra.xml со следующим содержимым:</p>
 
-<pre class="lang:xhtml decode:true">&lt;Extras&gt;
-  &lt;PhotosExtrasApplication&gt;
-    &lt;Enabled&gt;true&lt;Enabled&gt; 
-  &lt;PhotosExtrasApplication&gt;
-&lt;Extras&gt;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Extras&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;PhotosExtrasApplication&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;Enabled&gt;</span>true<span class="nt">&lt;/Enabled&gt;</span> 
+</span><span class='line'>  <span class="nt">&lt;/PhotosExtrasApplication&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Extras&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>И создать некоторый обработчик в методе OnNavigatedTo().</p>
@@ -127,201 +133,308 @@
 
 <p>Для отображения нашего приложения в хабе Фото необходимо в файл WMAppManifest.xml добавить следующие строчки:</p>
 
-<pre class="lang:xhtml decode:true">&lt;Extensions&gt;
-      &lt;Extension ExtensionName="Photos_Extra_Hub" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" /&gt; 
-&lt;Extensions&gt;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Extensions&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;Extension</span> <span class="na">ExtensionName=</span><span class="s">&quot;Photos_Extra_Hub&quot;</span> <span class="na">ConsumerID=</span><span class="s">&quot;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&quot;</span> <span class="na">TaskID=</span><span class="s">&quot;_default&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Extensions&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
-<li>Добавление приложения в контекстное меню хаба Фото</li>
-</ol>
+<h2>2. Добавление приложения в контекстное меню хаба Фото</h2>
 
-
-<p>Здесь механизм добавления приложения не отличается от добавления приложения на главную страницу хаба, только <span lang="EN-US">ExtensionName</span>будет&#8221;<span lang="EN-US">Photos</span><em><span lang="EN-US">Extra</span></em><span lang="EN-US">Viewer</span>&ldquo;, а<span lang="EN-US"> </span><span lang="EN-US">ConsumerID</span>станет&rdquo;{5<span lang="EN-US">B</span>04<span lang="EN-US">B</span>775-356<span lang="EN-US">B</span>-4<span lang="EN-US">AA</span>0-<span lang="EN-US">AAF</span>8-6491<span lang="EN-US">FFEA</span>5632}&ldquo;.</p>
+<p>Здесь механизм добавления приложения не отличается от добавления приложения на главную страницу хаба, только ExtensionName будет &ldquo;Photos_Extra_Viewer&rdquo;, а ConsumerID станет &ldquo;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&rdquo;.</p>
 
 <p>В итоге WMAppManifest.xml примет следующий вид:</p>
 
-<pre class="lang:xhtml decode:true ">       &lt;Tokens&gt;
-        &lt;Extensions&gt;
-            &lt;Extension ExtensionName="Photos_Extra_Hub" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" /&gt;
-            &lt;Extension ExtensionName="Photos_Extra_Viewer" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" /&gt;
-        &lt;/Extensions&gt;
-    &lt;/App&gt;
-&lt;/Deployment&gt;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>    <span class="nt">&lt;/Tokens&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;Extensions&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;Extension</span> <span class="na">ExtensionName=</span><span class="s">&quot;Photos_Extra_Hub&quot;</span> <span class="na">ConsumerID=</span><span class="s">&quot;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&quot;</span> <span class="na">TaskID=</span><span class="s">&quot;_default&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;Extension</span> <span class="na">ExtensionName=</span><span class="s">&quot;Photos_Extra_Viewer&quot;</span> <span class="na">ConsumerID=</span><span class="s">&quot;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&quot;</span> <span class="na">TaskID=</span><span class="s">&quot;_default&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/Extensions&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/App&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Deployment&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>&nbsp;</p>
+<p></p>
 
-<ol>
-<li>Создание обработчика</li>
-</ol>
-
+<h2>3. Создание обработчика</h2>
 
 <p>Итак, теперь мы умеем не только вызывать нашу программу из хаба, а ещё и передавать ей любое изображение. Теперь надо его обрабатывать. Для этого необходимо перегрузить метод OnNavigatedTo:</p>
 
-<pre class="lang:c# decode:true">BitmapImage bitmap;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">BitmapImage</span> <span class="n">bitmap</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnNavigatedTo</span><span class="p">(</span><span class="n">NavigationEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">base</span><span class="p">.</span><span class="n">OnNavigatedTo</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Get a dictionary of query string keys and values</span>
+</span><span class='line'>    <span class="n">IDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">queryStrings</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">NavigationContext</span><span class="p">.</span><span class="n">QueryString</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//WaitingPic.Visibility = Visibility.Collapsed;</span>
+</span><span class='line'>    <span class="c1">//Ensure at least one querysting</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">queryStrings</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="s">&quot;token&quot;</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">MediaLibrary</span> <span class="n">library</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MediaLibrary</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">Picture</span> <span class="n">picture</span> <span class="p">=</span> <span class="n">library</span><span class="p">.</span><span class="n">GetPictureFromToken</span><span class="p">(</span><span class="n">queryStrings</span><span class="p">[</span><span class="s">&quot;token&quot;</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Create bitmap</span>
+</span><span class='line'>        <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapImage</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">bitmap</span><span class="p">.</span><span class="n">SetSource</span><span class="p">(</span><span class="n">picture</span><span class="p">.</span><span class="n">GetImage</span><span class="p">());</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">NavigationContext</span><span class="p">.</span><span class="n">QueryString</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-
-        //Get a dictionary of query string keys and values
-        IDictionary&lt;string, string&gt; queryStrings = this.NavigationContext.QueryString;
-
-        //WaitingPic.Visibility = Visibility.Collapsed;
-        //Ensure at least one querysting
-        if (queryStrings.ContainsKey("token"))
-        {
-            MediaLibrary library = new MediaLibrary();
-            Picture picture = library.GetPictureFromToken(queryStrings["token"]);
-
-            //Create bitmap
-            bitmap = new BitmapImage();
-            bitmap.SetSource(picture.GetImage());
-            this.NavigationContext.QueryString.Clear();
-        }
-    }<span style="line-height: 1.5em;"> </span></pre>
-
-
-<p>&nbsp;</p>
 
 <p>Теперь мы можем делать с нашим изображением всё, что захотим :).</p>
 
-<ol>
-<li>Получение изображений из камеры и галереи
-Также мы хотим осуществить в нашем приложении доступ к изображениям в галерее и, если нужное изображение отсутствует, предоставить возможность сделать фото.</li>
-</ol>
+<h2>4. Получение изображений из камеры и галереи</h2>
 
+<p>Также мы хотим осуществить в нашем приложении доступ к изображениям в галерее и, если нужное изображение отсутствует, предоставить возможность сделать фото.</p>
 
-<p>Для этого нам необходимо использоватьPhotoChooserTaskиCameraCaptureTask, которые находятся в пространстве имён using Microsoft.Phone.Tasks.</p>
+<p>Для этого нам необходимо использовать PhotoChooserTaskиCameraCaptureTask, которые находятся в пространстве имён Microsoft.Phone.Tasks.</p>
 
 <p>В общем случае код выглядит примерно так:</p>
 
-<pre class="lang:c# decode:true">    private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            selectphoto = new PhotoChooserTask();
-            selectphoto.Completed += new EventHandler&lt;PhotoResult&gt;(photo_Completed);
-            selectphoto.Show();
-        }
-        catch
-        {
-            MessageBox.Show("Some problem with loading your page");
-            return;
-        }
-    }
-
-    private void LaunchCamera_Click(object sender, RoutedEventArgs e)
-    {
-        CameraCaptureTask cameraCapture = new CameraCaptureTask();
-        cameraCapture.Completed += new EventHandler&lt;PhotoResult&gt;(photo_Completed);
-        cameraCapture.Show();
-    }
-
-    void photo_Completed(object sender, PhotoResult e)
-    {
-        if (e.TaskResult == TaskResult.OK)
-        {
-            try
-            {
-                bitmap = new BitmapImage();
-                bitmap.UriSource = new Uri(e.OriginalFileName);
-            }
-            catch
-            {
-                MessageBox.Show("Some problem with loading your page");
-            }
-        }
-    }</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">ChoosePhoto_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">try</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">selectphoto</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhotoChooserTask</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">selectphoto</span><span class="p">.</span><span class="n">Completed</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">PhotoResult</span><span class="p">&gt;(</span><span class="n">photo_Completed</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">selectphoto</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">catch</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with loading your page&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">LaunchCamera_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">CameraCaptureTask</span> <span class="n">cameraCapture</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CameraCaptureTask</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">cameraCapture</span><span class="p">.</span><span class="n">Completed</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">PhotoResult</span><span class="p">&gt;(</span><span class="n">photo_Completed</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">cameraCapture</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">void</span> <span class="nf">photo_Completed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">PhotoResult</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">TaskResult</span> <span class="p">==</span> <span class="n">TaskResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">try</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapImage</span><span class="p">();</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">UriSource</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">OriginalFileName</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">catch</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with loading your page&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Как вы можете видеть, ничего сложно в этом нет, данный код вернет нам изображение в приложение. Но мне такая реализация не очень нравится. Я предпочитаю делать следующее:</p>
 
-<p>&nbsp;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">void</span> <span class="nf">photo_Completed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">PhotoResult</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">TaskResult</span> <span class="p">==</span> <span class="n">TaskResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">try</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapImage</span><span class="p">();</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">CreateOptions</span> <span class="p">=</span> <span class="n">BitmapCreateOptions</span><span class="p">.</span><span class="n">None</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">ImageOpened</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">RoutedEventArgs</span><span class="p">&gt;(</span><span class="n">bitmap_ImageOpened</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">ImageFailed</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">ExceptionRoutedEventArgs</span><span class="p">&gt;(</span><span class="n">bitmap_ImageFailed</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">UriSource</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">OriginalFileName</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">catch</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with loading your page&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">bitmap_ImageOpened</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">try</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">//Делаем что-нибудь с нашим изображением</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">catch</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>         <span class="c1">//Обрабатываем ошибку </span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">bitmap_ImageFailed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Problem with loading your image. Please try again.&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre class="lang:c# decode:true ">    void photo_Completed(object sender, PhotoResult e)
-    {
-        if (e.TaskResult == TaskResult.OK)
-        {
-            try
-            {
-                bitmap = new BitmapImage();
-                bitmap.CreateOptions = BitmapCreateOptions.None;
-                bitmap.ImageOpened += new EventHandler&lt;RoutedEventArgs&gt;(bitmap_ImageOpened);
-                bitmap.ImageFailed += new EventHandler&lt;ExceptionRoutedEventArgs&gt;(bitmap_ImageFailed);
-                bitmap.UriSource = new Uri(e.OriginalFileName);
-            }
-            catch 
-            {
-                MessageBox.Show("Some problem with loading your page");
-            }
-        }
-    }
-
-    public void bitmap_ImageOpened(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            //Делаем что-нибудь с нашим изображением
-        }
-        catch 
-        {
-             //Обрабатываем ошибку 
-        }
-    }
-
-    public void bitmap_ImageFailed(object sender, RoutedEventArgs e)
-    {
-        MessageBox.Show("Problem with loading your image. Please try again.");
-    }</pre>
-
-
-<p>&nbsp;</p>
 
 <p>Теперь наше приложение умеет ещё выбирать изображения из галереи и делать фотографии.</p>
 
 <p>Осталось только сохранять результат работы в галерее.</p>
 
-<ol>
-<li>Сохранение изображения в галерее</li>
-</ol>
-
+<h2>5. Сохранение изображения в галерее</h2>
 
 <p>Для сохранения изображения в галерее нам во-первых необходимо подключить следующие пространства имен:</p>
 
-<pre class="lang:c# decode:true">    using System.IO.IsolatedStorage;
-    using Microsoft.Xna.Framework.Media;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System.IO.IsolatedStorage</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">Microsoft.Xna.Framework.Media</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Теперь мы можем сохранить фотографию:</p>
 
-<p>&nbsp;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">try</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">IsolatedStorageFileStream</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IsolatedStorageFileStream</span><span class="p">(</span><span class="s">&quot;/image.jpg&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileMode</span><span class="p">.</span><span class="n">OpenOrCreate</span><span class="p">,</span> <span class="n">iso</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">imageResult</span><span class="p">.</span><span class="n">SaveAsJpeg</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">stream</span> <span class="p">=</span> <span class="n">iso</span><span class="p">.</span><span class="n">OpenFile</span><span class="p">(</span><span class="s">&quot;/image.jpg&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileAccess</span><span class="p">.</span><span class="n">Read</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">MediaLibrary</span> <span class="n">library</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MediaLibrary</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">Picture</span> <span class="n">pic</span> <span class="p">=</span> <span class="n">library</span><span class="p">.</span><span class="n">SavePicture</span><span class="p">(</span><span class="s">&quot;SavedPicture.jpg&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Image saved to saved pictures album&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">catch</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with saving image :(&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre class="lang:c# decode:true">    try
-    {
-        IsolatedStorageFileStream stream = new IsolatedStorageFileStream("/image.jpg", System.IO.FileMode.OpenOrCreate, iso);
-        imageResult.SaveAsJpeg(stream, imageResult.Width, imageResult.Height);
-        stream.Close();
 
-        stream = iso.OpenFile("/image.jpg", System.IO.FileMode.Open, System.IO.FileAccess.Read);
-        MediaLibrary library = new MediaLibrary();
-        Picture pic = library.SavePicture("SavedPicture.jpg", stream);
-        MessageBox.Show("Image saved to saved pictures album");
-        stream.Close();
-    }
-    catch
-    {
-        MessageBox.Show("Some problem with saving image :(");
-    }</pre>
+<p>Сначала мы сохраняем изображение в изолированном хранилище. В данном примере - imageResult - экземпляр класса RenderTarget2D, который наследуется от Texture2D, у которого, в свою очередь, есть методы для сохранения в png и jpg. Мы записываем jpg файл в изолированные хранилище, затем создаем поток на чтение этого файла. Наконец, нам нужно передать поток чтения в метод SavePicture экземпляра класса MediaLibrary для сохранения изображения в галерее. Все, изображение сохранять мы тоже научились.</p>
 
-
-<p>Сначала мы сохраняем изображение в изолированном хранилище. В данном примере - imageResult - экземпляр класса RenderTarget2D, который наследуется от Texture2D, у которого, в свою очередь, есть методы для сохранения в png и jpg. Мы записываем jpg файл в изолированные хранилище, затем создаем поток на чтение этого файла. Наконец, нам нужно передать поток чтения в метод SavePicture экземпляра класса <span lang="EN-US">MediaLibrary</span> для сохранения изображения в галерее. Все, изображение сохранять мы тоже научились.</p>
-
-<ol>
-<li>Заключение</li>
-</ol>
-
+<h2>6. Заключение</h2>
 
 <p>Мне кажется, в этой статье я рассмотрел все кейсы, которые могут пригодиться при разработке приложения для работы с фотографиями и изображениями. Возможно, я недостаточно внимания уделил задачам выбора изображения и работе с камерой, но вся эта информация есть в учебном курсе по <a href="http://msdn.microsoft.com/ru-ru/windowsphone/hh420944#mark_7">Windows Phone</a>. Если у вас остались какие-либо вопросы, не стесняйтесь задавать их в комментариях.</p>
 

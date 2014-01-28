@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-28T23:37:19+04:00</updated>
+  <updated>2014-01-29T00:14:20+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -177,13 +177,11 @@
     <content type="html"><![CDATA[<p>Какое бы вы приложение не писали, даже самое простое, его запуск на телефоне будет занимать некоторое время, поэтому хорошей идеей будет показывать какой-нибудь Splash Screen во время загрузки. Существует несколько вариантов использования Splash Screen:</p>
 
 <ul>
-    *<span>Использовать изображение</span>
-    *<span>Использовать анимированный Splash Screen</span>
-    *<span>Не использовать Splash Screen</span>
+<li>Использовать изображение</li>
+<li>Использовать анимированный Splash Screen</li>
+<li>Не использовать Splash Screen</li>
 </ul>
 
-
-<p>&nbsp;</p>
 
 <p>Давайте поподробнее остановимся на каждом из этих пунктов.</p>
 
@@ -192,115 +190,151 @@
 
 <p></p>
 
-<p><span>Использование изображения </span>
-При создании проекта в Visual Studio у вашего приложения уже есть Splash Screen по-умолчанию:</p>
+<h3>Использование изображения </h3>
 
-<p><a href="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s1600/SplashScreenImage.jpg"><img alt="" src="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s200/SplashScreenImage.jpg" width="120" height="200" border="0" /></a>
-&nbsp;</p>
+<p>При создании проекта в Visual Studio у вашего приложения уже есть Splash Screen по-умолчанию:</p>
 
-<p>Для замены его на свой Splash Screen необходимо просто добавить в проект файл с именем <span>SplashScreenImage.jpg</span> (<strong>внимание</strong>: имя должно быть именно таким). Также у вашего Splash Screen  разрешение должно быть 480х800<span lang="EN-US">px</span> (480 пикселей в ширину и 800, соответственно, в высоту), и не забудьте указать в свойствах изображения <span><span lang="EN-US">Build</span><span lang="EN-US">Action</span>: <span lang="EN-US">Content</span></span>.</p>
+<p><img src="http://1.bp.blogspot.com/-NPNjM2xI4Iw/T0nuhjRsEoI/AAAAAAAAAKM/Y6Eys9BCasA/s200/SplashScreenImage.jpg"></p>
 
-<p><span>Использование анимированного Splash Screen</span></p>
+<p>Для замены его на свой Splash Screen необходимо просто добавить в проект файл с именем SplashScreenImage.jpg (<strong>внимание</strong>: имя должно быть именно таким). Также у вашего Splash Screen  разрешение должно быть 480х800px (480 пикселей в ширину и 800, соответственно, в высоту), и не забудьте указать в свойствах изображения Build Action: Content.</p>
+
+<h3>Использование анимированного Splash Screen</h3>
 
 <p>Если загрузка первой страницы вашего приложения занимает некоторое время (например, используются какие-то данные из Интернета), то создание анимированного экрана загрузки – так же хорошая идея. Итак, алгоритм работы  будет следующий:</p>
 
-<ol>
-    *При загрузке изображения показывается <span>SplashScreenImage.jpg </span>
-    *После загрузки открывается **MainPage **с открытым **Popup **окном, развернутым на весь экран. Этот **Popup **может быть основан на вашем **SplashScreenImage **для создания наилучшего эффекта
-    *Как только загрузка данных закончится – **Popup **закроется, и пользователь увидит содержимое **MainPage**.
-</ol>
+<ul>
+<li>При загрузке изображения показывается SplashScreenImage.jpg </li>
+<li>После загрузки открывается <strong>MainPage</strong> с открытым <strong>Popup </strong>окном, развернутым на весь экран. Этот <strong>Popup</strong> может быть основан на вашем <strong>SplashScreenImage</strong> для создания наилучшего эффекта</li>
+<li>Как только загрузка данных закончится – <strong>Popup</strong> закроется, и пользователь увидит содержимое <strong>MainPage</strong>.</li>
+</ul>
 
 
-<p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.
-&nbsp;</p>
+<p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.</p>
 
-<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.
-&nbsp;</p>
+<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.</p>
 
 <p>Для начала давайте создадим свой UserControl, для примера назовем его <strong>AnimatedSplashScreen</strong>.</p>
 
-<p>Далее нам нужно добавить обработку <strong>Popup </strong>в <span>MainPage.xaml.cs</span>. Для этого добавим следующие пространства имен:</p>
+<p>Далее нам нужно добавить обработку <strong>Popup</strong> в MainPage.xaml.cs. Для этого добавим следующие пространства имен:</p>
 
-<pre>using System.Threading;
-using System.Windows.Controls.Primitives;
-using System.ComponentModel;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Windows.Controls.Primitives</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Теперь необходимо создать <span lang="EN-US">BackgroundWorker </span>и наш <span lang="EN-US"><span lang="EN-US">Popup:</span></span></p>
+<p>Теперь необходимо создать BackgroundWorker и наш Popup:</p>
 
-<pre>BackgroundWorker backroungWorker;
-        Popup myPopup;
-        // Constructor
-        public MainPage()
-        {
-            InitializeComponent();
-            myPopup = new Popup() { IsOpen = true, Child = new AnimatedSplashScreen() };
-            backroungWorker = new BackgroundWorker();
-            RunBackgroundWorker();
-        }
-
-        private void RunBackgroundWorker()
-        {
-            backroungWorker.DoWork += ((s, args) =&gt;
-            {
-                Thread.Sleep(5000);
-            });
-
-            backroungWorker.RunWorkerCompleted += ((s, args) =&gt;
-            {
-                this.Dispatcher.BeginInvoke(() =&gt;
-                {
-                    this.myPopup.IsOpen = false;
-                }
-            );
-            });
-            backroungWorker.RunWorkerAsync();
-        }</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">BackgroundWorker</span> <span class="n">backroungWorker</span><span class="p">;</span>
+</span><span class='line'><span class="n">Popup</span> <span class="n">myPopup</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// Constructor</span>
+</span><span class='line'><span class="k">public</span> <span class="nf">MainPage</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">InitializeComponent</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">myPopup</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Popup</span><span class="p">()</span> <span class="p">{</span> <span class="n">IsOpen</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">Child</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AnimatedSplashScreen</span><span class="p">()</span> <span class="p">};</span>
+</span><span class='line'>    <span class="n">backroungWorker</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BackgroundWorker</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">RunBackgroundWorker</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">RunBackgroundWorker</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">backroungWorker</span><span class="p">.</span><span class="n">DoWork</span> <span class="p">+=</span> <span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">5000</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">backroungWorker</span><span class="p">.</span><span class="n">RunWorkerCompleted</span> <span class="p">+=</span> <span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">Dispatcher</span><span class="p">.</span><span class="n">BeginInvoke</span><span class="p">(()</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="n">myPopup</span><span class="p">.</span><span class="n">IsOpen</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="n">backroungWorker</span><span class="p">.</span><span class="n">RunWorkerAsync</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Что мы здесь делаем:</p>
 
-<ol>
-    *Создаем **Popup**, по-умолчанию открытый, который содержит наш UserContol – **AnimatedSplashScreen**;
-    *Создаем **BackgroundWorker**, который в фоне замораживает поток на 5000 мс.
-    *Как только 5 секунд проходит, **BackgroundWorker **переходит в состояние **RunWorkerCompleted **и наш **Popup **закрывается.
-</ol>
+<ul>
+<li>Создаем <strong>Popup</strong>, по-умолчанию открытый, который содержит наш UserContol – <strong>AnimatedSplashScreen</strong>;</li>
+<li>Создаем <strong>BackgroundWorker</strong>, который в фоне замораживает поток на 5000 мс.</li>
+<li>Как только 5 секунд проходит, <strong>BackgroundWorker </strong>переходит в состояние <strong>RunWorkerCompleted </strong>и наш <strong>Popup </strong>закрывается.</li>
+</ul>
 
 
-<p>&nbsp;</p>
-
-<p>Основная логика есть, теперь давайте вернемся к содержимому нашего <strong>Popup</strong>. У себя в примере я использую изображение <strong>SplashScreenImage</strong>, <strong><span lang="EN-US">TextBlock</span> </strong>и <strong><span lang="EN-US">PerformanceProgressBar</span> </strong>из <strong><a href="http://silverlight.codeplex.com/releases/view/75888">WP7 Toolkit</a></strong>.</p>
+<p>Основная логика есть, теперь давайте вернемся к содержимому нашего <strong>Popup</strong>. У себя в примере я использую изображение <strong>SplashScreenImage</strong>, <strong>TextBlock</strong> и <strong>PerformanceProgressBar</strong> из <strong><a href="http://silverlight.codeplex.com/releases/view/75888">WP7 Toolkit</a></strong>.</p>
 
 <p>Для того чтобы немного оживить загрузку, я в <strong>Expression Blend</strong>создал анимацию мигания для текста:</p>
 
 <p>Теперь осталось только добавить и запустить эту анимацию в конструкторе класса AnimatedSplashScreen:</p>
 
-<pre>        public AnimatedSplashScreen()
-        {
-            InitializeComponent();
-            Storyboard Blinking = this.Resources["Blinking"] as Storyboard;
-            Blinking.Begin();
-        }</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="nf">AnimatedSplashScreen</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">InitializeComponent</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">Storyboard</span> <span class="n">Blinking</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">Resources</span><span class="p">[</span><span class="s">&quot;Blinking&quot;</span><span class="p">]</span> <span class="k">as</span> <span class="n">Storyboard</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Blinking</span><span class="p">.</span><span class="n">Begin</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>&nbsp;</p>
+<p>Всё, наш анимированный <strong>Splash Screen</strong> готов! Запустив проект, мы увидим следующую картину:</p>
 
-<p><span lang="EN-US">Всё, наш анимированный <strong>Splash Screen</strong> готов! </span>Запустив проект, мы увидим следующую картину:</p>
-
-<p><a href="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s1600/screen.png"><img alt="" src="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s320/screen.png" width="192" height="320" border="0" /></a></p>
+<p><img src="http://1.bp.blogspot.com/-2gjXoRFZl_E/T0n2-jZ0b5I/AAAAAAAAAKU/q0ggrmwHG4E/s320/screen.png"></p>
 
 <p>Пример моего анимированного<strong> Splash Screen</strong> вы можете скачать по ссылке: <a href="https://skydrive.live.com/redir.aspx?cid=a2567e038f37be43&amp;amp;resid=A2567E038F37BE43!512&amp;amp;parid=A2567E038F37BE43!463">SkyDrive</a>.</p>
 
-<p>В качестве альтернативы <strong><span lang="EN-US">Popup</span> </strong>можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
+<p>В качестве альтернативы <strong>Popup</strong> можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
 
-<pre>if (NavigationService.CanGoBack == true)
+<p><code>csharp
+if (NavigationService.CanGoBack == true)
  {
  NavigationService.RemoveBackEntry();
- }</pre>
+ }
+</code></p>
 
+<h3>Не использовать Splash Screen</h3>
 
-<p><span>Не использовать Splash Screen </span>
-Для того чтобы убрать у вашего приложения экран заставки, достаточно просто удалить файл <span>SplashScreenImage.jpg</span> из вашего решения.</p>
+<p>Для того чтобы убрать у вашего приложения экран заставки, достаточно просто удалить файл SplashScreenImage.jpg из вашего решения.</p>
 
 <p>Итак, мы рассмотрели различные варианты создания Splash Screen в Windows Phone. Надеюсь, что эта статья оказалась для вас полезной :).</p>
 ]]></content>
@@ -311,9 +345,9 @@ using System.ComponentModel;</pre>
     <link href="http://Ponf.github.io/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/"/>
     <updated>2011-12-26T13:40:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7</id>
-    <content type="html"><![CDATA[<p>Выкладываю давно обещанную шпаргалку по сертификации приложений на Windows Phone. Эта шпаргалка &ndash; краткое содержимое одной из моих прошлых <a href="http://mne.p0x.ru/2011/08/windows-phone-7.html">статей</a>.&nbsp;</p>
+    <content type="html"><![CDATA[<p>Выкладываю давно обещанную шпаргалку по сертификации приложений на Windows Phone. Эта шпаргалка &ndash; краткое содержимое одной из моих прошлых <a href="http://mne.p0x.ru/2011/08/windows-phone-7.html">статей</a>.</p>
 
-<p><a href="http://3.bp.blogspot.com/-a1neQybjK9U/Tvg_jvd_z0I/AAAAAAAAAJs/loz_YHZjVLo/s1600/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA.PNG"><img alt="" src="http://3.bp.blogspot.com/-a1neQybjK9U/Tvg_jvd_z0I/AAAAAAAAAJs/loz_YHZjVLo/s400/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA.PNG" width="400" height="286" border="0" /></a>
+<p><img src="http://3.bp.blogspot.com/-a1neQybjK9U/Tvg_jvd_z0I/AAAAAAAAAJs/loz_YHZjVLo/s400/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA.PNG">
 В этой шпаргалке я постарался поместить на одной странице все основные требования, на которые стоит обратить внимание при публикации приложения. Конечно же, поместить все требования на одной странице не представляется возможным, поэтому за более подробной информацией необходимо идти по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843(v=VS.92">Application Certification Requirements for Windows Phone</a>.aspx).</p>
 
 <p><a href="https://skydrive.live.com/redir.aspx?cid=a2567e038f37be43&amp;amp;resid=A2567E038F37BE43!464&amp;amp;parid=A2567E038F37BE43!463"><strong><span>Скачать</span></strong></a></p>
@@ -325,18 +359,18 @@ using System.ComponentModel;</pre>
     <link href="http://Ponf.github.io/blog/2011/12/Skrytye-smaily-v-Windows-Phone/"/>
     <updated>2011-12-23T15:13:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Skrytye-smaily-v-Windows-Phone</id>
-    <content type="html"><![CDATA[<p>Кстати, а вы знали, что в Windows Phone есть скрытые смайлы? Достаточно отправить другу с Windows Phone какую-нибудь комбинацию, из представленных ниже, чтобы он получил забавную картинку :)&nbsp;</p>
+    <content type="html"><![CDATA[<p>Кстати, а вы знали, что в Windows Phone есть скрытые смайлы? Достаточно отправить другу с Windows Phone какую-нибудь комбинацию, из представленных ниже, чтобы он получил забавную картинку :)</p>
 
-<p><a href="http://4.bp.blogspot.com/-1i0pQW92DII/TvRh_NiGSFI/AAAAAAAAAJI/DsQa5b4nl08/s1600/2678.Complete-1_thumb_1A1CA41C.png"><img alt="" src="http://4.bp.blogspot.com/-1i0pQW92DII/TvRh_NiGSFI/AAAAAAAAAJI/DsQa5b4nl08/s640/2678.Complete-1_thumb_1A1CA41C.png" width="475" height="640" border="0" /></a>
-Вторая часть смайлов:</p>
+<p><img src="http://4.bp.blogspot.com/-1i0pQW92DII/TvRh_NiGSFI/AAAAAAAAAJI/DsQa5b4nl08/s640/2678.Complete-1_thumb_1A1CA41C.png"></p>
+
+<p>Вторая часть смайлов:</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p><a href="http://3.bp.blogspot.com/-64MqCZBms08/TvTF8Va_85I/AAAAAAAAAJU/GWUwe88353U/s1600/5226.emoticons2_lg_thumb_09D8E8AC.jpg"><img alt="" src="http://3.bp.blogspot.com/-64MqCZBms08/TvTF8Va_85I/AAAAAAAAAJU/GWUwe88353U/s1600/5226.emoticons2_lg_thumb_09D8E8AC.jpg" border="0" /></a>
-&nbsp;</p>
+<p><img src="http://3.bp.blogspot.com/-64MqCZBms08/TvTF8Va_85I/AAAAAAAAAJU/GWUwe88353U/s1600/5226.emoticons2_lg_thumb_09D8E8AC.jpg"></p>
 ]]></content>
   </entry>
   
@@ -345,81 +379,86 @@ using System.ComponentModel;</pre>
     <link href="http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D--Howto-merge-few-Texture2D/"/>
     <updated>2011-12-16T18:19:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D&#8211;Howto-merge-few-Texture2D</id>
-    <content type="html"><![CDATA[<p><div dir="ltr">
-<div dir="ltr">Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата <span>Texture2D</span> и сохранить результат, но не нашел ничего подходящего: либо метод не поддерживался в Windows Phone, либо меня не устраивала его производительность.&nbsp;</p>
+    <content type="html"><![CDATA[<p>Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата Texture2D и сохранить результат, но не нашел ничего подходящего: либо метод не поддерживался в Windows Phone, либо меня не устраивала его производительность.</p>
 
-<p><span><strong>Проблема</strong></span>
+<p><strong>Проблема</strong>
 Есть несколько текстур с разными координатами, находящиеся на разных уровнях и никак друг с другом не связанные. Необходимо экспортировать это в фото галерею в виде изображения.</p>
 
-<p><span><strong>Решение</strong></span>
-В общем-то задача действительно не сложная, но сходу не понятно, как её решить. Нужно как-то склеить все текстуры в одну. И тут нам на помощь приходит класс из XNA под названием <a href="http://msdn.microsoft.com/en-us/library/bb198676.aspx"><span>RenderTarget2D</span></a>.
-<!--more--></p>
+<p><strong>Решение</strong>
+В общем-то задача действительно не сложная, но сходу не понятно, как её решить. Нужно как-то склеить все текстуры в одну. И тут нам на помощь приходит класс из XNA под названием <a href="http://msdn.microsoft.com/en-us/library/bb198676.aspx">RenderTarget2D</a>.</p>
 
-<p><ol start="42"></p>
+<!--more-->
 
-<pre><code>*&lt;span&gt;RenderTarget2D&lt;/span&gt; imageResult;
-</code></pre>
 
-<p></ol></p>
+<p></p>
 
-<p>Как можно понять из названия, с помощью этого класса, наследующегося от <span>Texture2D</span>, мы создаем двумерную текстуру, которую потом можно использовать в выборе цели для рендеринга.
-По-умолчанию целью для рендеринга является дисплей:</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">RenderTarget2D</span> <span class="n">imageResult</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p><ol start="75"></p>
 
-<pre><code>*&lt;span&gt;// Set the sharing mode of the graphics device to turn on XNA rendering&lt;/span&gt;
-*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetSharingMode(&lt;span&gt;true&lt;/span&gt;);
-*
-*&lt;span&gt;// Create a new SpriteBatch, which can be used to draw textures.&lt;/span&gt;
-*spriteBatch = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;SpriteBatch&lt;/span&gt;(&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice);
-</code></pre>
+<p>Как можно понять из названия, с помощью этого класса, наследующегося от Texture2D, мы создаем двумерную текстуру, которую потом можно использовать в выборе цели для рендеринга.</p>
 
-<p></ol></p>
+<p>По-умолчанию целью для рендеринга является дисплей:</p>
 
-<p>При разработки игры с использованием XNA+Silverlight установка цели для рендера происходит в методе <span>OnNavigatedTo()</span>, и вся дальнейшая отрисовка будет производиться, соответственно, на дисплей. Так что для того, чтобы отрендерить все на другую текстуру достаточно просто указать её в <span>SpriteBatch</span>:</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// Set the sharing mode of the graphics device to turn on XNA rendering</span>
+</span><span class='line'><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetSharingMode</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Create a new SpriteBatch, which can be used to draw textures.</span>
+</span><span class='line'><span class="n">spriteBatch</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SpriteBatch</span><span class="p">(</span><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p><ol start="462"></p>
 
-<pre><code>*imageResult = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;RenderTarget2D&lt;/span&gt;(&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice, photoW, photoH);
-*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetRenderTarget(imageResult);
-</code></pre>
+<p>При разработки игры с использованием XNA+Silverlight установка цели для рендера происходит в методе OnNavigatedTo(), и вся дальнейшая отрисовка будет производиться, соответственно, на дисплей. Так что для того, чтобы отрендерить все на другую текстуру достаточно просто указать её в SpriteBatch:</p>
 
-<p></ol></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">imageResult</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RenderTarget2D</span><span class="p">(</span><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">,</span> <span class="n">photoW</span><span class="p">,</span> <span class="n">photoH</span><span class="p">);</span>
+</span><span class='line'><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetRenderTarget</span><span class="p">(</span><span class="n">imageResult</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Если мы вставим этот код так же в метод <span>OnNavigatedTo()</span>, то весь вывод информации будет производиться не на дисплей, а в нашу текстуру. Нам этого не нужно, так что необходимо менять цель для рендеринга по какому-то определенному событию, например, по нажатию на кнопку. Далее мы отрисовываем все наши текстуры, как мы бы это делали обычно в методе <span>OnDraw()</span>:</p>
 
-<p><ol start="464"></p>
+<p>Если мы вставим этот код так же в метод OnNavigatedTo(), то весь вывод информации будет производиться не на дисплей, а в нашу текстуру. Нам этого не нужно, так что необходимо менять цель для рендеринга по какому-то определенному событию, например, по нажатию на кнопку. Далее мы отрисовываем все наши текстуры, как мы бы это делали обычно в методе OnDraw():</p>
 
-<pre><code>*spriteBatch.Begin();
-*bg.Draw(spriteBatch, &lt;span&gt;new&lt;/span&gt; &lt;span&gt;Vector2&lt;/span&gt;((&lt;span&gt;int&lt;/span&gt;)(photoW / 2), (&lt;span&gt;int&lt;/span&gt;)(photoH / 2)));
-*&lt;span&gt;foreach&lt;/span&gt; (&lt;span&gt;Sprite&lt;/span&gt; sprite &lt;span&gt;in&lt;/span&gt; sprites)
-*{
-*    sprite.Draw(spriteBatch, &lt;span&gt;new&lt;/span&gt; &lt;span&gt;Vector2&lt;/span&gt;((&lt;span&gt;int&lt;/span&gt;)(photoW / 2), (&lt;span&gt;int&lt;/span&gt;)(photoH / 2)), bg.Scale);
-*}
-*spriteBatch.End();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">spriteBatch</span><span class="p">.</span><span class="n">Begin</span><span class="p">();</span>
+</span><span class='line'><span class="n">bg</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">spriteBatch</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoW</span> <span class="p">/</span> <span class="m">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoH</span> <span class="p">/</span> <span class="m">2</span><span class="p">)));</span>
+</span><span class='line'><span class="k">foreach</span> <span class="p">(</span><span class="n">Sprite</span> <span class="n">sprite</span> <span class="k">in</span> <span class="n">sprites</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">sprite</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">spriteBatch</span><span class="p">,</span> <span class="k">new</span> <span class="n">Vector2</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoW</span> <span class="p">/</span> <span class="m">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">photoH</span> <span class="p">/</span> <span class="m">2</span><span class="p">)),</span> <span class="n">bg</span><span class="p">.</span><span class="n">Scale</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">spriteBatch</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p></ol></p>
 
-<p>После того, как мы закончили отрисовывать наши текстуры необходимо освободить наше устройство для рендеринга, чтобы оно вернулось к отрисовке на экране. Для этого достаточно передать в <span>null </span>в метод <span>SetRenderTarget</span>:</p>
+<p>После того, как мы закончили отрисовывать наши текстуры необходимо освободить наше устройство для рендеринга, чтобы оно вернулось к отрисовке на экране. Для этого достаточно передать в null в метод SetRenderTarget:</p>
 
-<p><ol start="471"></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetRenderTarget</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>*&lt;span&gt;SharedGraphicsDeviceManager&lt;/span&gt;.Current.GraphicsDevice.SetRenderTarget(&lt;span&gt;null&lt;/span&gt;);
-</code></pre>
-
-<p></ol></p>
 
 <p>Всё! Теперь мы можем сохранить наше изображение в изолированном хранилище, галерее или использовать его где-нибудь ещё.</p>
 
-<p><ol start="474"></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">IsolatedStorageFileStream</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IsolatedStorageFileStream</span><span class="p">(</span><span class="s">&quot;/image.jpg&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileMode</span><span class="p">.</span><span class="n">OpenOrCreate</span><span class="p">,</span> <span class="n">iso</span><span class="p">);</span>
+</span><span class='line'><span class="n">imageResult</span><span class="p">.</span><span class="n">SaveAsJpeg</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+</span><span class='line'><span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>*&lt;span&gt;IsolatedStorageFileStream&lt;/span&gt; stream = &lt;span&gt;new&lt;/span&gt; &lt;span&gt;IsolatedStorageFileStream&lt;/span&gt;(&lt;span&gt;"/image.jpg"&lt;/span&gt;, System.IO.&lt;span&gt;FileMode&lt;/span&gt;.OpenOrCreate, iso);
-*imageResult.SaveAsJpeg(stream, imageResult.Width, imageResult.Height);
-*stream.Close();
-</code></pre>
-
-<p></ol></p>
 
 <p>О том, как сохранить наше изображение в галерее вы можете прочитать в моей предыдущей статье &ldquo;<a href="http://mne.p0x.ru/2011/12/blog-post.html">Интеграция приложения с хабом Фото</a>&rdquo;.</p>
 ]]></content>
@@ -430,32 +469,38 @@ using System.ComponentModel;</pre>
     <link href="http://Ponf.github.io/blog/2011/12/Integratciia-prilozheniia-s-khabom-Foto/"/>
     <updated>2011-12-14T14:08:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Integratciia-prilozheniia-s-khabom-Foto</id>
-    <content type="html"><![CDATA[<p><span><span>Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией:</span></span></p>
+    <content type="html"><![CDATA[<p>Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией:</p>
 
-<ol start="1" type="1">
-    *<span><span>Добавление приложения на главную страницу хаба;</span></span>
-    *<span><span>Добавление приложения в меню &#8220;Программы&#8221; (программы, которыми можно отредактировать изображение);</span></span>
-    *<span><span>Выбор в программе изображения из галереи и с камеры;</span></span>
-    *<span><span>Сохранение отредактированного изображения в галерее.</span></span>
-</ol>
+<ul>
+<li>Добавление приложения на главную страницу хаба;</li>
+<li>Добавление приложения в меню &ldquo;Программы&rdquo; (программы, которыми можно отредактировать изображение);</li>
+<li>Выбор в программе изображения из галереи и с камеры;</li>
+<li>Сохранение отредактированного изображения в галерее.</li>
+</ul>
 
 
-<p><span><span>Вроде бы все понятно, в интернете много информации и никаких проблем возникнуть не должно, но на практике, к сожалению, не всё так просто.</span></span></p>
+<p>Вроде бы все понятно, в интернете много информации и никаких проблем возникнуть не должно, но на практике, к сожалению, не всё так просто.</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p><span><strong><span>1. Добавление приложения на главную страницу хаба Фото</span></strong></span></p>
+<h2>1. Добавление приложения на главную страницу хаба Фото</h2>
 
-<p><span>Беглый поиск <a href="http://programming4.us/mobile/3758.aspx"><span>показал</span></a>, что для интеграции приложения в хаб Pictures нам необходимо создать файл </span><span><span>Extra.xml</span></span><span><span> со следующим содержимым:</span></span></p>
+<p>Беглый поиск <a href="http://programming4.us/mobile/3758.aspx">показал</a>, что для интеграции приложения в хаб Pictures нам необходимо создать файл Extra.xml со следующим содержимым:</p>
 
-<pre class="lang:xhtml decode:true">&lt;Extras&gt;
-  &lt;PhotosExtrasApplication&gt;
-    &lt;Enabled&gt;true&lt;Enabled&gt; 
-  &lt;PhotosExtrasApplication&gt;
-&lt;Extras&gt;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Extras&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;PhotosExtrasApplication&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;Enabled&gt;</span>true<span class="nt">&lt;/Enabled&gt;</span> 
+</span><span class='line'>  <span class="nt">&lt;/PhotosExtrasApplication&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Extras&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>И создать некоторый обработчик в методе OnNavigatedTo().</p>
@@ -466,201 +511,308 @@ using System.ComponentModel;</pre>
 
 <p>Для отображения нашего приложения в хабе Фото необходимо в файл WMAppManifest.xml добавить следующие строчки:</p>
 
-<pre class="lang:xhtml decode:true">&lt;Extensions&gt;
-      &lt;Extension ExtensionName="Photos_Extra_Hub" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" /&gt; 
-&lt;Extensions&gt;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Extensions&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;Extension</span> <span class="na">ExtensionName=</span><span class="s">&quot;Photos_Extra_Hub&quot;</span> <span class="na">ConsumerID=</span><span class="s">&quot;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&quot;</span> <span class="na">TaskID=</span><span class="s">&quot;_default&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Extensions&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
-<li>Добавление приложения в контекстное меню хаба Фото</li>
-</ol>
+<h2>2. Добавление приложения в контекстное меню хаба Фото</h2>
 
-
-<p>Здесь механизм добавления приложения не отличается от добавления приложения на главную страницу хаба, только <span lang="EN-US">ExtensionName</span>будет&#8221;<span lang="EN-US">Photos</span><em><span lang="EN-US">Extra</span></em><span lang="EN-US">Viewer</span>&ldquo;, а<span lang="EN-US"> </span><span lang="EN-US">ConsumerID</span>станет&rdquo;{5<span lang="EN-US">B</span>04<span lang="EN-US">B</span>775-356<span lang="EN-US">B</span>-4<span lang="EN-US">AA</span>0-<span lang="EN-US">AAF</span>8-6491<span lang="EN-US">FFEA</span>5632}&ldquo;.</p>
+<p>Здесь механизм добавления приложения не отличается от добавления приложения на главную страницу хаба, только ExtensionName будет &ldquo;Photos_Extra_Viewer&rdquo;, а ConsumerID станет &ldquo;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&rdquo;.</p>
 
 <p>В итоге WMAppManifest.xml примет следующий вид:</p>
 
-<pre class="lang:xhtml decode:true ">       &lt;Tokens&gt;
-        &lt;Extensions&gt;
-            &lt;Extension ExtensionName="Photos_Extra_Hub" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" /&gt;
-            &lt;Extension ExtensionName="Photos_Extra_Viewer" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" /&gt;
-        &lt;/Extensions&gt;
-    &lt;/App&gt;
-&lt;/Deployment&gt;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>    <span class="nt">&lt;/Tokens&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;Extensions&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;Extension</span> <span class="na">ExtensionName=</span><span class="s">&quot;Photos_Extra_Hub&quot;</span> <span class="na">ConsumerID=</span><span class="s">&quot;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&quot;</span> <span class="na">TaskID=</span><span class="s">&quot;_default&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;Extension</span> <span class="na">ExtensionName=</span><span class="s">&quot;Photos_Extra_Viewer&quot;</span> <span class="na">ConsumerID=</span><span class="s">&quot;{5B04B775-356B-4AA0-AAF8-6491FFEA5632}&quot;</span> <span class="na">TaskID=</span><span class="s">&quot;_default&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/Extensions&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/App&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Deployment&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>&nbsp;</p>
+<p></p>
 
-<ol>
-<li>Создание обработчика</li>
-</ol>
-
+<h2>3. Создание обработчика</h2>
 
 <p>Итак, теперь мы умеем не только вызывать нашу программу из хаба, а ещё и передавать ей любое изображение. Теперь надо его обрабатывать. Для этого необходимо перегрузить метод OnNavigatedTo:</p>
 
-<pre class="lang:c# decode:true">BitmapImage bitmap;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">BitmapImage</span> <span class="n">bitmap</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnNavigatedTo</span><span class="p">(</span><span class="n">NavigationEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">base</span><span class="p">.</span><span class="n">OnNavigatedTo</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Get a dictionary of query string keys and values</span>
+</span><span class='line'>    <span class="n">IDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">queryStrings</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">NavigationContext</span><span class="p">.</span><span class="n">QueryString</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//WaitingPic.Visibility = Visibility.Collapsed;</span>
+</span><span class='line'>    <span class="c1">//Ensure at least one querysting</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">queryStrings</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="s">&quot;token&quot;</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">MediaLibrary</span> <span class="n">library</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MediaLibrary</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">Picture</span> <span class="n">picture</span> <span class="p">=</span> <span class="n">library</span><span class="p">.</span><span class="n">GetPictureFromToken</span><span class="p">(</span><span class="n">queryStrings</span><span class="p">[</span><span class="s">&quot;token&quot;</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Create bitmap</span>
+</span><span class='line'>        <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapImage</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">bitmap</span><span class="p">.</span><span class="n">SetSource</span><span class="p">(</span><span class="n">picture</span><span class="p">.</span><span class="n">GetImage</span><span class="p">());</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">NavigationContext</span><span class="p">.</span><span class="n">QueryString</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-
-        //Get a dictionary of query string keys and values
-        IDictionary&lt;string, string&gt; queryStrings = this.NavigationContext.QueryString;
-
-        //WaitingPic.Visibility = Visibility.Collapsed;
-        //Ensure at least one querysting
-        if (queryStrings.ContainsKey("token"))
-        {
-            MediaLibrary library = new MediaLibrary();
-            Picture picture = library.GetPictureFromToken(queryStrings["token"]);
-
-            //Create bitmap
-            bitmap = new BitmapImage();
-            bitmap.SetSource(picture.GetImage());
-            this.NavigationContext.QueryString.Clear();
-        }
-    }<span style="line-height: 1.5em;"> </span></pre>
-
-
-<p>&nbsp;</p>
 
 <p>Теперь мы можем делать с нашим изображением всё, что захотим :).</p>
 
-<ol>
-<li>Получение изображений из камеры и галереи
-Также мы хотим осуществить в нашем приложении доступ к изображениям в галерее и, если нужное изображение отсутствует, предоставить возможность сделать фото.</li>
-</ol>
+<h2>4. Получение изображений из камеры и галереи</h2>
 
+<p>Также мы хотим осуществить в нашем приложении доступ к изображениям в галерее и, если нужное изображение отсутствует, предоставить возможность сделать фото.</p>
 
-<p>Для этого нам необходимо использоватьPhotoChooserTaskиCameraCaptureTask, которые находятся в пространстве имён using Microsoft.Phone.Tasks.</p>
+<p>Для этого нам необходимо использовать PhotoChooserTaskиCameraCaptureTask, которые находятся в пространстве имён Microsoft.Phone.Tasks.</p>
 
 <p>В общем случае код выглядит примерно так:</p>
 
-<pre class="lang:c# decode:true">    private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            selectphoto = new PhotoChooserTask();
-            selectphoto.Completed += new EventHandler&lt;PhotoResult&gt;(photo_Completed);
-            selectphoto.Show();
-        }
-        catch
-        {
-            MessageBox.Show("Some problem with loading your page");
-            return;
-        }
-    }
-
-    private void LaunchCamera_Click(object sender, RoutedEventArgs e)
-    {
-        CameraCaptureTask cameraCapture = new CameraCaptureTask();
-        cameraCapture.Completed += new EventHandler&lt;PhotoResult&gt;(photo_Completed);
-        cameraCapture.Show();
-    }
-
-    void photo_Completed(object sender, PhotoResult e)
-    {
-        if (e.TaskResult == TaskResult.OK)
-        {
-            try
-            {
-                bitmap = new BitmapImage();
-                bitmap.UriSource = new Uri(e.OriginalFileName);
-            }
-            catch
-            {
-                MessageBox.Show("Some problem with loading your page");
-            }
-        }
-    }</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">ChoosePhoto_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">try</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">selectphoto</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhotoChooserTask</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">selectphoto</span><span class="p">.</span><span class="n">Completed</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">PhotoResult</span><span class="p">&gt;(</span><span class="n">photo_Completed</span><span class="p">);</span>
+</span><span class='line'>        <span class="n">selectphoto</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">catch</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with loading your page&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">LaunchCamera_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">CameraCaptureTask</span> <span class="n">cameraCapture</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CameraCaptureTask</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">cameraCapture</span><span class="p">.</span><span class="n">Completed</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">PhotoResult</span><span class="p">&gt;(</span><span class="n">photo_Completed</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">cameraCapture</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">void</span> <span class="nf">photo_Completed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">PhotoResult</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">TaskResult</span> <span class="p">==</span> <span class="n">TaskResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">try</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapImage</span><span class="p">();</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">UriSource</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">OriginalFileName</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">catch</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with loading your page&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Как вы можете видеть, ничего сложно в этом нет, данный код вернет нам изображение в приложение. Но мне такая реализация не очень нравится. Я предпочитаю делать следующее:</p>
 
-<p>&nbsp;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">void</span> <span class="nf">photo_Completed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">PhotoResult</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">TaskResult</span> <span class="p">==</span> <span class="n">TaskResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">try</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BitmapImage</span><span class="p">();</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">CreateOptions</span> <span class="p">=</span> <span class="n">BitmapCreateOptions</span><span class="p">.</span><span class="n">None</span><span class="p">;</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">ImageOpened</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">RoutedEventArgs</span><span class="p">&gt;(</span><span class="n">bitmap_ImageOpened</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">ImageFailed</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">ExceptionRoutedEventArgs</span><span class="p">&gt;(</span><span class="n">bitmap_ImageFailed</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">bitmap</span><span class="p">.</span><span class="n">UriSource</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">OriginalFileName</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">catch</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with loading your page&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">bitmap_ImageOpened</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">try</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">//Делаем что-нибудь с нашим изображением</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">catch</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>         <span class="c1">//Обрабатываем ошибку </span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">bitmap_ImageFailed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Problem with loading your image. Please try again.&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre class="lang:c# decode:true ">    void photo_Completed(object sender, PhotoResult e)
-    {
-        if (e.TaskResult == TaskResult.OK)
-        {
-            try
-            {
-                bitmap = new BitmapImage();
-                bitmap.CreateOptions = BitmapCreateOptions.None;
-                bitmap.ImageOpened += new EventHandler&lt;RoutedEventArgs&gt;(bitmap_ImageOpened);
-                bitmap.ImageFailed += new EventHandler&lt;ExceptionRoutedEventArgs&gt;(bitmap_ImageFailed);
-                bitmap.UriSource = new Uri(e.OriginalFileName);
-            }
-            catch 
-            {
-                MessageBox.Show("Some problem with loading your page");
-            }
-        }
-    }
-
-    public void bitmap_ImageOpened(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            //Делаем что-нибудь с нашим изображением
-        }
-        catch 
-        {
-             //Обрабатываем ошибку 
-        }
-    }
-
-    public void bitmap_ImageFailed(object sender, RoutedEventArgs e)
-    {
-        MessageBox.Show("Problem with loading your image. Please try again.");
-    }</pre>
-
-
-<p>&nbsp;</p>
 
 <p>Теперь наше приложение умеет ещё выбирать изображения из галереи и делать фотографии.</p>
 
 <p>Осталось только сохранять результат работы в галерее.</p>
 
-<ol>
-<li>Сохранение изображения в галерее</li>
-</ol>
-
+<h2>5. Сохранение изображения в галерее</h2>
 
 <p>Для сохранения изображения в галерее нам во-первых необходимо подключить следующие пространства имен:</p>
 
-<pre class="lang:c# decode:true">    using System.IO.IsolatedStorage;
-    using Microsoft.Xna.Framework.Media;</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System.IO.IsolatedStorage</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">Microsoft.Xna.Framework.Media</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Теперь мы можем сохранить фотографию:</p>
 
-<p>&nbsp;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">try</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">IsolatedStorageFileStream</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IsolatedStorageFileStream</span><span class="p">(</span><span class="s">&quot;/image.jpg&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileMode</span><span class="p">.</span><span class="n">OpenOrCreate</span><span class="p">,</span> <span class="n">iso</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">imageResult</span><span class="p">.</span><span class="n">SaveAsJpeg</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">imageResult</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">stream</span> <span class="p">=</span> <span class="n">iso</span><span class="p">.</span><span class="n">OpenFile</span><span class="p">(</span><span class="s">&quot;/image.jpg&quot;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileAccess</span><span class="p">.</span><span class="n">Read</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">MediaLibrary</span> <span class="n">library</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MediaLibrary</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">Picture</span> <span class="n">pic</span> <span class="p">=</span> <span class="n">library</span><span class="p">.</span><span class="n">SavePicture</span><span class="p">(</span><span class="s">&quot;SavedPicture.jpg&quot;</span><span class="p">,</span> <span class="n">stream</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Image saved to saved pictures album&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">stream</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">catch</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;Some problem with saving image :(&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre class="lang:c# decode:true">    try
-    {
-        IsolatedStorageFileStream stream = new IsolatedStorageFileStream("/image.jpg", System.IO.FileMode.OpenOrCreate, iso);
-        imageResult.SaveAsJpeg(stream, imageResult.Width, imageResult.Height);
-        stream.Close();
 
-        stream = iso.OpenFile("/image.jpg", System.IO.FileMode.Open, System.IO.FileAccess.Read);
-        MediaLibrary library = new MediaLibrary();
-        Picture pic = library.SavePicture("SavedPicture.jpg", stream);
-        MessageBox.Show("Image saved to saved pictures album");
-        stream.Close();
-    }
-    catch
-    {
-        MessageBox.Show("Some problem with saving image :(");
-    }</pre>
+<p>Сначала мы сохраняем изображение в изолированном хранилище. В данном примере - imageResult - экземпляр класса RenderTarget2D, который наследуется от Texture2D, у которого, в свою очередь, есть методы для сохранения в png и jpg. Мы записываем jpg файл в изолированные хранилище, затем создаем поток на чтение этого файла. Наконец, нам нужно передать поток чтения в метод SavePicture экземпляра класса MediaLibrary для сохранения изображения в галерее. Все, изображение сохранять мы тоже научились.</p>
 
-
-<p>Сначала мы сохраняем изображение в изолированном хранилище. В данном примере - imageResult - экземпляр класса RenderTarget2D, который наследуется от Texture2D, у которого, в свою очередь, есть методы для сохранения в png и jpg. Мы записываем jpg файл в изолированные хранилище, затем создаем поток на чтение этого файла. Наконец, нам нужно передать поток чтения в метод SavePicture экземпляра класса <span lang="EN-US">MediaLibrary</span> для сохранения изображения в галерее. Все, изображение сохранять мы тоже научились.</p>
-
-<ol>
-<li>Заключение</li>
-</ol>
-
+<h2>6. Заключение</h2>
 
 <p>Мне кажется, в этой статье я рассмотрел все кейсы, которые могут пригодиться при разработке приложения для работы с фотографиями и изображениями. Возможно, я недостаточно внимания уделил задачам выбора изображения и работе с камерой, но вся эта информация есть в учебном курсе по <a href="http://msdn.microsoft.com/ru-ru/windowsphone/hh420944#mark_7">Windows Phone</a>. Если у вас остались какие-либо вопросы, не стесняйтесь задавать их в комментариях.</p>
 
@@ -679,18 +831,22 @@ using System.ComponentModel;</pre>
 
 <p>Суть тостера &ndash; проведение тематических конференций. Следующая конференция, проходящая 2 декабря посвящена разработке мобильных приложений.</p>
 
-<blockquote><span><span>.тостер {мобильные приложения} — это техническая конференция. Наша цель — дать профессионалам возможность поделиться своими знаниями.</span></span></blockquote>
-
+<blockquote><p>.тостер {мобильные приложения} — это техническая конференция. Наша цель — дать профессионалам возможность поделиться своими знаниями.</p></blockquote>
 
 <p>Вход стоит от 4 до 10 тысяч, но ребята из Microsoft решили предоставить разработчикам под WP7 возможность принять участие бесплатно :)</p>
 
-<p><span><strong>Что для этого нужно сделать</strong></span>
-1. У вас должно быть хотя бы одно опубликованное приложение
-2. Вы должны быть зарегистрированы на сайте <a href="http://appprofessionals.ru/"><strong>AppProfessionals</strong></a> и разместить там ваше приложение.
-3. На странице <a href="http://habrahabr.ru/special/microsoft/wp_toster/"><strong>акции</strong></a> указать ссылку на свой аккаунт и приложение.</p>
+<p><strong>Что для этого нужно сделать</strong></p>
 
-<p>Всё!
-Акция проходит в период с 18 по 30 ноября.</p>
+<ol>
+<li>У вас должно быть хотя бы одно опубликованное приложение</li>
+<li>Вы должны быть зарегистрированы на сайте <a href="http://appprofessionals.ru/"><strong>AppProfessionals</strong></a> и разместить там ваше приложение.</li>
+<li>На странице <a href="http://habrahabr.ru/special/microsoft/wp_toster/"><strong>акции</strong></a> указать ссылку на свой аккаунт и приложение.</li>
+</ol>
+
+
+<p>Всё!</p>
+
+<p>Акция проходит в период с 18 по 30 ноября.</p>
 ]]></content>
   </entry>
   
@@ -701,36 +857,38 @@ using System.ComponentModel;</pre>
     <id>http://Ponf.github.io/blog/2011/11/ICQ-MRA-i-Twitter-dlia-Windows-Phone</id>
     <content type="html"><![CDATA[<p>Сегодня компания Mail.Ru в рамках проходящего Форума Технологий анонсировала выход 2-х своих приложений для Windows Phone: ICQ-клиента, который все так долго просили, и Mail.Ru Agent.</p>
 
-<p><a href="http://2.bp.blogspot.com/-qv4Qck12jUw/TsOmiWp6g1I/AAAAAAAAAF4/2MIBUGgeIDo/s1600/icq_wp7_480.jpg"><img alt="" src="http://2.bp.blogspot.com/-qv4Qck12jUw/TsOmiWp6g1I/AAAAAAAAAF4/2MIBUGgeIDo/s320/icq_wp7_480.jpg" width="320" height="179" border="0" /></a><a href="http://1.bp.blogspot.com/-NSVSEBeMnJc/TsOmhigWNpI/AAAAAAAAAFw/nX98fCuqEkU/s1600/Agent_wp7_480.jpg"><img alt="" src="http://1.bp.blogspot.com/-NSVSEBeMnJc/TsOmhigWNpI/AAAAAAAAAFw/nX98fCuqEkU/s320/Agent_wp7_480.jpg" width="320" height="172" border="0" /></a></p>
+<p><img src="http://2.bp.blogspot.com/-qv4Qck12jUw/TsOmiWp6g1I/AAAAAAAAAF4/2MIBUGgeIDo/s320/icq_wp7_480.jpg"> <img src="http://1.bp.blogspot.com/-NSVSEBeMnJc/TsOmhigWNpI/AAAAAAAAAFw/nX98fCuqEkU/s320/Agent_wp7_480.jpg"></p>
 
-<blockquote>
-<blockquote><span>Windows Phone 7 - новая перспективная ОС от Microsoft для смартфонов. Для нее уже более 35 тыс. приложений, и в скором времени появятся версии ICQ и Mail.Ru Агента. Как они выглядят, вы уже можете увидеть на скриншотах. Единообразие стиля операционки делает дизайн софта под нее стильным и современным. Что касается функциональности, то будет мультипротокольность (поддержка Google, ВКонтакте, Одноклассники и т.д.), группы, смайлы и все стандартные возможности. Благодаря особенностям интерфейса WP7 можно удобно переходить от сервиса к сервису горизонтальной прокруткой экранов. Есть древовидное представление диалогов и поиск по ним. Никуда не делись статусы. При этом оба приложения будут бесплатны, как и на других платформах.</span></blockquote>
-</blockquote>
-
+<blockquote><p>Windows Phone 7 &ndash; новая перспективная ОС от Microsoft для смартфонов. Для нее уже более 35 тыс. приложений, и в скором времени появятся версии ICQ и Mail.Ru Агента. Как они выглядят, вы уже можете увидеть на скриншотах. Единообразие стиля операционки делает дизайн софта под нее стильным и современным. Что касается функциональности, то будет мультипротокольность (поддержка Google, ВКонтакте, Одноклассники и т.д.), группы, смайлы и все стандартные возможности. Благодаря особенностям интерфейса WP7 можно удобно переходить от сервиса к сервису горизонтальной прокруткой экранов. Есть древовидное представление диалогов и поиск по ним. Никуда не делись статусы. При этом оба приложения будут бесплатны, как и на других платформах.</p></blockquote>
 
 <p><a href="http://hi-tech.mail.ru/news/misc/icq_agent-wp7.html"><strong>Hi-Tech.Mail.Ru</strong></a></p>
 
-<p><span>Также сегодня вышло обновление для официального Twitter-клиента для Windows Phone.</span></p>
+<p>Также сегодня вышло обновление для официального Twitter-клиента для Windows Phone.</p>
 
-<p><span> </span></p>
-
-<p><a href="http://4.bp.blogspot.com/-XtRSygjLze4/TsNm8-4HmAI/AAAAAAAAAE4/9E4uDYN93FI/s1600/primaryImage.png"><img alt="" src="http://4.bp.blogspot.com/-XtRSygjLze4/TsNm8-4HmAI/AAAAAAAAAE4/9E4uDYN93FI/s200/primaryImage.png" width="200" height="200" border="0" /></a></p>
+<p><img src="http://4.bp.blogspot.com/-XtRSygjLze4/TsNm8-4HmAI/AAAAAAAAAE4/9E4uDYN93FI/s200/primaryImage.png"></p>
 
 <p>По всей видимости каких-либо серьезных изменений или новых фич в этой версии приложения не появилось. Из приятного &ndash; помимо поддержи Fast Application Switch, приложение стало доступно из России.</p>
 
-<p><strong><span><a href="http://www.windowsphone.com/ru-RU/apps/0b792c7c-14dc-df11-a844-00237de2db9e?ppud=4&amp;amp;wa=wsignin1.0">Скачать</a></span></strong>
-<strong>
-</strong>
-Под катом скрины</p>
+<p><a href="http://www.windowsphone.com/ru-RU/apps/0b792c7c-14dc-df11-a844-00237de2db9e?ppud=4&amp;amp;wa=wsignin1.0">Скачать</a></p>
+
+<p>Под катом скрины</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p><a href="http://1.bp.blogspot.com/-8osNrBNbO8U/TsNu6dA0OjI/AAAAAAAAAFI/je6Du4fPvLA/s1600/60f0468f-2ac8-456e-a52d-e9fad4837133.png"><img alt="" src="http://1.bp.blogspot.com/-8osNrBNbO8U/TsNu6dA0OjI/AAAAAAAAAFI/je6Du4fPvLA/s200/60f0468f-2ac8-456e-a52d-e9fad4837133.png" width="120" height="200" border="0" /></a><a href="http://1.bp.blogspot.com/-k8EAhE1t2_4/TsNu7W-JoeI/AAAAAAAAAFQ/fXwrUogrQoM/s1600/bf036828-aa07-4c0a-8973-c46f04b6007e.png"><img alt="" src="http://1.bp.blogspot.com/-k8EAhE1t2_4/TsNu7W-JoeI/AAAAAAAAAFQ/fXwrUogrQoM/s200/bf036828-aa07-4c0a-8973-c46f04b6007e.png" width="120" height="200" border="0" /></a><a href="http://4.bp.blogspot.com/-rImztBz-Wdw/TsNu8_DrGxI/AAAAAAAAAFY/JiVkaSBh0qM/s1600/f2ce6f98-b242-4335-808e-083d80a099af.png"><img alt="" src="http://4.bp.blogspot.com/-rImztBz-Wdw/TsNu8_DrGxI/AAAAAAAAAFY/JiVkaSBh0qM/s200/f2ce6f98-b242-4335-808e-083d80a099af.png" width="120" height="200" border="0" /></a><a href="http://2.bp.blogspot.com/-teIk8MnJh5s/TsNu99gdaKI/AAAAAAAAAFg/yjAg4acX75M/s1600/fa5a9d87-7945-4827-ad10-f6736239d79c.png"><img alt="" src="http://2.bp.blogspot.com/-teIk8MnJh5s/TsNu99gdaKI/AAAAAAAAAFg/yjAg4acX75M/s200/fa5a9d87-7945-4827-ad10-f6736239d79c.png" width="120" height="200" border="0" /></a></p>
+<p><img src="http://1.bp.blogspot.com/-8osNrBNbO8U/TsNu6dA0OjI/AAAAAAAAAFI/je6Du4fPvLA/s200/60f0468f-2ac8-456e-a52d-e9fad4837133.png"></p>
 
-<p><a href="http://1.bp.blogspot.com/-oiA1qRPm-O0/TsNu-4hWa5I/AAAAAAAAAFo/UihzSId8qrM/s1600/ffd0974d-89f4-485a-8f1e-215ade98329c.png"><img alt="" src="http://1.bp.blogspot.com/-oiA1qRPm-O0/TsNu-4hWa5I/AAAAAAAAAFo/UihzSId8qrM/s200/ffd0974d-89f4-485a-8f1e-215ade98329c.png" width="120" height="200" border="0" /></a><a href="http://2.bp.blogspot.com/-cBRdblMPl-k/TsNu5bZh5eI/AAAAAAAAAFA/18s25sibhoo/s1600/9c3a61a3-580f-49c7-8ee3-1346eaa8c9aa.png"><img alt="" src="http://2.bp.blogspot.com/-cBRdblMPl-k/TsNu5bZh5eI/AAAAAAAAAFA/18s25sibhoo/s200/9c3a61a3-580f-49c7-8ee3-1346eaa8c9aa.png" width="120" height="200" border="0" /></a></p>
+<p><img src="http://1.bp.blogspot.com/-k8EAhE1t2_4/TsNu7W-JoeI/AAAAAAAAAFQ/fXwrUogrQoM/s200/bf036828-aa07-4c0a-8973-c46f04b6007e.png"></p>
+
+<p><img src="http://4.bp.blogspot.com/-rImztBz-Wdw/TsNu8_DrGxI/AAAAAAAAAFY/JiVkaSBh0qM/s200/f2ce6f98-b242-4335-808e-083d80a099af.png"></p>
+
+<p><img src="http://2.bp.blogspot.com/-teIk8MnJh5s/TsNu99gdaKI/AAAAAAAAAFg/yjAg4acX75M/s200/fa5a9d87-7945-4827-ad10-f6736239d79c.png"></p>
+
+<p><img src="http://1.bp.blogspot.com/-oiA1qRPm-O0/TsNu-4hWa5I/AAAAAAAAAFo/UihzSId8qrM/s200/ffd0974d-89f4-485a-8f1e-215ade98329c.png"></p>
+
+<p><img src="http://2.bp.blogspot.com/-cBRdblMPl-k/TsNu5bZh5eI/AAAAAAAAAFA/18s25sibhoo/s200/9c3a61a3-580f-49c7-8ee3-1346eaa8c9aa.png"></p>
 ]]></content>
   </entry>
   
@@ -744,8 +902,8 @@ using System.ComponentModel;</pre>
 Так же в этом выпуске опубликовали две мои статьи по Windows Phone 7:</p>
 
 <ul>
-    *доработанную [шпаргалку ](http://mne.p0x.ru/2011/08/windows-phone-7.html)по сертификации приложений
-    *[статью ](http://mne.p0x.ru/2011/10/wp7.html)по работе с БД в WP7
+<li>доработанную <a href="http://mne.p0x.ru/2011/08/windows-phone-7.html">шпаргалку</a>по сертификации приложений</li>
+<li><a href="http://mne.p0x.ru/2011/10/wp7.html">статью</a>по работе с БД в WP7</li>
 </ul>
 
 
@@ -760,17 +918,9 @@ using System.ComponentModel;</pre>
     <link href="http://Ponf.github.io/blog/2011/11/TechEd-Russia/"/>
     <updated>2011-11-10T22:37:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/11/TechEd-Russia</id>
-    <content type="html"><![CDATA[<table cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td><a href="http://4.bp.blogspot.com/-Tie3I712RMk/TrwbUhqZhbI/AAAAAAAAAEw/QefhuCPVCdo/s1600/_DSC8798.JPG"><img alt="" src="http://4.bp.blogspot.com/-Tie3I712RMk/TrwbUhqZhbI/AAAAAAAAAEw/QefhuCPVCdo/s320/_DSC8798.JPG" width="320" height="213" border="0" /></a></td>
-</tr>
-<tr>
-<td>Keynote. У меня бэйджик докладчика ;)</td>
-</tr>
-</tbody>
-</table>
+    <content type="html"><![CDATA[<p><img src="http://4.bp.blogspot.com/-Tie3I712RMk/TrwbUhqZhbI/AAAAAAAAAEw/QefhuCPVCdo/s320/_DSC8798.JPG"></p>
 
+<p>Keynote. У меня бэйджик докладчика ;)</p>
 
 <p>TechEd Russia был легендарен! Фотки ждите позже, сейчас основные впечатления.</p>
 
@@ -833,7 +983,9 @@ using System.ComponentModel;</pre>
 
 <p>В командной строке с помощью утилиты SQLmetal мы сгенерируем DataContext для нашей базы данных MyDB.sdf</p>
 
-<p>sqlmetal D:\Tests\MyDB.sdf /code:D:\Tests\MyDB.cs /language:csharp /namespace:DBDemo /context:MyDBContext /pluralize</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sqlmetal D:\Tests\MyDB.sdf /code:D:\Tests\MyDB.cs /language:csharp /namespace:DBDemo /context:MyDBContext /pluralize</span></code></pre></td></tr></table></div></figure>
+
 
 <p>В этой команде мы указали путь к нашей БД и путь, куда поместить наш DataContext, выбрали язык C#, указали название пространства имён и имя DataContext.</p>
 
