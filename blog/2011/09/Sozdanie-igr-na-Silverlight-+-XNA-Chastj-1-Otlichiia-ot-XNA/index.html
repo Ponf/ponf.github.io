@@ -91,190 +91,220 @@
   </header>
 
 
-<div class="entry-content"><p>С выходом обновления Mango для Windows Phone 7 и обновлением SDK, появилась возможность создавать приложения использующие обе технологии вместе. В этой статье я расскажу вам об этих возможностях и опишу процесс миграции с XNA на Silverlight+XNA.<span><strong>Что это даёт разработчику?</strong></span>
-В первую очередь, у разработчиков игр появились следующие возможности:</p>
+<div class="entry-content"><p>С выходом обновления Mango для Windows Phone 7 и обновлением SDK, появилась возможность создавать приложения использующие обе технологии вместе. В этой статье я расскажу вам об этих возможностях и опишу процесс миграции с XNA на Silverlight+XNA.</p>
+
+<h2>Что это даёт разработчику?</h2>
+
+<p>В первую очередь, у разработчиков игр появились следующие возможности:</p>
 
 <ul>
-    *Быстрое создание UI с использованием контролов из Silverlight
-    *Удобная навигация между страницами, используя Navigation Service
-    *Использование WebClient для интеграции различных социальных сервисов
-    *Создание интерфейса в Expression Blend
+<li>Быстрое создание UI с использованием контролов из Silverlight</li>
+<li>Удобная навигация между страницами, используя Navigation Service</li>
+<li>Использование WebClient для интеграции различных социальных сервисов</li>
+<li>Создание интерфейса в Expression Blend</li>
 </ul>
 
 
-<p>Причем стоит заметить, что не все страницы должны совмещать в себе и Silverlight и XNA.</p>
-
-<p>Итак, что же нужно сделать с готовым приложением, чтобы оно заработало в связке Silverlight + XNA?</p>
+<p>Причем стоит заметить, что не все страницы должны совмещать в себе и Silverlight и XNA.
+Итак, что же нужно сделать с готовым приложением, чтобы оно заработало в связке Silverlight + XNA?</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p><span><strong>1. Новый проект</strong></span></p>
+<h2>1. Новый проект</h2>
 
 <p>При создании нового проекта необходимо выбрать <strong>&ldquo;Windows Phone Silverlight and XNA Application&rdquo;</strong>. Создастся новый проект с 2мя страницами <strong>MainPage</strong> и <strong>GamePage</strong>.</p>
 
 <ul>
-    ***MainPage **- обычная страница Silverlight-приложения, на которой располагается кнопка &#8220;Change to game page&#8221;, при нажатии на которую, соответственно, открывается страница **GamePage**.
-    ***GamePage **- как раз наша страница с XNA. Если посмотреть на содержание её xaml файла, то вместо разметки страницы там будет всего одна строчка:
+<li><strong>MainPage</strong> &ndash; обычная страница Silverlight-приложения, на которой располагается кнопка &ldquo;Change to game page&rdquo;, при нажатии на которую, соответственно, открывается страница <strong>GamePage</strong>.</li>
+<li><strong>GamePage</strong> &ndash; как раз наша страница с XNA. Если посмотреть на содержание её xaml файла, то вместо разметки страницы там будет всего одна строчка:</li>
 </ul>
 
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!--No XAML content is required as the page is rendered entirely with the XNA Framework--&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-
-<ol start="16">
-    *
-<pre><span>&lt;!</span><span>--No XAML content is required as the page is rendered entirely with the XNA Framework--</span><span>&gt;</span></pre>
-<pre></pre>
-&nbsp;
-</ol>
-
-
-<p>&nbsp;</p>
 
 <p>То есть &ldquo;XAML код не требуется, т.к. страница отображается полностью с помощью XNA Framework&rdquo;. Таким образом, когда мы захотим добавить контролы на эту страницу нам нужно будет заменить этот комментарий на наш код.
 Теперь давайте рассмотрим файл GamePage.xaml.cs, в котором и находится вся логика нашего XNA приложения.</p>
 
-<p><strong><span>2. Где размещаются конструкторы?</span></strong>
-Теперь давайте по порядку разберемся где какие конструкторы находятся.</p>
+<h2>Где размещаются конструкторы?</h2>
 
-<ul>
-    *Конструктор **SharedGraphicsDeviceManager **(который в Silverlight/XNA приложении заменяет **GraphicsDeviceManager**) уже находится в файле **App.xaml**:
-</ul>
+<p>Теперь давайте по порядку разберемся где какие конструкторы находятся.
+* Конструктор <strong>SharedGraphicsDeviceManager </strong>(который в Silverlight/XNA приложении заменяет <strong>GraphicsDeviceManager</strong>) уже находится в файле <strong>App.xaml</strong>:</p>
 
-
-
-
-<ol start="20">
-    *<span><!--The SharedGraphicsDeviceManager is used to render with the XNA Graphics APIs--></span>
-    *<span>&lt;</span><span>xna</span><span>:</span><span>SharedGraphicsDeviceManager</span><span> /&gt;</span>
-</ol>
-
-
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!--The SharedGraphicsDeviceManager is used to render with the XNA Graphics APIs--&gt;</span>
+</span><span class='line'><span class="nt">&lt;xna:SharedGraphicsDeviceManager</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
-    *Конструктор **ContentManager **находится в файле **App.xaml.cs**, но ничто не мешает вам создавать новые экземпляры **ContentManager**:
+<li>Конструктор <strong>ContentManager </strong>находится в файле <strong>App.xaml.cs</strong>, но ничто не мешает вам создавать новые экземпляры <strong>ContentManager</strong>:</li>
 </ul>
 
 
-
-
-<ol start="177">
-    *<span>// Create the ContentManager so the application can load precompiled assets</span>
-    *Content = <span>new</span> <span>ContentManager</span>(Services, <span>&#8220;Content&#8221;</span>);
-</ol>
-
-
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// Create the ContentManager so the application can load precompiled assets</span>
+</span><span class='line'><span class="n">Content</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ContentManager</span><span class="p">(</span><span class="n">Services</span><span class="p">,</span> <span class="s">&quot;Content&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
-    ***GameTimer **следит за прошедшим временем для каждой страницы в отдельности, он используется в методах рисования и обновления логики, но об этом немного позже.
-    *Отключение фиксированных временных интервалов, за которое раньше отвечало свойство **IsFixedTimestep**, теперь можно организовать установив **UpdateInterval **в **TimeSpan.Zero**.
-    *По умолчанию разрешение экрана составляет 480x800 пикселей в портретной ориентации и 800х480, если вы выставите ландшафтную ориентацию. Вы можете выставить разрешение для всего приложения в файле **App.xaml**, либо выставлять его для каждой страницы, вызывая **SetSharingMode(true)**.
+<li><strong>GameTimer</strong> следит за прошедшим временем для каждой страницы в отдельности, он используется в методах рисования и обновления логики, но об этом немного позже.</li>
+<li>Отключение фиксированных временных интервалов, за которое раньше отвечало свойство <strong>IsFixedTimestep</strong>, теперь можно организовать установив <strong>UpdateInterval </strong>в <strong>TimeSpan.Zero</strong>.</li>
+<li>По умолчанию разрешение экрана составляет 480x800 пикселей в портретной ориентации и 800х480, если вы выставите ландшафтную ориентацию. Вы можете выставить разрешение для всего приложения в файле <strong>App.xaml</strong>, либо выставлять его для каждой страницы, вызывая <strong>SetSharingMode(true)</strong>.</li>
 </ul>
 
 
-<p><span><strong>3. Где теперь загружать контент?</strong></span>
-При совместном использовании XNA и Silverlight нет необходимости использовать отдельного метода для загрузки контента, как это было в чистом XNA приложении (<strong>LoadContent</strong>). В общем, вы можете загружать игровой контент когда хотите, однако вы должны убедиться, что во время загрузки <strong>графического </strong>контента приложение находится в режиме XNA рендеринга (вызывая метод <strong>SetSharingMode</strong>). Если вы попытаетесь загрузить графический контент во время Silverlight-рендеринга, то это вызовет исключение. Не графический контент вы можете загружать в любое время, когда у вас создан <strong>ContentManager</strong>.</p>
+<h2>3. Где теперь загружать контент?</h2>
+
+<p>При совместном использовании XNA и Silverlight нет необходимости использовать отдельного метода для загрузки контента, как это было в чистом XNA приложении (<strong>LoadContent</strong>). В общем, вы можете загружать игровой контент когда хотите, однако вы должны убедиться, что во время загрузки <strong>графического </strong>контента приложение находится в режиме XNA рендеринга (вызывая метод <strong>SetSharingMode</strong>). Если вы попытаетесь загрузить графический контент во время Silverlight-рендеринга, то это вызовет исключение. Не графический контент вы можете загружать в любое время, когда у вас создан <strong>ContentManager</strong>.</p>
 
 <p>В примерах контент обычно загружается в методе  OnNavigatedTo, после включения XNA рендеринга. Рекомендуется всегда загружать контент в данном методе, так как это безопасно, но это не обязательное требование.</p>
 
-<p><span><strong>4. Циклы обновления и отрисовки</strong></span>
-Давайте теперь рассмотрим поподробнее циклы обработки в нашем проекте и разберемся, как происходит обновление данных в логике приложения и его отрисовка.
+<h2>4. Циклы обновления и отрисовки</h2>
+
+<p>Давайте теперь рассмотрим поподробнее циклы обработки в нашем проекте и разберемся, как происходит обновление данных в логике приложения и его отрисовка.
 В первую очередь мы создаём объект типа <strong>GameTimer </strong>и указываем частоту его увеличения. Величина 333333 &ndash; стандартная для WP7 и соответствует 30 кадрам в секунду.</p>
 
-<ol start="24">
-    *<span>public</span> GamePage()
-    *{
-    *    InitializeComponent();
-    *
-    *    <span>// Get the content manager from the application</span>
-    *    contentManager = (<span>Application</span>.Current <span>as</span> <span>App</span>).Content;
-    *
-    *    <span>// Create a timer for this page</span>
-    *    timer = <span>new</span> <span>GameTimer</span>();
-    *    timer.UpdateInterval = <span>TimeSpan</span>.FromTicks(333333);
-    *    timer.Update += OnUpdate;
-    *    timer.Draw += OnDraw;
-    *}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="nf">GamePage</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">InitializeComponent</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Get the content manager from the application</span>
+</span><span class='line'>    <span class="n">contentManager</span> <span class="p">=</span> <span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">Current</span> <span class="k">as</span> <span class="n">App</span><span class="p">).</span><span class="n">Content</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Create a timer for this page</span>
+</span><span class='line'>    <span class="n">timer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GameTimer</span><span class="p">();</span>
+</span><span class='line'>    <span class="n">timer</span><span class="p">.</span><span class="n">UpdateInterval</span> <span class="p">=</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromTicks</span><span class="p">(</span><span class="m">333333</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">timer</span><span class="p">.</span><span class="n">Update</span> <span class="p">+=</span> <span class="n">OnUpdate</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">timer</span><span class="p">.</span><span class="n">Draw</span> <span class="p">+=</span> <span class="n">OnDraw</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Затем в методе <strong>OnNavigatedTo </strong>мы указываем что делать при переходе на заданную страницу. В этом методе стоит загружать контент для приложения. Так как сейчас мы рассматриваем стандартный шаблон, то и загружать ничего не будем.</p>
 
-<ol start="38">
-    *<span>protected</span> <span>override</span> <span>void</span> OnNavigatedTo(<span>NavigationEventArgs</span> e)
-    *{
-    *    <span>// Set the sharing mode of the graphics device to turn on XNA rendering</span>
-    *    <span>SharedGraphicsDeviceManager</span>.Current.GraphicsDevice.SetSharingMode(<span>true</span>);
-    *
-    *    <span>// Create a new SpriteBatch, which can be used to draw textures.</span>
-    *    spriteBatch = <span>new</span> <span>SpriteBatch</span>(<span>SharedGraphicsDeviceManager</span>.Current.GraphicsDevice);
-    *
-    *    <span>// TODO: use this.content to load your game content here</span>
-    *
-    *    <span>// Start the timer</span>
-    *    timer.Start();
-    *
-    *    <span>base</span>.OnNavigatedTo(e);
-    *}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnNavigatedTo</span><span class="p">(</span><span class="n">NavigationEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Set the sharing mode of the graphics device to turn on XNA rendering</span>
+</span><span class='line'>    <span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">SetSharingMode</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Create a new SpriteBatch, which can be used to draw textures.</span>
+</span><span class='line'>    <span class="n">spriteBatch</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SpriteBatch</span><span class="p">(</span><span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// TODO: use this.content to load your game content here</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Start the timer</span>
+</span><span class='line'>    <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">base</span><span class="p">.</span><span class="n">OnNavigatedTo</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Далее идут самые интересные для нас методы &ndash; <strong>OnUpdate </strong>и <strong>OnDraw</strong>. В них мы задаём логику приложения (аналог <strong>Update </strong>в чистом XNA) и выводим изображение на экран (аналог, соответственно, метода <strong>Draw</strong>).</p>
 
-<ol start="65">
-    *<span>///</span><span>
-</span>
-    *<span>///</span><span> Allows the page to run logic such as updating the world,</span>
-    *<span>///</span><span> checking for collisions, gathering input, and playing audio.</span>
-    *<span>///</span>
-    *<span>private</span> <span>void</span> OnUpdate(<span>object</span> sender, <span>GameTimerEventArgs</span> e)
-    *{
-    *    <span>// TODO: Add your update logic here</span>
-    *}
-    *
-    *<span>///</span><span>
-</span>
-    *<span>///</span><span> Allows the page to draw itself.</span>
-    *<span>///</span>
-    *<span>private</span> <span>void</span> OnDraw(<span>object</span> sender, <span>GameTimerEventArgs</span> e)
-    *{
-    *    <span>SharedGraphicsDeviceManager</span>.Current.GraphicsDevice.Clear(<span>Color</span>.CornflowerBlue);
-    *
-    *    <span>// TODO: Add your drawing code here</span>
-    *}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">/// Allows the page to run logic such as updating the world,</span>
+</span><span class='line'><span class="c1">/// checking for collisions, gathering input, and playing audio.</span>
+</span><span class='line'><span class="c1">///</span>
+</span><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">OnUpdate</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">GameTimerEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// TODO: Add your update logic here</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">/// Allows the page to draw itself.</span>
+</span><span class='line'><span class="c1">///</span>
+</span><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">OnDraw</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">GameTimerEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">SharedGraphicsDeviceManager</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">GraphicsDevice</span><span class="p">.</span><span class="n">Clear</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">CornflowerBlue</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// TODO: Add your drawing code here</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Основное преимущество использования GameTimer таким способом является то, что можно создавать различные таймеры для главного игрового цикла и для каких-то игровых процессов. Кроме того, поскольку GameTimer использует события, можно использовать несколько различных методов для рисования и обновления логики для различных частей игры.</p>
 
-<p><strong><span>5. Логика, использующая GameTime</span></strong>
-Если вы перестраиваете проект с чистого XNA на Silverlight+XNA, то при портировании логики, использующей <strong>GameTime </strong>могут возникнуть проблемы. Поскольку <strong>GameTime </strong>был тесно связан с <strong>Game Class</strong>, а в приложениях Silverlight+XNA используется интегрированная модель, то вам придется использовать <strong>GameTimerEventArgs</strong>, в которой хранится информация о времени, которая хранилась в <strong>GameTime</strong>.
-Если ваше приложение использует <strong>GameTime </strong>для игровой логики, вы можете легко его портировать используя вместо <strong>Game Class</strong> (предоставляющего информацию о времени ранее) <strong>GameTime</strong>.
-Было:</p>
+<h2>5. Логика, использующая GameTime</h2>
 
-<ol start="99">
-    *<span>public</span> <span>void</span> Update(GameTime gameTime) {}
-</ol>
+<p>Если вы перестраиваете проект с чистого XNA на Silverlight+XNA, то при портировании логики, использующей <strong>GameTime </strong>могут возникнуть проблемы. Поскольку <strong>GameTime </strong>был тесно связан с <strong>Game Class</strong>, а в приложениях Silverlight+XNA используется интегрированная модель, то вам придется использовать <strong>GameTimerEventArgs</strong>, в которой хранится информация о времени, которая хранилась в <strong>GameTime</strong>.</p>
+
+<p>Если ваше приложение использует <strong>GameTime </strong>для игровой логики, вы можете легко его портировать используя вместо <strong>Game Class</strong> (предоставляющего информацию о времени ранее) <strong>GameTime</strong>.</p>
+
+<p>Было:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">(</span><span class="n">GameTime</span> <span class="n">gameTime</span><span class="p">)</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Стало:</p>
 
-<ol start="99">
-    *<span>public</span> <span>void</span> Update(TimeSpan elapsedTime, TimeSpan totalTime) {}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">(</span><span class="n">TimeSpan</span> <span class="n">elapsedTime</span><span class="p">,</span> <span class="n">TimeSpan</span> <span class="n">totalTime</span><span class="p">)</span> <span class="p">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Учтите, что в данном случае под игровой логикой подразумевается подразумевается какая-то ваша логика, из дополнительных классов вашего приложения. Основной же цикл обработки (<strong>Update </strong>или <strong>OnUpdate</strong>) всё равно должны принимать либо <strong>GameTime </strong>(для приложений на XNA, использующих <strong>Game Class</strong>), либо <strong>GameTimeEventArgs </strong>(для приложений на Silverlight+XNA).</p>
 
-<p><strong><span>6. Игровые компоненты</span></strong>
-Что делать с игровыми компонентами, если приложение, основанное на <strong>Game Class</strong> использовало <strong>GameComponents </strong>для реализации логики? К сожалению, GameComponents так же как и <strong>GameTime </strong>относятся к <strong>Game Class</strong>, поэтому их невозможно использовать в приложении Silverlight+XNA.
-Существует несколько способов решения этой проблемы, самый простой из которых &ndash; сделать все методы публичными. В таком случае ваше приложение может просто создать список объектов и использовать их по мере необходимости, обращаясь к ним непосредственно по мере необходимости. Плюс данного способа &ndash; в простоте, так как вам не придется переписывать много кода. Минус же в том, что вы усложните логику приложения, возложив на страницы лишнюю работу.</p>
+<h2>6. Игровые компоненты</h2>
 
-<p>Другой способ &ndash; модифицировать ваши методы таким образом, чтобы они подписывались на события <strong>Update </strong>и <strong>Draw</strong>. Это позволит вам создавать объекты, которые смогут подключаться к существующим циклам обновления и рисования, но это тесно свяжет ваш код с XNA+Silverlight фрэймворком и могут возникнуть проблемы, если вы захотите использовать этот код для Windows/XBox 360.</p>
+<p>Что делать с игровыми компонентами, если приложение, основанное на <strong>Game Class</strong> использовало <strong>GameComponents </strong>для реализации логики? К сожалению, GameComponents так же как и <strong>GameTime </strong>относятся к <strong>Game Class</strong>, поэтому их невозможно использовать в приложении Silverlight+XNA.</p>
+
+<p>Существует несколько способов решения этой проблемы, самый простой из которых &ndash; сделать все методы публичными. В таком случае ваше приложение может просто создать список объектов и использовать их по мере необходимости, обращаясь к ним непосредственно по мере необходимости. Плюс данного способа &ndash; в простоте, так как вам не придется переписывать много кода. Минус же в том, что вы усложните логику приложения, возложив на страницы лишнюю работу.</p>
+
+<p>Другой способ &ndash; модифицировать ваши методы таким образом, чтобы они подписывались на события <strong>Update</strong> и <strong>Draw</strong>. Это позволит вам создавать объекты, которые смогут подключаться к существующим циклам обновления и рисования, но это тесно свяжет ваш код с XNA+Silverlight фрэймворком и могут возникнуть проблемы, если вы захотите использовать этот код для Windows/XBox 360.</p>
 
 <p>Последним, самым лучшим решением, будет переопределение базовых типов и интерфейсов для <strong>GameComponent</strong>. Это потребует большего понимания принципов работы <strong>GameComponent</strong>, но позволит вам переносить код с Windows Phone на Windows и XBox.</p>
 
