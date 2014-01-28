@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-28T23:21:12+04:00</updated>
+  <updated>2014-01-28T23:37:19+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -798,234 +798,345 @@ using System.ComponentModel;</pre>
 
 <p></p>
 
-<p><span>1. Создаём структуру базы данных</span></p>
+<h2>1. Создаём структуру базы данных</h2>
 
 <p>Для начала нам понадобится база данных в формате .sdf. Как её создать? Очень просто!
 Идём в Visual Studio, создаём новый проект (например, Windows Forms Application)</p>
 
-<p><a href="http://3.bp.blogspot.com/-gdQoljIac8Y/TpPquXelmsI/AAAAAAAAABQ/qXO0lz1uOIM/s1600/1.png"><img alt="" src="http://3.bp.blogspot.com/-gdQoljIac8Y/TpPquXelmsI/AAAAAAAAABQ/qXO0lz1uOIM/s640/1.png" width="640" height="448" border="0" /></a>
-Добавляем новый элемент в наш проект типа &ldquo;Local Database&rdquo;</p>
+<p><img src="http://3.bp.blogspot.com/-gdQoljIac8Y/TpPquXelmsI/AAAAAAAAABQ/qXO0lz1uOIM/s640/1.png"></p>
 
-<p><a href="http://3.bp.blogspot.com/-CswLeqPrTBo/TpPrhQqMxUI/AAAAAAAAABY/rNCPNEzb9CU/s1600/2.png"><img alt="" src="http://3.bp.blogspot.com/-CswLeqPrTBo/TpPrhQqMxUI/AAAAAAAAABY/rNCPNEzb9CU/s640/2.png" width="640" height="432" border="0" /></a>
-Жмём Next и Finish. Далее идём в View и выбираем Server Explorer (Ctrl +W, L).
-В разделе Data Connections мы видим нашу только что добавленную базу данных. Теперь мы можем создать структуру нашей будущей базы данных. Начнем с того, что добавим одну таблицу.</p>
+<p>Добавляем новый элемент в наш проект типа &ldquo;Local Database&rdquo;</p>
 
-<p><a href="http://4.bp.blogspot.com/-9tkuprH_aYA/TpPtmHVTfCI/AAAAAAAAABg/vEcuvGpC3Aw/s1600/3.png"><img alt="" src="http://4.bp.blogspot.com/-9tkuprH_aYA/TpPtmHVTfCI/AAAAAAAAABg/vEcuvGpC3Aw/s640/3.png" width="640" height="472" border="0" /></a></p>
+<p><img src="http://3.bp.blogspot.com/-CswLeqPrTBo/TpPrhQqMxUI/AAAAAAAAABY/rNCPNEzb9CU/s640/2.png"></p>
 
-<p>Для простейшего примера нам будет достаточно таблицы с 5 столбцами: ID (идентификатор постов, всегда уникальный, автоматически увеличивается на 1 и служит первичным ключом), Title (название поста, текст, не больше 150 символов), Description (описание поста, текст, не больше 1000 символов), Date (дата и время создания поста, тип datetime) и Link (ссылка на полную версию поста, текст, не длиннее 100 символов).
-В итоге выглядит это примерно так:</p>
+<p>Жмём Next и Finish. Далее идём в View и выбираем Server Explorer (Ctrl +W, L).</p>
 
-<p><a href="http://4.bp.blogspot.com/-t5x81PCYiYE/TpPwJ_ig_SI/AAAAAAAAABo/M79pk4ckRHs/s1600/4.png"><img alt="" src="http://4.bp.blogspot.com/-t5x81PCYiYE/TpPwJ_ig_SI/AAAAAAAAABo/M79pk4ckRHs/s640/4.png" width="640" height="504" border="0" /></a>
-Теперь надо перестроить проект и на этом Visual Studio можно на некоторое время закрыть и расслабиться: самая сложная часть осталась позади :). В папке с вашим проектом появился файл MyDB.sdf. Дальнейшая работа будет проходить именно с ним, так что весь солюшн, кроме MyDB.sdf можно удалить.</p>
+<p>В разделе Data Connections мы видим нашу только что добавленную базу данных. Теперь мы можем создать структуру нашей будущей базы данных. Начнем с того, что добавим одну таблицу.</p>
+
+<p><img src="http://4.bp.blogspot.com/-9tkuprH_aYA/TpPtmHVTfCI/AAAAAAAAABg/vEcuvGpC3Aw/s640/3.png"></p>
+
+<p>Для простейшего примера нам будет достаточно таблицы с 5 столбцами: ID (идентификатор постов, всегда уникальный, автоматически увеличивается на 1 и служит первичным ключом), Title (название поста, текст, не больше 150 символов), Description (описание поста, текст, не больше 1000 символов), Date (дата и время создания поста, тип datetime) и Link (ссылка на полную версию поста, текст, не длиннее 100 символов).</p>
+
+<p>В итоге выглядит это примерно так:</p>
+
+<p><img src="http://4.bp.blogspot.com/-t5x81PCYiYE/TpPwJ_ig_SI/AAAAAAAAABo/M79pk4ckRHs/s640/4.png"></p>
+
+<p>Теперь надо перестроить проект и на этом Visual Studio можно на некоторое время закрыть и расслабиться: самая сложная часть осталась позади :). В папке с вашим проектом появился файл MyDB.sdf. Дальнейшая работа будет проходить именно с ним, так что весь солюшн, кроме MyDB.sdf можно удалить.</p>
 
 <p>Файл MyDB.sdf я положил в D:\Tests для большего удобства в выполнении следующего шага.</p>
 
-<p><span>2. Создаём DataContext для работы с БД</span>
-Что такое DataContext? Это некоторый класс, который служит нам для работы с БД и выполнения основных CRUD операций (create, read, update, delete). Для того, чтобы его создать нужно открыть командную строку Visual Studio:</p>
+<h2>2. Создаём DataContext для работы с БД</h2>
 
-<p><span>Пуск &ndash;&gt; Все программы &ndash;&gt; Microsoft Visual Studio 2010 &ndash;&gt; Visual Studio Tools &ndash;&gt; Visual Studio Command Prompt</span></p>
+<p>Что такое DataContext? Это некоторый класс, который служит нам для работы с БД и выполнения основных CRUD операций (create, read, update, delete). Для того, чтобы его создать нужно открыть командную строку Visual Studio:</p>
+
+<p>Пуск &ndash;> Все программы &ndash;> Microsoft Visual Studio 2010 &ndash;> Visual Studio Tools &ndash;> Visual Studio Command Prompt</p>
 
 <p>В командной строке с помощью утилиты SQLmetal мы сгенерируем DataContext для нашей базы данных MyDB.sdf</p>
 
-<p><span>sqlmetal D:\Tests\MyDB.sdf /code:D:\Tests\MyDB.cs /language:csharp /namespace:DBDemo /context:MyDBContext /pluralize</span></p>
+<p>sqlmetal D:\Tests\MyDB.sdf /code:D:\Tests\MyDB.cs /language:csharp /namespace:DBDemo /context:MyDBContext /pluralize</p>
 
 <p>В этой команде мы указали путь к нашей БД и путь, куда поместить наш DataContext, выбрали язык C#, указали название пространства имён и имя DataContext.</p>
 
-<p><a href="http://1.bp.blogspot.com/-LBGvx5TfMNo/TpP3Z8qUfkI/AAAAAAAAABw/unmlzuVwu-4/s1600/5.png"><img alt="" src="http://1.bp.blogspot.com/-LBGvx5TfMNo/TpP3Z8qUfkI/AAAAAAAAABw/unmlzuVwu-4/s640/5.png" width="640" height="323" border="0" /></a>
-Теперь в нашей папке Tests лежит файл MyDB.cs, который и является DataContext нашей БД.</p>
+<p><img src="http://1.bp.blogspot.com/-LBGvx5TfMNo/TpP3Z8qUfkI/AAAAAAAAABw/unmlzuVwu-4/s640/5.png"></p>
 
-<p><span>3. Пример использования</span>
-Давайте создадим новый проект под WP7 (обязательно укажите Windows Phone 7.1, т.к. поддержка баз данных появилась только в WP7 Mango).
-В проект добавляем наш MyDB.cs, в референсы добавляем System.Data.Linq.
-Единственное, что придется изменить в MyDB.cs &ndash; это namespace на пространство имён нашего проекта и удалить два следующих метода:</p>
+<p>Теперь в нашей папке Tests лежит файл MyDB.cs, который и является DataContext нашей БД.</p>
 
-<ol start="44">
-    *<span>public</span> MyDBContext(System.Data.IDbConnection connection) :
-    *        <span>base</span>(connection, mappingSource)
-    *{
-    *    OnCreated();
-    *}
-</ol>
+<h2>3. Пример использования</h2>
+
+<p>Давайте создадим новый проект под WP7 (обязательно укажите Windows Phone 7.1, т.к. поддержка баз данных появилась только в WP7 Mango).</p>
+
+<p>В проект добавляем наш MyDB.cs, в референсы добавляем System.Data.Linq.</p>
+
+<p>Единственное, что придется изменить в MyDB.cs &ndash; это namespace на пространство имён нашего проекта и удалить два следующих метода:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="nf">MyDBContext</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">IDbConnection</span> <span class="n">connection</span><span class="p">)</span> <span class="p">:</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">mappingSource</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">OnCreated</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>и</p>
 
-<ol start="56">
-    *<span>public</span> MyDBContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.<span>MappingSource</span> mappingSource) :
-    *        <span>base</span>(connection, mappingSource)
-    *{
-    *    OnCreated();
-    *}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="nf">MyDBContext</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">IDbConnection</span> <span class="n">connection</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Linq</span><span class="p">.</span><span class="n">Mapping</span><span class="p">.</span><span class="n">MappingSource</span> <span class="n">mappingSource</span><span class="p">)</span> <span class="p">:</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">mappingSource</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">OnCreated</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>так как интерфейс IDbConnection не поддерживается телефоном.</p>
 
 <p>Следующим шагом мы создадим промежуточный Helper &ndash; класс для большего удобства работы с базой данных. При таком подходе в MyDB.cs вносить изменения больше не придётся.</p>
 
-<ol start="16">
-    *<span>public</span> <span>class</span> <span>DBHelper</span>
-    *{
-    *    <span>private</span> <span>const</span> <span>string</span> ConnectionString = <span>@&#8221;isostore:/ReaderDB.sdf&#8221;</span>;
-    *
-    *    <span>///</span><span>
-</span>
-    *    <span>///</span><span> Создание БД в изолированном хранилище.</span>
-    *    <span>///</span>
-    *    <span>public</span> <span>static</span> <span>void</span> CreateDatabase()
-    *    {
-    *        <span>using</span> (<span>var</span> context = <span>new</span> <span>MyDBContext</span>(ConnectionString))
-    *        {
-    *            <span>if</span> (!context.DatabaseExists())
-    *            {
-    *                <span>// create database if it does not exist</span>
-    *                context.CreateDatabase();
-    *            }
-    *        }
-    *    }
-    *
-    *    <span>///</span><span>
-</span>
-    *    <span>///</span><span> Удаление БД из изолированного хранилища.</span>
-    *    <span>///</span>
-    *    <span>public</span> <span>static</span> <span>void</span> DeleteDatabase()
-    *    {
-    *        <span>using</span> (<span>var</span> context = <span>new</span> <span>MyDBContext</span>(ConnectionString))
-    *        {
-    *            <span>if</span> (context.DatabaseExists())
-    *            {
-    *                <span>// delete database if it exist</span>
-    *                context.DeleteDatabase();
-    *            }
-    *        }
-    *    }
-    *
-    *    <span>///</span><span>
-</span>
-    *    <span>///</span><span> Добавляет статью в БД.</span>
-    *    <span>///</span>
-    *    <span>///</span>
-    *    <span>public</span> <span>static</span> <span>void</span> AddPost(<span>Post</span> post)
-    *    {
-    *        <span>using</span> (<span>var</span> context = <span>new</span> <span>MyDBContext</span>(ConnectionString))
-    *        {
-    *            <span>if</span> (context.DatabaseExists())
-    *            {
-    *                context.Posts.InsertOnSubmit(post);
-    *                context.SubmitChanges();
-    *            }
-    *        }
-    *    }
-    *
-    *    <span>///</span><span>
-</span>
-    *    <span>///</span><span> Получает список статей из БД.</span>
-    *    <span>///</span>
-    *    <span>///</span><span>Список</span><span> статей.</span>
-    *    <span>public</span> <span>static</span> <span>IList</span>&lt;<span>Post</span>&gt; GetPosts()
-    *    {
-    *        <span>IList</span>&lt;<span>Post</span>&gt; posts = <span>new</span> <span>List</span>&lt;<span>Post</span>&gt;();
-    *
-    *        <span>using</span> (<span>var</span> context = <span>new</span> <span>MyDBContext</span>(ConnectionString))
-    *        {
-    *            posts = (<span>from</span> emp <span>in</span> context.Posts <span>select</span> emp).ToList();
-    *        }
-    *        <span>return</span> posts;
-    *    }
-    *}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">DBHelper</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;isostore:/ReaderDB.sdf&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">/// Создание БД в изолированном хранилище.</span>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">CreateDatabase</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyDBContext</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(!</span><span class="n">context</span><span class="p">.</span><span class="n">DatabaseExists</span><span class="p">())</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="c1">// create database if it does not exist</span>
+</span><span class='line'>                <span class="n">context</span><span class="p">.</span><span class="n">CreateDatabase</span><span class="p">();</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">/// Удаление БД из изолированного хранилища.</span>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DeleteDatabase</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyDBContext</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">DatabaseExists</span><span class="p">())</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="c1">// delete database if it exist</span>
+</span><span class='line'>                <span class="n">context</span><span class="p">.</span><span class="n">DeleteDatabase</span><span class="p">();</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">/// Добавляет статью в БД.</span>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">AddPost</span><span class="p">(</span><span class="n">Post</span> <span class="n">post</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyDBContext</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">DatabaseExists</span><span class="p">())</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">context</span><span class="p">.</span><span class="n">Posts</span><span class="p">.</span><span class="n">InsertOnSubmit</span><span class="p">(</span><span class="n">post</span><span class="p">);</span>
+</span><span class='line'>                <span class="n">context</span><span class="p">.</span><span class="n">SubmitChanges</span><span class="p">();</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">/// Получает список статей из БД.</span>
+</span><span class='line'>    <span class="c1">///</span>
+</span><span class='line'>    <span class="c1">///Список статей.</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="n">IList</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Post</span><span class="p">&gt;</span> <span class="n">GetPosts</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">IList</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Post</span><span class="p">&gt;</span> <span class="n">posts</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">Post</span><span class="p">&gt;();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyDBContext</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">posts</span> <span class="p">=</span> <span class="p">(</span><span class="k">from</span> <span class="n">emp</span> <span class="k">in</span> <span class="n">context</span><span class="p">.</span><span class="n">Posts</span> <span class="k">select</span> <span class="n">emp</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">posts</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Теперь в коде можно просто вызывать статичные методы DBHelper для различного взаимодействия с БД! Например, будем создавать БД (если она отсутствует) при загрузке страницы.</p>
 
-<ol start="34">
-    *<span>private</span> <span>void</span> LayoutRoot_Loaded(<span>object</span> sender, <span>RoutedEventArgs</span> e)
-    *{
-    *    <span>DBHelper</span>.CreateDatabase();
-    *}
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">private</span> <span class="k">void</span> <span class="nf">LayoutRoot_Loaded</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">DBHelper</span><span class="p">.</span><span class="n">CreateDatabase</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><span>4. Немного о ConnectionString</span>
-В общем случае ConnectionString &ndash; некоторая строка, в которой могут быть указаны различные параметры для подключения к базе данных.</p>
+<h2>4. Немного о ConnectionString</h2>
 
-<p><strong>Источник данных</strong>
-Источник данных &ndash; параметр по-умолчанию, то есть вы можете не указывать свойство &ldquo;Data Source&rdquo;. База данных может располагаться как в изолированном хранилище, так и в директории с данными приложения.</p>
+<p>В общем случае ConnectionString &ndash; некоторая строка, в которой могут быть указаны различные параметры для подключения к базе данных.</p>
 
-<ol start="20">
-    *<span>string</span> ConnectionString = <span>@&#8221;isostore:/ReaderDB.sdf&#8221;</span>;
-    *<span>string</span> ConnectionString = <span>@&#8221;appdata:/ReaderDB.sdf&#8221;</span>;
-    *
-    *<span>string</span> ConnectionString = <span>@&#8221;DataSource = &#8216;isostore:/ReaderDB.sdf&#8217;;&#8221;</span>;
-    *<span>string</span> ConnectionString = <span>@&#8221;DataSource = &#8216;appdata:/ReaderDB.sdf&#8217;;&#8221;</span>;
-</ol>
+<h3>Источник данных</h3>
 
+<p>Источник данных &ndash; параметр по-умолчанию, то есть вы можете не указывать свойство &ldquo;Data Source&rdquo;. База данных может располагаться как в изолированном хранилище, так и в директории с данными приложения.</p>
 
-<p><strong>Пароль</strong>
-Пароль используется чтобы зашифровать базу данных при создании и так же его необходимо указывать при подключении к ней. Максимальная длина пароля &ndash; 40 символов.</p>
-
-<ol start="26">
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Source = &#8216;isostore:/ReaderDB.sdf&#8217;; Password = &#8216;mypassword&#8217;;&#8221;</span>;
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;isostore:/ReaderDB.sdf&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;appdata:/ReaderDB.sdf&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;DataSource = &#39;isostore:/ReaderDB.sdf&#39;;&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;DataSource = &#39;appdata:/ReaderDB.sdf&#39;;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Режим</strong>
-Существуют 4 режима открытия БД (&ldquo;Read Write&rdquo;, &ldquo;Read Only&rdquo;, &ldquo;Exculsive&rdquo; и &ldquo;Shared Read&rdquo;), которые обозначают вид доступа.</p>
+<h3>Пароль</h3>
 
-<ol start="22">
-    *<span>// Позволяет нескольким процессам читать и писать в БД одновременно. Это режим по-умолчанию.</span>
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; File Mode = &#8216;Read Write&#8217;;&#8221;</span>;
-    *
-    *<span>// Разрешает процессам производить только чтение из БД.</span>
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; File Mode = &#8216;Read Only&#8217;;&#8221;</span>;
-    *
-    *<span>// Разрешает только одному процессу читать и писать в БД.</span>
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; File Mode = &#8216;Exclusive&#8217;;&#8221;</span>;
-    *
-    *<span>// Разрешает всем процессам читать из БД, но только один может писать.</span>
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; File Mode = &#8216;Shared Read&#8217;;&#8221;</span>;
-</ol>
+<p>Пароль используется чтобы зашифровать базу данных при создании и так же его необходимо указывать при подключении к ней. Максимальная длина пароля &ndash; 40 символов.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Source = &#39;isostore:/ReaderDB.sdf&#39;; Password = &#39;mypassword&#39;;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Максимальный размер БД</strong>
-Размер указывается в мегабайтах, в пределах от 32 до 512.</p>
+<h3>Режим</h3>
 
-<ol start="22">
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; Max Database Size = 128;&#8221;</span>;
-</ol>
+<p>Существуют 4 режима открытия БД (&ldquo;Read Write&rdquo;, &ldquo;Read Only&rdquo;, &ldquo;Exculsive&rdquo; и &ldquo;Shared Read&rdquo;), которые обозначают вид доступа.</p>
 
-
-<p><strong>Максимальный размер буфера</strong>
-Указывается в килобайтах, в пределах от 384 до 5120.</p>
-
-<ol start="24">
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; Max Buffer Size = 2048;&#8221;</span>;
-</ol>
-
-
-<p><strong>Культура</strong>
-Параметр культуры указывается в виде &ldquo;язык-Страна&rdquo;, например, &ldquo;ru-RU&rdquo; для русского языка в России</p>
-
-<ol start="20">
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; Culture Identifier = ru-RU;&#8221;</span>;
-</ol>
-
-
-<p><strong>Чувствительность к регистру</strong>
-В параметрах можно так же указать, будет ли база данных чувствительна к регистру.</p>
-
-<ol start="20">
-    *<span>string</span> ConnectionString = <span>@&#8221;Data Store = &#8216;isostore:/ReaderDB.sdf&#8217;; Case Sensitive = true;&#8221;</span>;
-</ol>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="c1">// Позволяет нескольким процессам читать и писать в БД одновременно. Это режим по-умолчанию.</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; File Mode = &#39;Read Write&#39;;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Разрешает процессам производить только чтение из БД.</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; File Mode = &#39;Read Only&#39;;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Разрешает только одному процессу читать и писать в БД.</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; File Mode = &#39;Exclusive&#39;;&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Разрешает всем процессам читать из БД, но только один может писать.</span>
+</span><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; File Mode = &#39;Shared Read&#39;;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><span>Заключение</span>
-Надеюсь, вам удалось разобраться с помощью моей статьи в работе с базами данных в Windows Phone 7. Как вы видите, создание и подключение базы &ndash; данных достаточно простые операции, и, используя сгенерированный с помощью sqlmetal класс, можно разобраться в структуре и основных принципах работы. После этого уже ничто не помешает вам редактировать структуру базы данных в коде и создавать новые проекты, использующие БД, с нуля.</p>
+<h3>Максимальный размер БД</h3>
 
-<p><span>Не забывайте подписываться на мой твиттер: <a href="http://twitter.com/#!/ponfius">@ponfius</a>. И, как обычно, <strong>stay tuned :)</strong></span>
-<strong>
-</strong>
-<i>В статье использовалась информация с блога <a href="http://www.kunal-chowdhury.com/">http://www.kunal-chowdhury.com</a></i></p>
+<p>Размер указывается в мегабайтах, в пределах от 32 до 512.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; Max Database Size = 128;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Максимальный размер буфера</h3>
+
+<p>Указывается в килобайтах, в пределах от 384 до 5120.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; Max Buffer Size = 2048;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Культура</h3>
+
+<p>Параметр культуры указывается в виде &ldquo;язык-Страна&rdquo;, например, &ldquo;ru-RU&rdquo; для русского языка в России</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; Culture Identifier = ru-RU;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Чувствительность к регистру</h3>
+
+<p>В параметрах можно так же указать, будет ли база данных чувствительна к регистру.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">=</span> <span class="s">@&quot;Data Store = &#39;isostore:/ReaderDB.sdf&#39;; Case Sensitive = true;&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Заключение</h2>
+
+<p>Надеюсь, вам удалось разобраться с помощью моей статьи в работе с базами данных в Windows Phone 7. Как вы видите, создание и подключение базы &ndash; данных достаточно простые операции, и, используя сгенерированный с помощью sqlmetal класс, можно разобраться в структуре и основных принципах работы. После этого уже ничто не помешает вам редактировать структуру базы данных в коде и создавать новые проекты, использующие БД, с нуля.</p>
+
+<p>Не забывайте подписываться на мой твиттер: <a href="http://twitter.com/#!/ponfius">@ponfius</a>. И, как обычно, stay tuned :)</p>
+
+<p><i>В статье использовалась информация из блога <a href="http://www.kunal-chowdhury.com/">http://www.kunal-chowdhury.com</a></i></p>
 ]]></content>
   </entry>
   
@@ -1034,11 +1145,13 @@ using System.ComponentModel;</pre>
     <link href="http://Ponf.github.io/blog/2011/09/SilverLife/"/>
     <updated>2011-09-30T12:54:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/09/SilverLife</id>
-    <content type="html"><![CDATA[<p>Моё новое приложение <strong>SilverLife</strong> опубликовали в <strong>Marketplace</strong>! :)
-Скачать его можно по ссылке: <a href="http://windowsphone.com/s?appid=e7c4488f-137d-4401-a625-bac86ad61ba6">http://windowsphone.com/s?appid=e7c4488f-137d-4401-a625-bac86ad61ba6</a>
-Посмотреть через браузер: <a href="http://www.windowsphone.com/en-US/apps/e7c4488f-137d-4401-a625-bac86ad61ba6">http://www.windowsphone.com/en-US/apps/e7c4488f-137d-4401-a625-bac86ad61ba6</a></p>
+    <content type="html"><![CDATA[<p>Моё новое приложение <strong>SilverLife</strong> опубликовали в <strong>Marketplace</strong>! :)</p>
 
-<p><a href="http://1.bp.blogspot.com/-vKtCIU8fxXg/ToV9UqgATnI/AAAAAAAAABM/WZXkqdiWfjA/s1600/MP_icon_173.png"><img alt="" src="http://1.bp.blogspot.com/-vKtCIU8fxXg/ToV9UqgATnI/AAAAAAAAABM/WZXkqdiWfjA/s1600/MP_icon_173.png" border="0" /></a></p>
+<p>Скачать его можно по ссылке: <a href="http://windowsphone.com/s?appid=e7c4488f-137d-4401-a625-bac86ad61ba6">http://windowsphone.com/s?appid=e7c4488f-137d-4401-a625-bac86ad61ba6</a></p>
+
+<p>Посмотреть через браузер: <a href="http://www.windowsphone.com/en-US/apps/e7c4488f-137d-4401-a625-bac86ad61ba6">http://www.windowsphone.com/en-US/apps/e7c4488f-137d-4401-a625-bac86ad61ba6</a></p>
+
+<p><img src="http://1.bp.blogspot.com/-vKtCIU8fxXg/ToV9UqgATnI/AAAAAAAAABM/WZXkqdiWfjA/s1600/MP_icon_173.png"></p>
 
 <!--more-->
 
@@ -1050,15 +1163,16 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 <p>Место действия этой игры — «вселенная» — это размеченная на клетки поверхность тора.. Каждая клетка на этой поверхности может находиться в двух состояниях: быть живой или быть мёртвой. Клетка имеет восемь соседей. Распределение живых клеток в начале игры называется первым поколением. Каждое следующее поколение рассчитывается на основе предыдущего по таким правилам:</p>
 
 <ul>
-    *пустая (мёртвая) клетка, рядом с которой ровно три живые клетки, оживает;
-    *если у живой клетки есть две или три живые соседки, то эта клетка продолжает жить; в противном случае (если соседей меньше двух или больше трёх) клетка умирает (от «одиночества» или от «перенаселённости»).
+<li>пустая (мёртвая) клетка, рядом с которой ровно три живые клетки, оживает;</li>
+<li>если у живой клетки есть две или три живые соседки, то эта клетка продолжает жить; в противном случае (если соседей меньше двух или больше трёх) клетка умирает (от «одиночества» или от «перенаселённости»).</li>
 </ul>
 
 
 <p>Игрок не принимает прямого участия в игре, а лишь расставляет начальную конфигурацию «живых» клеток, которые затем взаимодействуют согласно правилам уже без его участия.</p>
 
-<p>Эти простые правила приводят к огромному разнообразию форм, которые могут возникнуть в игре.
-В версии 1.1, которую я сегодня засабмитил в <strong>Marketplace, </strong>появились пресеты из известных начальных форм (Glaider, GlaiderGun, Acorn и некоторые другие). Ждите апдейта в начале следующей недели :)</p>
+<p>Эти простые правила приводят к огромному разнообразию форм, которые могут возникнуть в игре.</p>
+
+<p>В версии 1.1, которую я сегодня засабмитил в <strong>Marketplace</strong>, появились пресеты из известных начальных форм (Glaider, GlaiderGun, Acorn и некоторые другие). Ждите апдейта в начале следующей недели :)</p>
 ]]></content>
   </entry>
   
@@ -1067,11 +1181,13 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
     <link href="http://Ponf.github.io/blog/2011/09/Konferentciia-TechEd-Russia-2011/"/>
     <updated>2011-09-30T10:59:00+04:00</updated>
     <id>http://Ponf.github.io/blog/2011/09/Konferentciia-TechEd-Russia-2011</id>
-    <content type="html"><![CDATA[<p><img src="http://2.bp.blogspot.com/-3NqeVpZQtyI/ToVolntQXGI/AAAAAAAAABI/nn1ySa-WOBQ/s1600/1007.50070_3_3FE0EF96.jpg">
-<strong> Что: <a href="http://www.microsoft.com/ru-ru/events/teched/">Tech∙Ed Russia 2011</a></strong> - крупнейшая технологическая конференция в СНГ, а также Центральной и Восточной Европе.</p>
+    <content type="html"><![CDATA[<p><img src="http://2.bp.blogspot.com/-3NqeVpZQtyI/ToVolntQXGI/AAAAAAAAABI/nn1ySa-WOBQ/s1600/1007.50070_3_3FE0EF96.jpg"></p>
 
-<p><strong>Где:</strong> Россия, Москва
-<strong>Когда:</strong> 9-10 ноября 2011 года</p>
+<p><strong> Что: <a href="http://www.microsoft.com/ru-ru/events/teched/">Tech∙Ed Russia 2011</a></strong> - крупнейшая технологическая конференция в СНГ, а также Центральной и Восточной Европе.</p>
+
+<p><strong>Где:</strong> Россия, Москва</p>
+
+<p><strong>Когда:</strong> 9-10 ноября 2011 года</p>
 
 <p><strong>Чего ждать:</strong></p>
 
@@ -1089,7 +1205,7 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 
 <p></p>
 
-<p>Пленарный доклад</p>
+<h2>Пленарный доклад</h2>
 
 <p><strong>С. Сомасегар (S. Somasegar)</strong></p>
 
@@ -1099,7 +1215,7 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 
 <p>Главный операционный директор корпорации Microsoft, отвечающий за стратегические и операционные направления в продажах, маркетинге и сервисах Microsoft по всему миру. Помимо продаж и маркетинговых программ, Тернер управляет структурой по продаже рекламы он-лайн и корпоративной поддержке, включая поддержку заказчиков и продуктов, брэндинг, рекламу, PR, маркетинговые исследования и маркетинг взаимоотношений.</p>
 
-<p>Технологические треки</p>
+<h2>Технологические треки</h2>
 
 <p>Среди прочих докладчиков нельзя обойти вниманием всемирно известных специалистов в области информационной безопасности <a href="http://www.microsoft.com/ru-ru/events/teched/Speakers/TomasShinder">Томаса Шиндера (Thomas W. Shinder)</a> с докладами <a href="http://www.microsoft.com/ru-ru/events/teched/Catalog/Bezopasnost-chastnogo-oblaka-na-osnove-tehnologij-Microsoft">&ldquo;Безопасность частного облака на основе технологий Microsoft&rdquo;</a> и <a href="http://www.microsoft.com/ru-ru/events/teched/Catalog/Bezopasnyj-perehod-na-IPv6-DirectAccess-i-UAG">&ldquo;Безопасный переход на IPv6, DirectAccess и UAG&rdquo;</a>, как и трек <a href="http://www.microsoft.com/ru-ru/events/teched/Catalog?tId=b964f259-3381-4070-abbe-e93a6c0c8581">&ldquo;Информационная безопасность&rdquo;</a> в целом, в котором примут участие такие специалисты, как <a href="http://www.microsoft.com/ru-ru/events/teched/Speakers/PolYanushkevich">Пола Янушкевич</a>, <a href="http://www.microsoft.com/ru-ru/events/teched/Speakers/AndreyBeshkov">Андрей Бешков</a>, <a href="http://www.microsoft.com/ru-ru/events/teched/Speakers/AlexanderTrofimov">Александр Трофимов</a> и многие другие.</p>
 
