@@ -128,7 +128,7 @@
 
 <p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.</p>
 
-<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.</p>
+<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx"><strong>BackgroundWorker</strong></a>. Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.</p>
 
 <p>Для начала давайте создадим свой UserControl, для примера назовем его <strong>AnimatedSplashScreen</strong>.</p>
 
@@ -242,12 +242,16 @@
 
 <p>В качестве альтернативы <strong>Popup</strong> можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
 
-<p><code>csharp
-if (NavigationService.CanGoBack == true)
- {
- NavigationService.RemoveBackEntry();
- }
-</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">NavigationService</span><span class="p">.</span><span class="n">CanGoBack</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">NavigationService</span><span class="p">.</span><span class="n">RemoveBackEntry</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Не использовать Splash Screen</h3>
 
@@ -284,9 +288,11 @@ if (NavigationService.CanGoBack == true)
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/" data-via="" data-counturl="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/" data-via="ponfius" data-counturl="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/" >Tweet</a>
   
   
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
 </div>
 
@@ -301,6 +307,12 @@ if (NavigationService.CanGoBack == true)
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 
 </div>
@@ -352,10 +364,35 @@ if (NavigationService.CanGoBack == true)
 </footer>
   
 
+<script type="text/javascript">
+      var disqus_shortname = 'ponfius';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/';
+        var disqus_url = 'http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
 
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-29T00:14:20+04:00</updated>
+  <updated>2014-01-29T00:34:58+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -34,34 +34,46 @@
     <id>http://Ponf.github.io/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8</id>
     <content type="html"><![CDATA[<p>На прошлой неделе после твита <a href="https://twitter.com/#!/shwars">@shwars</a></p>
 
-<p><img src="http://2.bp.blogspot.com/-fcsTfHDMTjA/T3SnoafGoZI/AAAAAAAAALo/ZhzPLTUT1uA/s1600/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA.PNG">
-под давлением совести было принято решение срочно сделать клиент для нашего проекта <strong>Imagine Cup</strong> для <strong>Windows 8</strong>. У меня уже был готов полностью работоспособный клиент под <strong>Windows Phone</strong>, так что это не должно было занять много времени. И действительно, суммарно я управился часов за 20. Под катом некоторые подробности о разработке в целом, использовании <strong>Bing Map SDK</strong> for Win8, <strong>Remote debugging</strong> и прочих моментах, с которыми я столкнулся.</p>
+<p><img src="http://2.bp.blogspot.com/-fcsTfHDMTjA/T3SnoafGoZI/AAAAAAAAALo/ZhzPLTUT1uA/s1600/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA.PNG"></p>
+
+<p>под давлением совести было принято решение срочно сделать клиент для нашего проекта <strong>Imagine Cup</strong> для <strong>Windows 8</strong>. У меня уже был готов полностью работоспособный клиент под <strong>Windows Phone</strong>, так что это не должно было занять много времени. И действительно, суммарно я управился часов за 20. Под катом некоторые подробности о разработке в целом, использовании <strong>Bing Map SDK</strong> for Win8, <strong>Remote debugging</strong> и прочих моментах, с которыми я столкнулся.</p>
 
 <!--more-->
 
 
 <p></p>
 
-<h2>0. Главная проблемаГлавная проблема, с которой я столкнулся &ndash; отсутствие библиотек. Хоть <strong>NuGet</strong> и работает отлично с <strong>VS11</strong>, но нет библиотек, к которым я так привык (например, мой любимый REST-клиент <strong>RestSharp</strong>), так что пришлось писать собственную имплементацию. Но не всё так плохо: постепенно появляются сборки библиотек по .NET 4.5, например обновление<strong> Json.NET</strong> вышло за пару дней до написания моего приложения :)</h2>
+<h2>0. Главная проблема</h2>
 
-<p><u><strong>Основной совет:</strong></u> будьте готовы к изобретению велосипедов.</p>
+<p>Главная проблема, с которой я столкнулся &ndash; отсутствие библиотек. Хоть <strong>NuGet</strong> и работает отлично с <strong>VS11</strong>, но нет библиотек, к которым я так привык (например, мой любимый REST-клиент <strong>RestSharp</strong>), так что пришлось писать собственную имплементацию. Но не всё так плохо: постепенно появляются сборки библиотек по .NET 4.5, например обновление<strong> Json.NET</strong> вышло за пару дней до написания моего приложения :)</p>
 
-<h2>1. Metro Grid ApplicationПо-моему все люди, которые создают проект на основе <strong>Metro Grid</strong> больше времени тратят на попытку разобраться в верстке, нежели на написание кода. Что не удивительно: шаблон этот очень хорош, поддерживает всевозможные состояния (на весь экран, припаркованное и т.д.). Безусловно, это очень круто, но слишком сложно для восприятия. Но этот урок я прошел ещё на <strong>Win8 </strong>хакатоне, когда разрабатывал приложение для чтения газеты <strong>Коммерсантъ</strong>.</h2>
+<p><strong>Основной совет:</strong> будьте готовы к изобретению велосипедов.</p>
 
-<p><u><strong>Основной совет:</strong></u> если вас поджимают сроки, то лучше создавайте пустой проект. Если же нет &ndash; обязательно разберитесь в шаблоне<strong> Metro Grid Application</strong>.</p>
+<h2>1. Metro Grid Application</h2>
 
-<h2>2. Bing Maps SDK для Windows 8Контрол карт пока что не входит в стандартную поставку <strong>Visual Studio 11</strong>, так что нужно устанавливать его отдельно. Из этого следует огромный <strong>FACEPALM</strong>, но об этом в следующем пункте. Подробнее о работе с контролом вы можете прочитать в <strong><a href="http://habrahabr.ru/post/139681/">статье</a> </strong>Игоря Сычева, я же расскажу о том, через что мне пришлось пройти, чтобы приложение заработало.Первое это то, что контрол <map> не может быть контейнером. То есть пушпины нужно добавлять через <strong>MapLayer</strong>. Ладно, не велика беда, идем дальше.</map>Если у вас на странице несколько контролов карты, то <strong>MapLayer </strong>начинает сходить с ума и перестает понимать, к какой карте относится.  Это уже меня довольно расстроило, на StackOverflow ответа не нашлось.Пришлось отказаться от этой концепции, продолжил дальше разработку. На странице деталей так же сделал карту, и теперь при переходе между страницами приложение начало падать. Причем не всегда, причину падения мне удалось диагностировать только в день выступления. На сколько я понял, если у вас на текущей карте не загрузился провайдер словаря карт (надпись <strong>(с) 2010 NAVTEQ</strong>) и вы перешли на другую страницу с картой &ndash; приложение падает.Опять же эта инфа не 100%, но другого объяснения я пока найти не смог.</h2>
+<p>По-моему все люди, которые создают проект на основе <strong>Metro Grid</strong> больше времени тратят на попытку разобраться в верстке, нежели на написание кода. Что не удивительно: шаблон этот очень хорош, поддерживает всевозможные состояния (на весь экран, припаркованное и т.д.). Безусловно, это очень круто, но слишком сложно для восприятия. Но этот урок я прошел ещё на <strong>Win8 </strong>хакатоне, когда разрабатывал приложение для чтения газеты <strong>Коммерсантъ</strong>.</p>
 
-<p><u><strong>Основной совет:</strong></u> не забывайте, что <strong>Bing Maps SDK</strong> для <strong>WinRT </strong>пока что в стадии Beta.</p>
+<p><strong>Основной совет:</strong> если вас поджимают сроки, то лучше создавайте пустой проект. Если же нет &ndash; обязательно разберитесь в шаблоне<strong> Metro Grid Application</strong>.</p>
 
-<h2>3. Remote DebuggingВ <strong>Visual Studio 11</strong>, как вы могли заметить, есть 3 вида отладки: на текущем устройстве, на симуляторе (<strong>не путать с эмулятором!</strong>) и на удаленной машине.  Поскольку планшет я получил вечером перед выступлением, очень не хотелось ставить на него студию (кстати вышел отдельный квест) и прочий софт. Я попробовал сделал <strong>Install Package</strong> на рабочем компьютере и задеплоить его на планшете. Этот план провалился, так как на планшете не было сертификата разработчика (о чем мне услужливо подсказала консолька с логом). Планом &ldquo;Б&rdquo; был как раз <strong>Remote Debugging</strong>, но и с ним всё вышло совсем не так, как хотелось бы.Для того, чтобы задеплоить проект из студии на удаленную машину (в дальнейшем &ldquo;жертва&rdquo;), нужно чтобы они находились в одной сети, что вполне логично и удобно. В <strong>MSDN </strong>есть подробная <a href="http://msdn.microsoft.com/en-us/library/bt727f1t(v=vs.110"><strong>статья</strong></a>.aspx), описывающая как настроить оба устройства. При установке на жертву <strong>Remote Debugger</strong>, устанавливается и сертификат, который в будущем позволяет деплоить приложения, используя bat-файл.Я всё установил, настроил, компьютер практически сразу нашел жертву, я нажал кнопку <strong>F5</strong> и у меня на планшете появился <strong>Splash Screen</strong> моего приложения! Но счастье продолжалось не долго, кроме <strong>Splash Screen</strong> я так ничего и не увидел: приложение упало. Я немного поковырялся и понял, что проблема в отсутствии<strong> Bing SDK</strong> на жертве. Вспомнив обещание на каком-то из докладов по <strong>Win8</strong>, что все пакеты будут представлять из себя самодостаточные и независимые модули, я создал заново <strong>Install Package</strong> на компьютере, перекинул его на планшет и он отлично установился, найдя сертификат, установленный вместе с <strong>Remote Debugger</strong>.Но приложение снова ничего кроме <strong>Splash Screen</strong> мне не показало, поэтому я понял, что нужно ставить <strong>Bing SDK</strong> для <strong>WinRT</strong> на планшет.</h2>
+<h2>2. Bing Maps SDK для Windows 8</h2>
 
-<p><strong><span>ОГРОМНОЕ СПАСИБО ЛЮДЯМ, КОТОРЫЕ СДЕЛАЛИ ЭТОТ SDK КАК РАСШИРЕНИЕ К СТУДИИ, А НЕ ОТДЕЛЬНЫЙ ИНСТАЛЛЯТОР!</span></strong><strong><span></span></strong>Как вы поняли, время шло к утру, а мне нужно было ставить <strong>Visual Studio 2011</strong> на планшет&hellip;
-<strong><u>Основной совет:</u></strong> <strong>Remote Debugging</strong> работает замечательно, но, боюсь, вам всё равно придется ставить студию на удаленную машину.</p>
+<p>Контрол карт пока что не входит в стандартную поставку <strong>Visual Studio 11</strong>, так что нужно устанавливать его отдельно. Из этого следует огромный <strong>FACEPALM</strong>, но об этом в следующем пункте. Подробнее о работе с контролом вы можете прочитать в <strong><a href="http://habrahabr.ru/post/139681/">статье</a> </strong>Игоря Сычева, я же расскажу о том, через что мне пришлось пройти, чтобы приложение заработало.Первое это то, что контрол <map> не может быть контейнером. То есть пушпины нужно добавлять через <strong>MapLayer</strong>. Ладно, не велика беда, идем дальше. Если у вас на странице несколько контролов карты, то <strong>MapLayer</strong> начинает сходить с ума и перестает понимать, к какой карте относится.  Это уже меня довольно расстроило, на StackOverflow ответа не нашлось.Пришлось отказаться от этой концепции, продолжил дальше разработку. На странице деталей так же сделал карту, и теперь при переходе между страницами приложение начало падать. Причем не всегда, причину падения мне удалось диагностировать только в день выступления. На сколько я понял, если у вас на текущей карте не загрузился провайдер словаря карт (надпись <strong>(с) 2010 NAVTEQ</strong>) и вы перешли на другую страницу с картой &ndash; приложение падает. Опять же эта инфа не 100%, но другого объяснения я пока найти не смог.</p>
+
+<p><strong>Основной совет:</strong> не забывайте, что <strong>Bing Maps SDK</strong> для <strong>WinRT </strong>пока что в стадии Beta.</p>
+
+<h2>3. Remote Debugging</h2>
+
+<p>В <strong>Visual Studio 11</strong>, как вы могли заметить, есть 3 вида отладки: на текущем устройстве, на симуляторе (<strong>не путать с эмулятором!</strong>) и на удаленной машине.  Поскольку планшет я получил вечером перед выступлением, очень не хотелось ставить на него студию (кстати вышел отдельный квест) и прочий софт. Я попробовал сделал <strong>Install Package</strong> на рабочем компьютере и задеплоить его на планшете. Этот план провалился, так как на планшете не было сертификата разработчика (о чем мне услужливо подсказала консолька с логом). Планом &ldquo;Б&rdquo; был как раз <strong>Remote Debugging</strong>, но и с ним всё вышло совсем не так, как хотелось бы.Для того, чтобы задеплоить проект из студии на удаленную машину (в дальнейшем &ldquo;жертва&rdquo;), нужно чтобы они находились в одной сети, что вполне логично и удобно. В <strong>MSDN </strong>есть подробная <a href="http://msdn.microsoft.com/en-us/library/bt727f1t(v=vs.110"><strong>статья</strong></a>.aspx), описывающая как настроить оба устройства. При установке на жертву <strong>Remote Debugger</strong>, устанавливается и сертификат, который в будущем позволяет деплоить приложения, используя bat-файл.Я всё установил, настроил, компьютер практически сразу нашел жертву, я нажал кнопку <strong>F5</strong> и у меня на планшете появился <strong>Splash Screen</strong> моего приложения! Но счастье продолжалось не долго, кроме <strong>Splash Screen</strong> я так ничего и не увидел: приложение упало. Я немного поковырялся и понял, что проблема в отсутствии<strong> Bing SDK</strong> на жертве. Вспомнив обещание на каком-то из докладов по <strong>Win8</strong>, что все пакеты будут представлять из себя самодостаточные и независимые модули, я создал заново <strong>Install Package</strong> на компьютере, перекинул его на планшет и он отлично установился, найдя сертификат, установленный вместе с <strong>Remote Debugger</strong>.Но приложение снова ничего кроме <strong>Splash Screen</strong> мне не показало, поэтому я понял, что нужно ставить <strong>Bing SDK</strong> для <strong>WinRT</strong> на планшет.</p>
+
+<p><strong>ОГРОМНОЕ СПАСИБО ЛЮДЯМ, КОТОРЫЕ СДЕЛАЛИ ЭТОТ SDK КАК РАСШИРЕНИЕ К СТУДИИ, А НЕ ОТДЕЛЬНЫЙ ИНСТАЛЛЯТОР!</strong></p>
+
+<p><strong>Как вы поняли, время шло к утру, а мне нужно было ставить </strong>Visual Studio 2011** на планшет&hellip;</p>
+
+<p><strong>Основной совет:</strong> <strong>Remote Debugging</strong> работает замечательно, но, боюсь, вам всё равно придется ставить студию на удаленную машину.</p>
 
 <h2>4. Установка Visual Studio 11На планшет у меня студия встала попытки с 3 или 4, до этого <strong>Windows 8</strong> вываливалась в <strong>BSOD</strong>, что мне просто убило, так как на ноутбуке за месяц я так ни разу синий экран с грустным смайлом не увидел. Меня это довольно озадачило, но я вдруг заметил, что <strong>BSOD </strong>вылетает как только я касаюсь планшета. Собственно, виной всему оказался акселерометр/гироскоп. Если положение планшета не менять или заблокировать поворот экрана (не проверял, но вдруг поможет :) ), то студия устанавливается замечательно!</h2>
 
-<p><strong><u>Основной совет:</u></strong>  Если ставите <strong>VS 2011</strong> на устройство с датчиками положения &ndash; лучше не шевелитесь :)</p>
+<p><strong>Основной совет:</strong>  Если ставите <strong>VS 2011</strong> на устройство с датчиками положения &ndash; лучше не шевелитесь :)</p>
 
 <p>Несмотря на все проблемы, которые я нашел, разработка <strong>WinRT </strong>приложений мне очень понравилась. Думаю, разработчикам на <strong>Windows Phone</strong> не составит труда разобраться в нем и портировать свои приложения. Ну а вот что получилось у меня:</p>
 
@@ -88,75 +100,50 @@
 
 <p></p>
 
-<p><span><strong>Установка и запуск</strong></span>
+<p><strong>Установка и запуск</strong>
 У меня <strong>Windows 8</strong> ставилась примерно 15 минут (версия x64), с учетом ввода <strong>LiveID</strong> и прочего. Ставил я на соседний логический диск, рядом с <strong>Windows 7</strong>.
-Первое, что бросилось в глаза &ndash; экран выбора операционной системы при загрузке. Я сначала не поверил своим глазам, но <strong><span>он стал красивым</span></strong>!</p>
+Первое, что бросилось в глаза &ndash; экран выбора операционной системы при загрузке. Я сначала не поверил своим глазам, но <strong>он стал красивым</strong>!
+<img src="http://2.bp.blogspot.com/-A2H6JRGwjhM/T05zpyRRguI/AAAAAAAAAKc/QbRH1Sm4izg/s400/WP_000274.jpg"></p>
 
-<table cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td><a href="http://2.bp.blogspot.com/-A2H6JRGwjhM/T05zpyRRguI/AAAAAAAAAKc/QbRH1Sm4izg/s1600/WP_000274.jpg"><img alt="" src="http://2.bp.blogspot.com/-A2H6JRGwjhM/T05zpyRRguI/AAAAAAAAAKc/QbRH1Sm4izg/s400/WP_000274.jpg" width="400" height="298" border="0" /></a></td>
-</tr>
-<tr>
-<td>Окно выбора системы</td>
-</tr>
-</tbody>
-</table>
+<p>Окно выбора системы</p>
 
+<p>После входа в систему пользователь видит рабочий стол список установленных <strong>Metro</strong> приложений. А может и не только <strong>metro</strong>, т.к. у меня там появилась <strong>VS</strong> после установки.
+<img src="http://3.bp.blogspot.com/-Bdjt1tMqG_c/T051kzrdUlI/AAAAAAAAAKk/L1JAqUeVcVE/s640/3.png"></p>
 
-<p>После входа в систему пользователь видит <span style="text-decoration: line-through;">рабочий стол</span> список установленных <strong>Metro</strong> приложений. А может и не только <strong>metro</strong>, т.к. у меня там появилась <strong>VS</strong> после установки.</p>
-
-<table cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td><a href="http://3.bp.blogspot.com/-Bdjt1tMqG_c/T051kzrdUlI/AAAAAAAAAKk/L1JAqUeVcVE/s1600/3.png"><img alt="" src="http://3.bp.blogspot.com/-Bdjt1tMqG_c/T051kzrdUlI/AAAAAAAAAKk/L1JAqUeVcVE/s640/3.png" width="640" height="356" border="0" /></a></td>
-</tr>
-<tr>
-<td>Стартовый экран</td>
-</tr>
-</tbody>
-</table>
-
+<p>Стартовый экран</p>
 
 <p>Первым делом я поставил качаться <strong>VS11 Beta</strong> (не входит в комплект, в отличии от <strong>Developer Preview</strong>) и пошел смотреть на <strong>Windows Store</strong>. Могу сказать 2 вещи:</p>
 
-<ol>
-    *Сделано довольно приятно, по аналогии с **Windows Phone**.
-    ***Нужно писать программы! Срочно!** В Store сейчас практически пусто и есть неплохой шанс подзаработать разработчикам.
-</ol>
+<ul>
+<li>Сделано довольно приятно, по аналогии с <strong>Windows Phone</strong>.</li>
+<li><strong>Нужно писать программы! Срочно!</strong> В Store сейчас практически пусто и есть неплохой шанс подзаработать разработчикам.</li>
+</ul>
 
 
 <p>Хотя, конечно же, уже есть некоторые популярные программы. Например, Evernote:</p>
 
-<table cellspacing="0" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td><a href="http://1.bp.blogspot.com/-ZlrxxyKPOQU/T053PcEYv2I/AAAAAAAAAKs/ljKOTNKbXsk/s1600/180x150_O365_MidMarket_V2_Tryitfree_12_21_11.gif"><img alt="" src="http://1.bp.blogspot.com/-ZlrxxyKPOQU/T053PcEYv2I/AAAAAAAAAKs/ljKOTNKbXsk/s640/180x150_O365_MidMarket_V2_Tryitfree_12_21_11.gif" width="640" height="356" border="0" /></a></td>
-</tr>
-<tr>
-<td>Metro Evernote</td>
-</tr>
-</tbody>
-</table>
-
+<p><img src="http://1.bp.blogspot.com/-ZlrxxyKPOQU/T053PcEYv2I/AAAAAAAAAKs/ljKOTNKbXsk/s640/180x150_O365_MidMarket_V2_Tryitfree_12_21_11.gif"></p>
 
 <p>Или, известная игра <strong>Cut the Rope</strong> (подозреваю, что на HTML5 :) )</p>
 
-<p><a href="http://3.bp.blogspot.com/-HLNSWxahcYI/T054EfLqNHI/AAAAAAAAAK0/LFL0bz0bYZg/s1600/1.png"><img alt="" src="http://3.bp.blogspot.com/-HLNSWxahcYI/T054EfLqNHI/AAAAAAAAAK0/LFL0bz0bYZg/s640/1.png" width="640" height="356" border="0" /></a>
-Помимо интерфейса metro, в <strong>Win8</strong> присутствует и классический интерфейс. Если, конечно, классическим можно назвать интерфейс без кнопки &ldquo;<strong>Пуск</strong>&rdquo; :).</p>
+<p><img src="http://3.bp.blogspot.com/-HLNSWxahcYI/T054EfLqNHI/AAAAAAAAAK0/LFL0bz0bYZg/s640/1.png"></p>
 
-<p><a href="http://3.bp.blogspot.com/-pP16kI_Zy2I/T055J1K8j_I/AAAAAAAAAK8/thn7qA2l6GI/s1600/4.png"><img alt="" src="http://3.bp.blogspot.com/-pP16kI_Zy2I/T055J1K8j_I/AAAAAAAAAK8/thn7qA2l6GI/s640/4.png" width="640" height="356" border="0" /></a>
-Ну а <strong>Visual Studio 11</strong> встретила меня новым непривычным монохромным интерфейсом. Я ещё не смотрел разработку <strong>metro</strong> приложений, надеюсь, найдется время завтра.</p>
+<p>Помимо интерфейса metro, в <strong>Win8</strong> присутствует и классический интерфейс. Если, конечно, классическим можно назвать интерфейс без кнопки &ldquo;<strong>Пуск</strong>&rdquo; :).</p>
 
-<p><a href="http://1.bp.blogspot.com/-CCvWnFcZXpM/T056rfsH7hI/AAAAAAAAALE/KuFR82Fbxv0/s1600/5.png"><img alt="" src="http://1.bp.blogspot.com/-CCvWnFcZXpM/T056rfsH7hI/AAAAAAAAALE/KuFR82Fbxv0/s640/5.png" width="640" height="358" border="0" /></a>
-Из основных впечатлений:</p>
+<p><img src="http://3.bp.blogspot.com/-pP16kI_Zy2I/T055J1K8j_I/AAAAAAAAAK8/thn7qA2l6GI/s640/4.png"></p>
+
+<p>Ну а <strong>Visual Studio 11</strong> встретила меня новым непривычным монохромным интерфейсом. Я ещё не смотрел разработку <strong>metro</strong> приложений, надеюсь, найдется время завтра.</p>
+
+<p><img src="http://1.bp.blogspot.com/-CCvWnFcZXpM/T056rfsH7hI/AAAAAAAAALE/KuFR82Fbxv0/s640/5.png"></p>
+
+<p>Из основных впечатлений:</p>
 
 <ul>
-    *Смесь классического и metro интерфейсов смотрится пока что (после полутора часов использования) очень непривычно. Как отдельные сущности вроде бы уже стали привычны, но такая смесь пока что минимум непонятна. Например, долго искал кнопку выключения %).
-    *Работает всё очень шустро, но не хватает тачскрина на ноутбуке. Без этого как-то теряется полнота ощущений от **Metro**, но выглядит всё равно очень круто.
-    *Авторизация в системе по **LiveID** - авторизован на всех сервисах **live.com**. Довольно удобно.
-    *Есть мнение, что новый дизайн **Visual Studio** ориентирован на дисплеи **E-Ink**))
-    *Очень сложно найти привычные приложения вроде **Paint** и т.п. Нужно в боковой панели использовать поиск.
+<li>Смесь классического и metro интерфейсов смотрится пока что (после полутора часов использования) очень непривычно. Как отдельные сущности вроде бы уже стали привычны, но такая смесь пока что минимум непонятна. Например, долго искал кнопку выключения %).</li>
+<li>Работает всё очень шустро, но не хватает тачскрина на ноутбуке. Без этого как-то теряется полнота ощущений от <strong>Metro</strong>, но выглядит всё равно очень круто.</li>
+<li>Авторизация в системе по <strong>LiveID</strong> &ndash; авторизован на всех сервисах <strong>live.com</strong>. Довольно удобно.</li>
+<li>Есть мнение, что новый дизайн <strong>Visual Studio</strong> ориентирован на дисплеи <strong>E-Ink</strong>))</li>
+<li>Очень сложно найти привычные приложения вроде <strong>Paint</strong> и т.п. Нужно в боковой панели использовать поиск.</li>
 </ul>
 
 
@@ -211,7 +198,7 @@
 
 <p>Как вы можете заметить, термин «анимированный Splash Screen» на самом деле не совсем верен: мы используем обычный статический экран заставки, а потом просто показываем пользователю страницу, похожую на экран заставки, тем временем выполняя в фоне какие-нибудь действия.</p>
 
-<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker(VS.95"><strong>BackgroundWorker</strong></a>.aspx). Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.</p>
+<p>Для того чтобы наша загрузка выполнялась в отдельном потоке мы будем использовать класс <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx"><strong>BackgroundWorker</strong></a>. Этот класс позволяет делать какую-то работу в фоне, оставляя UI отзывчивым для пользователя. Также у нас будет возможность отслеживать состояние фонового процесса и убрать <strong>Popup </strong>при наступлении какого-нибудь события.</p>
 
 <p>Для начала давайте создадим свой UserControl, для примера назовем его <strong>AnimatedSplashScreen</strong>.</p>
 
@@ -325,12 +312,16 @@
 
 <p>В качестве альтернативы <strong>Popup</strong> можно использовать отдельную страницу, но тогда нужно предусмотреть чтобы при нажатии на кнопку <strong>Назад </strong>пользователь выходил из приложения, а не попадал снова на страницу загрузки. Это можно сделать, например, удалив страницу из стека навигации:</p>
 
-<p><code>csharp
-if (NavigationService.CanGoBack == true)
- {
- NavigationService.RemoveBackEntry();
- }
-</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">NavigationService</span><span class="p">.</span><span class="n">CanGoBack</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">NavigationService</span><span class="p">.</span><span class="n">RemoveBackEntry</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Не использовать Splash Screen</h3>
 
@@ -347,8 +338,9 @@ if (NavigationService.CanGoBack == true)
     <id>http://Ponf.github.io/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7</id>
     <content type="html"><![CDATA[<p>Выкладываю давно обещанную шпаргалку по сертификации приложений на Windows Phone. Эта шпаргалка &ndash; краткое содержимое одной из моих прошлых <a href="http://mne.p0x.ru/2011/08/windows-phone-7.html">статей</a>.</p>
 
-<p><img src="http://3.bp.blogspot.com/-a1neQybjK9U/Tvg_jvd_z0I/AAAAAAAAAJs/loz_YHZjVLo/s400/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA.PNG">
-В этой шпаргалке я постарался поместить на одной странице все основные требования, на которые стоит обратить внимание при публикации приложения. Конечно же, поместить все требования на одной странице не представляется возможным, поэтому за более подробной информацией необходимо идти по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843(v=VS.92">Application Certification Requirements for Windows Phone</a>.aspx).</p>
+<p><img src="http://3.bp.blogspot.com/-a1neQybjK9U/Tvg_jvd_z0I/AAAAAAAAAJs/loz_YHZjVLo/s400/%25D0%25A1%25D0%25BD%25D0%25B8%25D0%25BC%25D0%25BE%25D0%25BA.PNG"></p>
+
+<p>В этой шпаргалке я постарался поместить на одной странице все основные требования, на которые стоит обратить внимание при публикации приложения. Конечно же, поместить все требования на одной странице не представляется возможным, поэтому за более подробной информацией необходимо идти по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843.aspx">Application Certification Requirements for Windows Phone</a>.</p>
 
 <p><a href="https://skydrive.live.com/redir.aspx?cid=a2567e038f37be43&amp;amp;resid=A2567E038F37BE43!464&amp;amp;parid=A2567E038F37BE43!463"><strong><span>Скачать</span></strong></a></p>
 ]]></content>
