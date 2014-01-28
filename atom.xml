@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-28T22:30:56+04:00</updated>
+  <updated>2014-01-28T22:33:47+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -1583,15 +1583,24 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 
 <p>К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
 
-<p>&lsquo;&rsquo;&lsquo; xml
-<TextBox Height="300" Width="440" VerticalAlignment="Top">
-&lt;TextBox.InputScope>
-<InputScope>
-<InputScopeName NameValue="Text"/>
-</InputScope>
-&lt;/TextBox.InputScope>
-</TextBox>
-&rsquo;&lsquo;&rsquo;</p>
+<figure class='code'><figcaption><span>Использование Input Scope</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBox</span> <span class="na">Height=</span><span class="s">&quot;300&quot;</span> <span class="na">Width=</span><span class="s">&quot;440&quot;</span> <span class="na">VerticalAlignment=</span><span class="s">&quot;Top&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;TextBox.InputScope&gt;</span>
+</span><span class='line'><span class="nt">&lt;InputScope&gt;</span>
+</span><span class='line'><span class="nt">&lt;InputScopeName</span> <span class="na">NameValue=</span><span class="s">&quot;Text&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/InputScope&gt;</span>
+</span><span class='line'><span class="nt">&lt;/TextBox.InputScope&gt;</span>
+</span><span class='line'><span class="nt">&lt;/TextBox&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <!--more-->
 
