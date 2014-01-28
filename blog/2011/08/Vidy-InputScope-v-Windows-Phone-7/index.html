@@ -93,85 +93,92 @@
 
 <div class="entry-content"><p>Windows Phone 7 позволяет разработчикам в зависимости от их целей показывать различные раскладки софтварной клавиатуры пользователям. Реализуется это c помощью свойства <strong>InputScope.</strong></p>
 
-<p><span>&lt;</span><span>TextBox </span><span>Height</span><span>=&ldquo;300&rdquo;</span><span> Width</span><span>=&ldquo;440&rdquo;</span><span> VerticalAlignment</span><span>=&ldquo;Top&rdquo;</span><span> InputScope</span><span>=&ldquo;Text&rdquo;</span><span>&gt;</span>
-К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
+<p><TextBox Height="300" Width="440" VerticalAlignment="Top" InputScope="Text" /></p>
 
-<p><span>&lt;</span><span>TextBox </span><span>Height</span><span>=&ldquo;300&rdquo;</span><span> Width</span><span>=&ldquo;440&rdquo;</span><span> VerticalAlignment</span><span>=&ldquo;Top&rdquo;</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>TextBox</span><span>.InputScope</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>InputScope</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>InputScopeName </span><span>NameValue</span><span>=&ldquo;Text&rdquo;</span><span>/&gt;</span><span>
-</span><span><span>InputScope</span><span>&gt;</span><span>
-</span><span><span>TextBox.InputScope</span><span>&gt;</span><span>
-</span><span><span>TextBox</span><span>&gt;</span></span></span></span></p>
+<p>К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
+
+<p>&lsquo;&rsquo;&lsquo; xml
+<TextBox Height="300" Width="440" VerticalAlignment="Top">
+&lt;TextBox.InputScope>
+<InputScope>
+<InputScopeName NameValue="Text"/>
+</InputScope>
+&lt;/TextBox.InputScope>
+</TextBox>
+&rsquo;&lsquo;&rsquo;</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p>В таком случае вы увидите все возможные варианты свойства InputScope (коих больше 60):
-1. AddressCity
-2. AddressCountryName
-3. AddressCountryShortName
-4. AddressStateOrProvince
-5. AddressStreet
-6. AlphanumericFullWidth
-7. AlphanumericHalfWidth
-8. ApplicationEnd
-9. Bopomofo
-10. Chat
-11. CurrencyAmount
-12. CurrencyAmountAndSymbol
-13. CurrencyChinese
-14. Date
-15. DateDay
-16. DateDayName
-17. DateMonth
-18. DateMonthName
-19. DateYear
-20. Default
-21. Digits
-22. EmailNameOrAddress
-23. EmailSmtpAddress
-24. EmailUserName
-25. EnumString
-26. FileName
-27. FullFilePath
-28. Hanja
-29. Hiragana
-30. KatakanaFullWidth
-31. KatakanaHalfWidth
-32. LogOnName
-33. Maps
-34. NameOrPhoneNumber
-35. Number
-36. NumberFullWidth
-37. OneChar
-38. Password
-39. PersonalFullName
-40. PersonalGivenName
-41. PersonalMiddleName
-42. PersonalNamePrefix
-43. PersonalNameSuffix
-44. PersonalSurname
-45. PhraseList
-46. PostalAddress
-47. PostalCode
-48. Private
-49. RegularExpression
-50. Search
-51. Srgs
-52. TelephoneAreaCode
-53. TelephoneCountryCode
-54. TelephoneLocalNumber
-55. TelephoneNumber
-56. Text
-57. Time
-58. TimeHour
-59. TimeMinorSec
-60. Url
-61. Xml
-62. Yomi</p>
+<p>В таком случае вы увидите все возможные варианты свойства InputScope (коих больше 60):</p>
+
+<ol>
+<li>AddressCity</li>
+<li>AddressCountryName</li>
+<li>AddressCountryShortName</li>
+<li>AddressStateOrProvince</li>
+<li>AddressStreet</li>
+<li>AlphanumericFullWidth</li>
+<li>AlphanumericHalfWidth</li>
+<li>ApplicationEnd</li>
+<li>Bopomofo</li>
+<li>Chat</li>
+<li>CurrencyAmount</li>
+<li>CurrencyAmountAndSymbol</li>
+<li>CurrencyChinese</li>
+<li>Date</li>
+<li>DateDay</li>
+<li>DateDayName</li>
+<li>DateMonth</li>
+<li>DateMonthName</li>
+<li>DateYear</li>
+<li>Default</li>
+<li>Digits</li>
+<li>EmailNameOrAddress</li>
+<li>EmailSmtpAddress</li>
+<li>EmailUserName</li>
+<li>EnumString</li>
+<li>FileName</li>
+<li>FullFilePath</li>
+<li>Hanja</li>
+<li>Hiragana</li>
+<li>KatakanaFullWidth</li>
+<li>KatakanaHalfWidth</li>
+<li>LogOnName</li>
+<li>Maps</li>
+<li>NameOrPhoneNumber</li>
+<li>Number</li>
+<li>NumberFullWidth</li>
+<li>OneChar</li>
+<li>Password</li>
+<li>PersonalFullName</li>
+<li>PersonalGivenName</li>
+<li>PersonalMiddleName</li>
+<li>PersonalNamePrefix</li>
+<li>PersonalNameSuffix</li>
+<li>PersonalSurname</li>
+<li>PhraseList</li>
+<li>PostalAddress</li>
+<li>PostalCode</li>
+<li>Private</li>
+<li>RegularExpression</li>
+<li>Search</li>
+<li>Srgs</li>
+<li>TelephoneAreaCode</li>
+<li>TelephoneCountryCode</li>
+<li>TelephoneLocalNumber</li>
+<li>TelephoneNumber</li>
+<li>Text</li>
+<li>Time</li>
+<li>TimeHour</li>
+<li>TimeMinorSec</li>
+<li>Url</li>
+<li>Xml</li>
+<li>Yomi</li>
+</ol>
+
 </div>
 
 
@@ -211,7 +218,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/08/Kstati/" title="Previous Post: Кстати">&laquo; Кстати</a>
+        <a class="basic-alignment left" href="/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi/" title="Previous Post: О сколько нам работы чудной приносит ум начальства скудный...">&laquo; О сколько нам работы чудной приносит ум начальства скудный...</a>
       
       
         <a class="basic-alignment right" href="/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7/" title="Next Post: Шпаргалка по сертификации приложений на Windows Phone 7">Шпаргалка по сертификации приложений на Windows Phone 7 &raquo;</a>

@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-26T19:22:52+04:00</updated>
+  <updated>2014-01-28T22:30:56+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -1579,97 +1579,106 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
     <id>http://Ponf.github.io/blog/2011/08/Vidy-InputScope-v-Windows-Phone-7</id>
     <content type="html"><![CDATA[<p>Windows Phone 7 позволяет разработчикам в зависимости от их целей показывать различные раскладки софтварной клавиатуры пользователям. Реализуется это c помощью свойства <strong>InputScope.</strong></p>
 
-<p><span>&lt;</span><span>TextBox </span><span>Height</span><span>=&ldquo;300&rdquo;</span><span> Width</span><span>=&ldquo;440&rdquo;</span><span> VerticalAlignment</span><span>=&ldquo;Top&rdquo;</span><span> InputScope</span><span>=&ldquo;Text&rdquo;</span><span>&gt;</span>
-К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
+<p><TextBox Height="300" Width="440" VerticalAlignment="Top" InputScope="Text" /></p>
 
-<p><span>&lt;</span><span>TextBox </span><span>Height</span><span>=&ldquo;300&rdquo;</span><span> Width</span><span>=&ldquo;440&rdquo;</span><span> VerticalAlignment</span><span>=&ldquo;Top&rdquo;</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>TextBox</span><span>.InputScope</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>InputScope</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>InputScopeName </span><span>NameValue</span><span>=&ldquo;Text&rdquo;</span><span>/&gt;</span><span>
-</span><span><span>InputScope</span><span>&gt;</span><span>
-</span><span><span>TextBox.InputScope</span><span>&gt;</span><span>
-</span><span><span>TextBox</span><span>&gt;</span></span></span></span></p>
+<p>К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
+
+<p>&lsquo;&rsquo;&lsquo; xml
+<TextBox Height="300" Width="440" VerticalAlignment="Top">
+&lt;TextBox.InputScope>
+<InputScope>
+<InputScopeName NameValue="Text"/>
+</InputScope>
+&lt;/TextBox.InputScope>
+</TextBox>
+&rsquo;&lsquo;&rsquo;</p>
 
 <!--more-->
 
 
 <p></p>
 
-<p>В таком случае вы увидите все возможные варианты свойства InputScope (коих больше 60):
-1. AddressCity
-2. AddressCountryName
-3. AddressCountryShortName
-4. AddressStateOrProvince
-5. AddressStreet
-6. AlphanumericFullWidth
-7. AlphanumericHalfWidth
-8. ApplicationEnd
-9. Bopomofo
-10. Chat
-11. CurrencyAmount
-12. CurrencyAmountAndSymbol
-13. CurrencyChinese
-14. Date
-15. DateDay
-16. DateDayName
-17. DateMonth
-18. DateMonthName
-19. DateYear
-20. Default
-21. Digits
-22. EmailNameOrAddress
-23. EmailSmtpAddress
-24. EmailUserName
-25. EnumString
-26. FileName
-27. FullFilePath
-28. Hanja
-29. Hiragana
-30. KatakanaFullWidth
-31. KatakanaHalfWidth
-32. LogOnName
-33. Maps
-34. NameOrPhoneNumber
-35. Number
-36. NumberFullWidth
-37. OneChar
-38. Password
-39. PersonalFullName
-40. PersonalGivenName
-41. PersonalMiddleName
-42. PersonalNamePrefix
-43. PersonalNameSuffix
-44. PersonalSurname
-45. PhraseList
-46. PostalAddress
-47. PostalCode
-48. Private
-49. RegularExpression
-50. Search
-51. Srgs
-52. TelephoneAreaCode
-53. TelephoneCountryCode
-54. TelephoneLocalNumber
-55. TelephoneNumber
-56. Text
-57. Time
-58. TimeHour
-59. TimeMinorSec
-60. Url
-61. Xml
-62. Yomi</p>
+<p>В таком случае вы увидите все возможные варианты свойства InputScope (коих больше 60):</p>
+
+<ol>
+<li>AddressCity</li>
+<li>AddressCountryName</li>
+<li>AddressCountryShortName</li>
+<li>AddressStateOrProvince</li>
+<li>AddressStreet</li>
+<li>AlphanumericFullWidth</li>
+<li>AlphanumericHalfWidth</li>
+<li>ApplicationEnd</li>
+<li>Bopomofo</li>
+<li>Chat</li>
+<li>CurrencyAmount</li>
+<li>CurrencyAmountAndSymbol</li>
+<li>CurrencyChinese</li>
+<li>Date</li>
+<li>DateDay</li>
+<li>DateDayName</li>
+<li>DateMonth</li>
+<li>DateMonthName</li>
+<li>DateYear</li>
+<li>Default</li>
+<li>Digits</li>
+<li>EmailNameOrAddress</li>
+<li>EmailSmtpAddress</li>
+<li>EmailUserName</li>
+<li>EnumString</li>
+<li>FileName</li>
+<li>FullFilePath</li>
+<li>Hanja</li>
+<li>Hiragana</li>
+<li>KatakanaFullWidth</li>
+<li>KatakanaHalfWidth</li>
+<li>LogOnName</li>
+<li>Maps</li>
+<li>NameOrPhoneNumber</li>
+<li>Number</li>
+<li>NumberFullWidth</li>
+<li>OneChar</li>
+<li>Password</li>
+<li>PersonalFullName</li>
+<li>PersonalGivenName</li>
+<li>PersonalMiddleName</li>
+<li>PersonalNamePrefix</li>
+<li>PersonalNameSuffix</li>
+<li>PersonalSurname</li>
+<li>PhraseList</li>
+<li>PostalAddress</li>
+<li>PostalCode</li>
+<li>Private</li>
+<li>RegularExpression</li>
+<li>Search</li>
+<li>Srgs</li>
+<li>TelephoneAreaCode</li>
+<li>TelephoneCountryCode</li>
+<li>TelephoneLocalNumber</li>
+<li>TelephoneNumber</li>
+<li>Text</li>
+<li>Time</li>
+<li>TimeHour</li>
+<li>TimeMinorSec</li>
+<li>Url</li>
+<li>Xml</li>
+<li>Yomi</li>
+</ol>
+
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Кстати]]></title>
-    <link href="http://Ponf.github.io/blog/2011/08/Kstati/"/>
-    <updated>2011-08-17T17:02:00+04:00</updated>
-    <id>http://Ponf.github.io/blog/2011/08/Kstati</id>
-    <content type="html"><![CDATA[<p>Дерево манго очень похоже на обычный персик :)</p>
+    <title type="html"><![CDATA[О сколько нам работы чудной приносит ум начальства скудный...]]></title>
+    <link href="http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi/"/>
+    <updated>2010-10-21T21:52:00+04:00</updated>
+    <id>http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi</id>
+    <content type="html"><![CDATA[<blockquote><p>Здесь стоит напомнить, что Форд, первый раз повстречавшись с людьми, выдвинул теорию, чтобы объяснить их забавную привычку постоянно говорить и повторять самые-самые очевидные вещи, типа &ldquo;Прекрасная погода&rdquo;, или &ldquo;Как ты вырос&rdquo;, или &ldquo;Ясно. Значит, мы погибнем&rdquo;.</p>
 
-<p><img src="http://1.bp.blogspot.com/-WJWsTPWIGNU/TlOlof5roII/AAAAAAAAABA/YNUOju5GxNQ/s320/Picture+499.jpg">
-На заднем плане &ndash; река Нил.</p>
+<p>С начала он решил, что если люди не будут упражнять губы, у них зарастут рты.
+Понаблюдав за ними несколько месяцев, он выдвинул вторую теорию: &ldquo;Если люди не будут упражнять губы, у них начнут работать мозги&rdquo;.</p></blockquote>
+
+<p>Адамс Дуглас, &ldquo;Ресторан &#8220;Конец Вселенной&rdquo;&#8221;</p>
 ]]></content>
   </entry>
   

@@ -478,16 +478,19 @@
 
   <div class="entry-content"><p>Windows Phone 7 позволяет разработчикам в зависимости от их целей показывать различные раскладки софтварной клавиатуры пользователям. Реализуется это c помощью свойства <strong>InputScope.</strong></p>
 
-<p><span>&lt;</span><span>TextBox </span><span>Height</span><span>=&ldquo;300&rdquo;</span><span> Width</span><span>=&ldquo;440&rdquo;</span><span> VerticalAlignment</span><span>=&ldquo;Top&rdquo;</span><span> InputScope</span><span>=&ldquo;Text&rdquo;</span><span>&gt;</span>
-К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
+<p><TextBox Height="300" Width="440" VerticalAlignment="Top" InputScope="Text" /></p>
 
-<p><span>&lt;</span><span>TextBox </span><span>Height</span><span>=&ldquo;300&rdquo;</span><span> Width</span><span>=&ldquo;440&rdquo;</span><span> VerticalAlignment</span><span>=&ldquo;Top&rdquo;</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>TextBox</span><span>.InputScope</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>InputScope</span><span>&gt;</span><span>
-</span><span>&lt;</span><span>InputScopeName </span><span>NameValue</span><span>=&ldquo;Text&rdquo;</span><span>/&gt;</span><span>
-</span><span><span>InputScope</span><span>&gt;</span><span>
-</span><span><span>TextBox.InputScope</span><span>&gt;</span><span>
-</span><span><span>TextBox</span><span>&gt;</span></span></span></span></p>
+<p>К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
+
+<p>&lsquo;&rsquo;&lsquo; xml
+<TextBox Height="300" Width="440" VerticalAlignment="Top">
+&lt;TextBox.InputScope>
+<InputScope>
+<InputScopeName NameValue="Text"/>
+</InputScope>
+&lt;/TextBox.InputScope>
+</TextBox>
+&rsquo;&lsquo;&rsquo;</p>
 
 </div>
   
@@ -505,7 +508,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/08/Kstati/">Кстати</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi/">О сколько нам работы чудной приносит ум начальства скудный&#8230;</a></h1>
     
     
       <p class="meta">
@@ -521,17 +524,19 @@
   
 
 
-<time datetime="2011-08-17T17:02:00+04:00" pubdate data-updated="true">Aug 17<span>th</span>, 2011</time>
+<time datetime="2010-10-21T21:52:00+04:00" pubdate data-updated="true">Oct 21<span>st</span>, 2010</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Дерево манго очень похоже на обычный персик :)</p>
+  <div class="entry-content"><blockquote><p>Здесь стоит напомнить, что Форд, первый раз повстречавшись с людьми, выдвинул теорию, чтобы объяснить их забавную привычку постоянно говорить и повторять самые-самые очевидные вещи, типа &ldquo;Прекрасная погода&rdquo;, или &ldquo;Как ты вырос&rdquo;, или &ldquo;Ясно. Значит, мы погибнем&rdquo;.</p>
 
-<p><img src="http://1.bp.blogspot.com/-WJWsTPWIGNU/TlOlof5roII/AAAAAAAAABA/YNUOju5GxNQ/s320/Picture+499.jpg">
-На заднем плане &ndash; река Нил.</p>
+<p>С начала он решил, что если люди не будут упражнять губы, у них зарастут рты.
+Понаблюдав за ними несколько месяцев, он выдвинул вторую теорию: &ldquo;Если люди не будут упражнять губы, у них начнут работать мозги&rdquo;.</p></blockquote>
+
+<p>Адамс Дуглас, &ldquo;Ресторан &#8220;Конец Вселенной&rdquo;&#8221;</p>
 </div>
   
   
@@ -540,8 +545,6 @@
     </article>
   
   <div class="pagination">
-    
-      <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
