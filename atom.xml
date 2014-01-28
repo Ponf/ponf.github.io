@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-28T22:37:20+04:00</updated>
+  <updated>2014-01-28T22:49:41+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -1342,21 +1342,19 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 <p></p>
 
 <ul>
-<li>В приложении должны быть: название, номер версии и контакты техподдержки (<a href="http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92">5.6</a>.aspx));</li>
-<li>Приложение должно быть полностью работоспособным после установки из Marketplace (не может требовать какой-то дополнительной оплаты для активации, разблокировки и т.п.) (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.1</a>.aspx));</li>
-<li>Приложение не должно продавать или рекламировать тарифные планы мобильных операторов (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.2</a>.aspx));</li>
-<li>Если приложению требуется скачать большой объем данных, оно должно предупреждать об этом в описании (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.5</a>.aspx));</li>
-<li>Вся реклама в приложении должна соответствовать <a href="http://go.microsoft.com/fwlink/?LinkID=216913">Microsoft Advertising Creative Acceptance Policy Guide</a> (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.4</a>.aspx));</li>
-<li>Если в приложении предусмотрено общение между людьми, приложение должно удостовериться в том, что пользователю больше 13 лет (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.6</a>.aspx));</li>
-<li>Если в приложении планируется использовать личную информацию о пользователе необходимо: предоставить пользователю вашу политику конфиденциальности, спросить у пользователя разрешение на использование его информации и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.8</a>.aspx));</li>
-<li>Приложение должно быть чем-то большим, чем просто запуск веб-страницы (<a href="http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92">2.10</a>.aspx));</li>
-<li>Разработчик должен убедиться, что все элементы управления видны и легко читаемые со всеми темами телефона (темной/светлой) (<a href="http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92">5.5.2</a>.aspx)).</li>
+<li>В приложении должны быть: название, номер версии и контакты техподдержки (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.6</a>);</li>
+<li>Приложение должно быть полностью работоспособным после установки из Marketplace (не может требовать какой-то дополнительной оплаты для активации, разблокировки и т.п.) (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.1</a>);</li>
+<li>Приложение не должно продавать или рекламировать тарифные планы мобильных операторов (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.2</a>);</li>
+<li>Если приложению требуется скачать большой объем данных, оно должно предупреждать об этом в описании (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.5</a>);</li>
+<li>Вся реклама в приложении должна соответствовать <a href="http://go.microsoft.com/fwlink/?LinkID=216913">Microsoft Advertising Creative Acceptance Policy Guide</a> (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.4</a>);</li>
+<li>Если в приложении предусмотрено общение между людьми, приложение должно удостовериться в том, что пользователю больше 13 лет (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.6</a>);</li>
+<li>Если в приложении планируется использовать личную информацию о пользователе необходимо: предоставить пользователю вашу политику конфиденциальности, спросить у пользователя разрешение на использование его информации и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.8</a>);</li>
+<li>Приложение должно быть чем-то большим, чем просто запуск веб-страницы (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.10</a>);</li>
+<li>Разработчик должен убедиться, что все элементы управления видны и легко читаемые со всеми темами телефона (темной/светлой) (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.5.2</a>).</li>
 </ul>
 
 
-<p><span> </span></p>
-
-<p><span><strong>XAP пакет (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.1.1</a>.aspx))</strong></span></p>
+<h2>XAP пакет (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.1.1</a>)</h2>
 
 <p>В требованиях к пакету, содержащему ваше приложение, есть следующие пункты:</p>
 
@@ -1365,73 +1363,69 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 <p><strong>Требуемое содержимое:</strong></p>
 
 <ul>
-    *WMAppManifest.xml
-    *AppManifest.xml
-    *Файлы для сборки, указанные в AppManifest.xml
-    *Большая и маленькая иконки приложения
+<li>WMAppManifest.xml</li>
+<li>AppManifest.xml</li>
+<li>Файлы для сборки, указанные в AppManifest.xml</li>
+<li>Большая и маленькая иконки приложения</li>
 </ul>
 
 
-<p><strong>Требования к <span> </span>WMAppManifest.xml:</strong></p>
+<p><strong>Требования к WMAppManifest.xml:</strong></p>
 
 <ul>
-    *Поле названия не должно быть пустым
-    *Название должно совпадать с названием, указанным при загрузке приложения в Marketplace
+<li>Поле названия не должно быть пустым</li>
+<li>Название должно совпадать с названием, указанным при загрузке приложения в Marketplace</li>
 </ul>
 
 
 <p>Пожалуйста учтите, что эти требования иногда меняются. Так, ранее размер файлов не должен был превышать 400 МБ.</p>
 
-<p><span><strong>Проверка кода</strong></span></p>
+<h2>Проверка кода</h2>
 
 <p>Чтобы успешно пройти проверку кода приложение должно соответствовать следующим требованиям:</p>
 
 <ul>
-    *Приложение не должно вызывать нативный код с помощью P/Invoke или COM-совместимостей ([4.2.2](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx));
-    *Приложение должно быть собрано в режиме &#8220;Release&#8221;; не должна содержаться отладочная информация ([4.2.3](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx));
-    *Приложение не должно копировать функции телефона ([4.2.4](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx)); (?)
-    *Приложение не должно использовать XNA Game или Graphics одновременно с System.Windows.Controls ([4.2.5](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx)).
+<li>Приложение не должно вызывать нативный код с помощью P/Invoke или COM-совместимостей (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.2</a>);</li>
+<li>Приложение должно быть собрано в режиме &ldquo;Release&rdquo;; не должна содержаться отладочная информация (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.3</a>);</li>
+<li>Приложение не должно копировать функции телефона (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.4</a>); (?)</li>
+<li>Приложение не должно использовать XNA Game или Graphics одновременно с System.Windows.Controls (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.5</a>).</li>
 </ul>
 
 
-<p><span> </span></p>
-
-<p><span><strong>Возможности телефона (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.3</a>.aspx))</strong></span></p>
+<h2>Возможности телефона (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.3</a>)</h2>
 
 <p>Возможности, которые использует приложение, содержатся в файле WMAppManifest.xml и автоматически определяются во время отправки приложения в Marketplace.</p>
 
 <ul>
-    *Приложение должно работать с использованием автоматически распознанных возможностей. Майкрософт рекомендует вам использовать [Capability Detection Tool](http://msdn.microsoft.com/en-us/library/gg180730(v=VS.92).aspx) для проверки работоспособности с возможностями, распознанными во время отправки приложения ([4.3](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx)).
+<li>Приложение должно работать с использованием автоматически распознанных возможностей. Майкрософт рекомендует вам использовать <a href="http://msdn.microsoft.com/en-us/library/gg180730.aspx">Capability Detection Tool</a> для проверки работоспособности с возможностями, распознанными во время отправки приложения (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.3</a>).</li>
 </ul>
 
 
-<p><span> </span></p>
+<h2>Языки</h2>
 
-<p><span><strong>Языки</strong></span></p>
-
-<p>Каждое приложение должно поддерживать как минимум один из перечисленных языков (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.4</a>.aspx)):</p>
+<p>Каждое приложение должно поддерживать как минимум один из перечисленных языков (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.4</a>):</p>
 
 <ul>
-    *Английский
-    *Французский
-    *Итальянский
-    *Немецкий
-    *Испанский
+<li>Английский</li>
+<li>Французский</li>
+<li>Итальянский</li>
+<li>Немецкий</li>
+<li>Испанский</li>
 </ul>
 
 
 <p>Так же есть дополнительные требования:</p>
 
 <ul>
-    *Должен быть установлен нейтральный язык ([4.4](http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92).aspx));
-    *Для каждого поддерживаемого языка должны быть переведены описание и пользовательский интерфейс <span> </span>([5.5.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+<li>Должен быть установлен нейтральный язык (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.4</a>);</li>
+<li>Для каждого поддерживаемого языка должны быть переведены описание и пользовательский интерфейс (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.5.1</a>).</li>
 </ul>
 
 
-<p><span><strong>Иконки/изображения (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.5, 4.6, 4.7</a>.aspx))</strong></span></p>
+<h2>Иконки/изображения (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.5, 4.6, 4.7</a>)</h2>
 
 <p>Для более детального изучения иконографии Windows Phone 7 вы можете изучить статью
-<a href="http://www.silverlightshow.net/items/Windows-Phone-7-Iconography-.aspx">Windows Phone 7 Iconography</a>, здесь же находится кратка информация по изображениям и иконкам:</p>
+<a href="http://www.silverlightshow.net/items/Windows-Phone-7-Iconography-.aspx">Windows Phone 7 Iconography</a>, здесь же находится краткая информация по изображениям и иконкам:</p>
 
 <table border="1" cellspacing="0" cellpadding="2">
 <tbody>
@@ -1502,15 +1496,15 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 </table>
 
 
-<p>Тайлы и иконки должны соответствовать приложению (<a href="http://msdn.microsoft.com/en-us/library/hh184844(v=VS.92">4.7</a>.aspx)).</p>
+<p>Тайлы и иконки должны соответствовать приложению (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.7</a>).</p>
 
 <p><span><strong>Временные рамки</strong></span>
 Присутствуют следующие специальные временнЫе ограничения:</p>
 
 <ul>
-    *Приложение должно появляться на экране в течении 5 секунд (экрана заставки достаточно) ([5.2.1 – 5.2.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение должно быть доступно для пользовательского ввода не позднее, чем через 20 секунд после запуска ([5.2.1 – 5.2.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *При блокировке интерфейса более чем на 3 секунды необходимо показывать Progress Bar или Busy Indicator ([5.1.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+    *Приложение должно появляться на экране в течении 5 секунд (экрана заставки достаточно) ([5.2.1 – 5.2.3](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение должно быть доступно для пользовательского ввода не позднее, чем через 20 секунд после запуска ([5.2.1 – 5.2.3](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *При блокировке интерфейса более чем на 3 секунды необходимо показывать Progress Bar или Busy Indicator ([5.1.3](http://msdn.microsoft.com/en-us/library/hh184840.aspx)).
 </ul>
 
 
@@ -1518,10 +1512,10 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 При использовании кнопки Назад необходимо учитывать следующие требования:</p>
 
 <ul>
-    *При нажатии на кнопку Назад приложение должно переходить на предыдущую страницу ([5.2.4, 5.2.4.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Нажатие должно закрывать диалоговое/контекстное меню и оставаться на текущей странице ([5.2.4.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Если нажатие происходит на первой странице приложения, оно должно закрыться ([5.2.4.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Для игр: во время игры нажатие на кнопку Назад может вызывать меню паузы ([5.2.4.4](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+    *При нажатии на кнопку Назад приложение должно переходить на предыдущую страницу ([5.2.4, 5.2.4.1](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Нажатие должно закрывать диалоговое/контекстное меню и оставаться на текущей странице ([5.2.4.3](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Если нажатие происходит на первой странице приложения, оно должно закрыться ([5.2.4.2](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Для игр: во время игры нажатие на кнопку Назад может вызывать меню паузы ([5.2.4.4](http://msdn.microsoft.com/en-us/library/hh184840.aspx)).
 </ul>
 
 
@@ -1531,16 +1525,16 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 Следующие требования связаны с безопасностью, надежностью и встроенными в телефон функциями:</p>
 
 <ul>
-    *Приложение должно работать на любом устройстве с Windows Phone 7 ([5.1.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение не должно неожиданно закрываться из-за необработанных исключений или других причин ([5.1.2, 5.3.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *При обработке ошибок приложение должно предоставлять понятные пользователю сообщения ([5.1.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение не должно препятствовать использованию функций телефона (звонки, SMS/MMS) ([5.3.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение должно продолжать работу после использования функций телефона (звонки, SMS/MMS) ([5.3.2](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение не должно содержать вирусы, вредоносный код или вредоносные функции ([5.4.1](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение не должно запускать небезопасный код или пытаться обойти механизм песочницы ([5.4.2, 5.4.3](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение не должно ставить под угрозу безопасность телефона или Marketplace ([2.3](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение не должно использовать более 90 МБ оперативной памяти в телефонах с 256 (или менее) МБ ([5.2.5](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx));
-    *Приложение не должно использовать Trial API в цикле (например, игровом). То есть API должен вызываться редко, а значение им возвращенное - кэшироваться ([5.2.6](http://msdn.microsoft.com/en-us/library/hh184840(v=VS.92).aspx)).
+    *Приложение должно работать на любом устройстве с Windows Phone 7 ([5.1.1](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение не должно неожиданно закрываться из-за необработанных исключений или других причин ([5.1.2, 5.3.3](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *При обработке ошибок приложение должно предоставлять понятные пользователю сообщения ([5.1.2](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение не должно препятствовать использованию функций телефона (звонки, SMS/MMS) ([5.3.1](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение должно продолжать работу после использования функций телефона (звонки, SMS/MMS) ([5.3.2](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение не должно содержать вирусы, вредоносный код или вредоносные функции ([5.4.1](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение не должно запускать небезопасный код или пытаться обойти механизм песочницы ([5.4.2, 5.4.3](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение не должно ставить под угрозу безопасность телефона или Marketplace ([2.3](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение не должно использовать более 90 МБ оперативной памяти в телефонах с 256 (или менее) МБ ([5.2.5](http://msdn.microsoft.com/en-us/library/hh184840.aspx));
+    *Приложение не должно использовать Trial API в цикле (например, игровом). То есть API должен вызываться редко, а значение им возвращенное - кэшироваться ([5.2.6](http://msdn.microsoft.com/en-us/library/hh184840.aspx)).
 </ul>
 
 
@@ -1548,15 +1542,15 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 К приложениям, использующим местоположение устройства пользователя предъявляются следующие требования:</p>
 
 <ul>
-    *Приложение должно использовать Microsoft Location Service API ([2.7.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Информацию о местоположении можно использовать только для функций самого приложения (нельзя использовать для показа таргетированной рекламы) ([2.7.7](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение должно предупреждать пользователя об использовании данных о его местоположении ([2.7.2](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение должно предоставлять возможность отключения использования данных о местоположении ([2.7.3](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение должно обеспечивать возможность отказа от использования данных о местоположении, если эти данные станут доступны третьим лицам ([2.7.4](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение должно защищать полученные данные о местоположении от несанкционированного доступа ([2.7.8](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Если сервис определения местоположения недоступен, приложение должно оставаться отзывчивым (продолжать реагировать на пользовательский ввод) ([6.1](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx));
-    *Приложение не должно вмешиваться в системные функции, связанные с Location Service API <span> </span>([2.7.5](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение не должно нарушать работу устройства, делая Location Service недоступным ([2.7.6](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx), [6.1](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx)).
+    *Приложение должно использовать Microsoft Location Service API ([2.7.1](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Информацию о местоположении можно использовать только для функций самого приложения (нельзя использовать для показа таргетированной рекламы) ([2.7.7](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение должно предупреждать пользователя об использовании данных о его местоположении ([2.7.2](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение должно предоставлять возможность отключения использования данных о местоположении ([2.7.3](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение должно обеспечивать возможность отказа от использования данных о местоположении, если эти данные станут доступны третьим лицам ([2.7.4](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение должно защищать полученные данные о местоположении от несанкционированного доступа ([2.7.8](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Если сервис определения местоположения недоступен, приложение должно оставаться отзывчивым (продолжать реагировать на пользовательский ввод) ([6.1](http://msdn.microsoft.com/en-us/library/hh184838.aspx));
+    *Приложение не должно вмешиваться в системные функции, связанные с Location Service API <span> </span>([2.7.5](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение не должно нарушать работу устройства, делая Location Service недоступным ([2.7.6](http://msdn.microsoft.com/en-us/library/hh184841.aspx), [6.1](http://msdn.microsoft.com/en-us/library/hh184838.aspx)).
 </ul>
 
 
@@ -1564,16 +1558,16 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 Для использования Push-уведомлений ваше приложение должно удовлетворять следующим требованиям:</p>
 
 <ul>
-    *У всех используемых Push-уведомлений должно быть описание ([2.9.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение должно спросить у пользователя разрешение на использование Push-уведомлений и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться от них <span> </span>([2.9.1](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Запрещается злоупотреблять Push-уведомлениями ([2.9.2](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Не разрешается использовать Push-уведомления в отношении вопросов жизни и смерти или других критически важных данных, изменяющихся в реальном времени ([2.9.3](http://msdn.microsoft.com/en-us/library/hh184841(v=VS.92).aspx));
-    *Приложение должно предоставить возможность самостоятельно отключить всплывающие уведомления ([6.2.1](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx));
-    *Приложение должно спрашивать разрешение для использования всплывающих уведомлений ([6.2.2](http://msdn.microsoft.com/en-us/library/hh184838(v=VS.92).aspx)).
+    *У всех используемых Push-уведомлений должно быть описание ([2.9.1](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение должно спросить у пользователя разрешение на использование Push-уведомлений и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться от них <span> </span>([2.9.1](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Запрещается злоупотреблять Push-уведомлениями ([2.9.2](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Не разрешается использовать Push-уведомления в отношении вопросов жизни и смерти или других критически важных данных, изменяющихся в реальном времени ([2.9.3](http://msdn.microsoft.com/en-us/library/hh184841.aspx));
+    *Приложение должно предоставить возможность самостоятельно отключить всплывающие уведомления ([6.2.1](http://msdn.microsoft.com/en-us/library/hh184838.aspx));
+    *Приложение должно спрашивать разрешение для использования всплывающих уведомлений ([6.2.2](http://msdn.microsoft.com/en-us/library/hh184838.aspx)).
 </ul>
 
 
-<p>На этом основные требования подходят к концу. С полным перечнем требований вы можете ознакомиться по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843(v=VS.92">Application Certification Requirements for Windows Phone</a>.aspx).</p>
+<p>На этом основные требования подходят к концу. С полным перечнем требований вы можете ознакомиться по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843.aspx">Application Certification Requirements for Windows Phone</a>.</p>
 
 <p><strong>Всем удачного прохождения сертификации! :)</strong></p>
 ]]></content>
