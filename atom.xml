@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-01-29T00:42:55+04:00</updated>
+  <updated>2014-02-01T01:01:46+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -12,6 +12,172 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Кросс-платформенная разработка для Windows Phone и Windows 8]]></title>
+    <link href="http://Ponf.github.io/blog/2014/02/cross-platformennaya-razrabotka-dlya-windows-phone-i-windows-8/"/>
+    <updated>2014-02-01T00:50:11+04:00</updated>
+    <id>http://Ponf.github.io/blog/2014/02/cross-platformennaya-razrabotka-dlya-windows-phone-i-windows-8</id>
+    <content type="html"><![CDATA[<h2>Зачем переносить код, если и так все работает?</h2>
+
+<p>Создавая любое приложение, разработчик, конечно же, хочет получить максимальную прибыль, и один из способов достижения этой цели &ndash;  покрыть как можно большую аудиторию: для этого приложения локализуются, устраиваются рекламные кампании, и, конечно, переносятся на разные платформы. Существуют различные фреймворки для создания кроссплатформенных приложений, например, PhoneGap, приложения для которого разрабатываются на HTML5, или Xamarin – среда разработки приложений для iOS, Android, Windows Phone и Win8 на C#.</p>
+
+<p>В рамках этой статьи мы рассмотрим, какие возможности для создания приложений с общим исходным кодом нам предлагает Microsoft.</p>
+
+<!--more-->
+
+
+<h2>Проблема: как минимизировать усилия при написании приложения на все платформы?</h2>
+
+<p>Исторически сложилось так, что Windows Phone 7 появился рынке раньше, чем Windows 8, и в его основу лег тот же Windows CE, что был в Windows Mobile. Не обладаю инфромацией почему, но Microsoft закрыли возможность сторонним разработчикам писать Native приложения, но зато появилась возможность писать приложения на Silverlight, адаптированном для мобильных устройств, и разрабатывать игры на XNA. Windows Phone 7.5, помимо различных полезнейших вещей вроде фоновых агентов, принесла возможность разрабатывать приложения, совмещая технологии Silverlight и XNA.</p>
+
+<p>Далее практически вместе с Windows 8 вышла новая версия мобильной операционной системы &ndash; Windows Phone 8. Основное отличие новой операционной системы – отказ от старого ядра Windows CE и переезд на то же ядро, что и в настольной операционной системе: Windows NT. Эти изменения конечно же затронули разработчиков, и теперь у нас появилась возможность разрабатывать приложения для Windows Phone еще и на C/C++.</p>
+
+<p>Таким образом, перед разработчиками встал вопрос: как с минимальными усилиями поддерживать разработку приложения под Windows Phone и Windows 8?</p>
+
+<h2>1. Использование PCL (Portable Class Library)</h2>
+
+<p>Концепция PCL заключается в том, что по-большому счету, у обеих платформ (Windows Phone и Windows 8) пересекаются много пространств имен и они имеют много общих типов. Если ваш код, и библиотеки, которые в нем используются, используют только это подмножество .NET Framework, вы можете создать PCL, а потом прилинковать её к Windows Phone и Windows 8 проектам.</p>
+
+<p>Когда вы выносите общий код в PCL, то можете заметить некоторые ограничения, в зависимости от платформ, которые вы выберите. Например, если вы хотите использовать механизм Tasks, который включает в себя поддержку ключевых слов async/await, то вашу библиотеку невозможно будет подключить к проекту для Windows Phone 7 приложений, т.к. в нем поддержка тасков отсутствует. Решается это с помощью установки Microsoft.Bcl.Async из NuGet.</p>
+
+<p>Следующие 3 способа заключаются в том, что одни и те же файлы добавляются в проект для Windows Phone и Windows 8, разделяя функционал, недоступный на обеих платформах. Эти способы не являются взаимоисключающими, таким образом, их можно использовать совместно в одном проекте для тех или иных сценариев.</p>
+
+<h2>2. Использование директив компилятора</h2>
+
+<p>Первое – использование директив компилятора для скрытия участков кода, в зависимости от платформы, под которую компилируется приложение. По-умолчанию Windows Phone приложения определяются как WINDOWS_PHONE, и Windows 8 приложения, соответственно, как NETFX_CORE. Например, этот код подключает разные пространства имен в зависимости от платформы, под которую собираются приложения:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="cp">#if NETFX_CORE</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">Windows.UI.Xaml.Media.Imaging</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#else</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Windows.Media.Imaging</span><span class="p">;</span>
+</span><span class='line'><span class="cp">#endif</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Данный способ является наиболее простым в реализации, но код быстро становится неподдерживаемым, особенно если такой подход используется для больших кусков кода. Очень сложно определить, какой код является платформо-специфичным, а какой &ndash; общим.</p>
+
+<h2>3. Использование наследования</h2>
+
+<p>Одна из возможностей проще отделять платформо-зависимый код от платформо-независимого – использование наследования. Таким образом, общий код будет помещаться в базовый класс, а платформо-зависимый код – в классы-наследники.</p>
+
+<p>В классы наследники будет попадать код по двум причинам: первое, если какая-то функциональность доступна только на одной платформе (например, отправка SMS). Второе – если какая-то функциональность должна быть по-разному устроена для разных платформ (например – API для работы с файлами). Такой код помещается также в подкласс, как в этом примере:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">MainPageViewModel</span> <span class="p">:</span> <span class="n">NotifyBase</span><span class="p">,</span> <span class="n">IViewModel</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">protected</span> <span class="k">abstract</span> <span class="k">void</span> <span class="nf">DisplayPicture</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">WinMainPageViewModel</span> <span class="p">:</span> <span class="n">MainPageViewModel</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">ISupportsDesignTimeDataViaCode</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">DisplayPicture</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Имплементация отображения изображения</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>4. Partial классы и методы</h2>
+
+<p>Как альтернатива использованию наследования – использование Partial классов и методов. Partial классы изначально использовались для того, чтобы разработчики могли расширять функционал автоматически сгенерированных классов. Перегружая методы в отдельном partial классе, разработчик мог не бояться, что его работа исчезнет во время следующей генерации кода базового класса.</p>
+
+<p>Такой же подход может быть использован для разделения общего кода, от платформозависимого. В данном примере, метод, находящийся в общем коде, вызывает метод находящийся в другом partial классе, который реализуется с учетом специфики платформы.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">DataSource</span> <span class="p">:</span> <span class="n">IDataSource</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IFolder</span><span class="p">&gt;&gt;</span> <span class="n">RetrieveFolders</span><span class="p">(</span><span class="n">IFolder</span> <span class="n">root</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// Other logic</span>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">folders</span> <span class="p">=</span> <span class="k">await</span> <span class="n">LoadFolders</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+</span><span class='line'>        <span class="c1">// Other logic</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">folders</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">DataSource</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IFolder</span><span class="p">&gt;&gt;</span> <span class="n">LoadFolders</span><span class="p">(</span><span class="n">IFolder</span> <span class="n">root</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">//logic</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Примерно этот же подход можно использовать и для методов, но он накладывает некоторые ограничения (например, методы могут возвращать только void).
+Когда вы пытаетесь решить, каким из этих способов переиспользования кода воспользоваться, очень полезно смотреть на API, предоставленное платформами. Некоторые из них, такие как акселерометр, очень похожи, другие, например, работа с файлами, могут здорово различаться не только в рамках отличий Windows Phone от Windows 8, но и в рамках отличий Windows Phone 7.5 от Windows Phone 8.</p>
+
+<p>Существует отличный инструмент для этого: XAML Dialect Comparer Tool, почитать о котором и скачать можно по ссылке:
+<a href="http://xamldialects.codeplex.com/">http://xamldialects.codeplex.com/</a></p>
+
+<h2>5. Создание общих компонентов Windows Runtime.</h2>
+
+<p>Компоненты Windows Runtime – компоненты, которые можно использовать для расширения функциональности поддерживаемых платформой языков. Используя Windows Runtime, поддерживаемый в Windows Phone 8 и Windows 8, вы можете создавать компоненты на одном языке программирования, а вызывать их в той среде, в которой выполняется ваше приложение. Такие компоненты создаются с помощью шаблона Windows Runtime Component в Visual Studio. На выходе вы получаете файл  .winmd, который содержит также всю мета-информацию, необходимую чтобы этот компонент можно было внедрить в приложение, написанное на C#, C++, VB, JS.
+Когда использовать Windows Runtime компоненты:</p>
+
+<ul>
+<li>Когда вам нужна производительность C++ : если ваше приложение совершает серьезные вычислительные операции, вам будет предпочтительнее писать код на C++ чтобы достичь максимальной производительности. Если ваше основное приложение, которое совершает эти рассчеты, написано на C# или VB, подключение такого компонента сделает ваше приложение значительно быстрее.</li>
+<li>Возможность избежать ограничения языка: в целом, использование Windows Runtime компонентов – отличный способ расшарить общий код на все поддерживаемые платформы (например, которые не поддерживаются в PCL).</li>
+<li>Использование Direct3D, Win32, COM API: Windows Phone 8 предоставляет native API для разработки «тяжелых» игр, прямого доступа к сети, или, например, к камере. Для использования этих API или managed кода вам необходимо написать обертку в виде Windows Runtime компонента, который будет реализовать нужный функционал.</li>
+<li>Использование сторонних библиотек: еще недавно было весьма затруднительно использовать сторонние библиотеки, написанные на одном языке, при разработке приложения на другом. С использованием Windows Runtime вы можете взять стороннюю библиотеку, обернуть её в Windows Runtime компонент и вызывать её из Managed кода!</li>
+</ul>
+
+
+<h2>6. Переиспользование XAML</h2>
+
+<p>Несмотря на похожий пользовательский интерфейс, одинаковый внешний вид и поведение многих контролов, бинарно XAML между Windows Phone и Windows 8 не совместим.</p>
+
+<p>Пространства имен, префиксы и набор контролов также довольно здорово различаются, что не позволяет нам полностью переиспользовать XAML между приложениями под разные платформы.</p>
+
+<p>И тем не менее, у разработчиков есть возможность создать UserControl, который можно будет использовать на обеих платформах.</p>
+
+<h2>Что делать если есть приложение под одну платформу, и нужно написать под вторую?</h2>
+
+<p>В этом случае я могу вам только пособолезновать ☺. А если серьезно, всё зависит от масштаба вашего приложения и заложенной в него архитектуры. Если приложение небольшое и при разработке использовался паттерн MVVM, то вынос общего кода не составит много проблем. Если же ваш проект уже здорово разросся: использует разные платформенные особенности и зависит от библиотек, которые есть только под одну из платформ, то перенос кода, если и возможен, будет осуществить значительно тяжелее.</p>
+
+<p>Далее мы рассмотрим процесс создания приложения “с  нуля”, сразу заточенное под перенос кода между платформами, и реализующее различные особенности платформ.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Материалы к моему докладу на]]></title>
@@ -1968,20 +2134,6 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 <li>Yomi</li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[О сколько нам работы чудной приносит ум начальства скудный...]]></title>
-    <link href="http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi/"/>
-    <updated>2010-10-21T21:52:00+04:00</updated>
-    <id>http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi</id>
-    <content type="html"><![CDATA[<blockquote><p>Здесь стоит напомнить, что Форд, первый раз повстречавшись с людьми, выдвинул теорию, чтобы объяснить их забавную привычку постоянно говорить и повторять самые-самые очевидные вещи, типа &ldquo;Прекрасная погода&rdquo;, или &ldquo;Как ты вырос&rdquo;, или &ldquo;Ясно. Значит, мы погибнем&rdquo;.</p>
-
-<p>С начала он решил, что если люди не будут упражнять губы, у них зарастут рты.
-Понаблюдав за ними несколько месяцев, он выдвинул вторую теорию: &ldquo;Если люди не будут упражнять губы, у них начнут работать мозги&rdquo;.</p></blockquote>
-
-<p>Адамс Дуглас, &ldquo;Ресторан &#8220;Конец Вселенной&rdquo;&#8221;</p>
 ]]></content>
   </entry>
   
