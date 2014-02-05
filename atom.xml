@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-02-04T11:15:58+04:00</updated>
+  <updated>2014-02-05T10:25:23+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -180,10 +180,10 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Материалы к моему докладу на \#yamobile + \#rwpug]]></title>
-    <link href="http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-%23yamobile-%2B%23rwpug/"/>
+    <title type="html"><![CDATA[Материалы к моему докладу на]]></title>
+    <link href="http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-yamobile/"/>
     <updated>2012-05-16T20:10:00+04:00</updated>
-    <id>http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-#yamobile-+#rwpug</id>
+    <id>http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-yamobile</id>
     <content type="html"><![CDATA[<h2>Презентация:</h2>
 
 <iframe src="http://www.slideshare.net/ponfius/slideshelf" width="615px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
