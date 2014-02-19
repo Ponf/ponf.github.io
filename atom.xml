@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-02-18T11:36:45+04:00</updated>
+  <updated>2014-02-19T21:58:42+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -176,6 +176,20 @@
 <p>В этом случае я могу вам только пособолезновать ☺. А если серьезно, всё зависит от масштаба вашего приложения и заложенной в него архитектуры. Если приложение небольшое и при разработке использовался паттерн MVVM, то вынос общего кода не составит много проблем. Если же ваш проект уже здорово разросся: использует разные платформенные особенности и зависит от библиотек, которые есть только под одну из платформ, то перенос кода, если и возможен, будет осуществить значительно тяжелее.</p>
 
 <p>Далее мы рассмотрим процесс создания приложения “с  нуля”, сразу заточенное под перенос кода между платформами, и реализующее различные особенности платформ.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Материалы к моему докладу на]]></title>
+    <link href="http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-yamobile/"/>
+    <updated>2012-05-16T20:10:00+04:00</updated>
+    <id>http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-yamobile</id>
+    <content type="html"><![CDATA[<h2>Презентация:</h2>
+
+<iframe src="http://www.slideshare.net/ponfius/slideshelf" width="615px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+
+
+<p>Исходники: <a href="https://skydrive.live.com/redir.aspx?cid=a2567e038f37be43&amp;amp;resid=A2567E038F37BE43!1260&amp;amp;parid=A2567E038F37BE43!463">Примеры 1, 2 и 3</a>.</p>
 ]]></content>
   </entry>
   
@@ -2120,20 +2134,6 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 <li>Yomi</li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[О сколько нам работы чудной приносит ум начальства скудный...]]></title>
-    <link href="http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi/"/>
-    <updated>2010-10-21T21:52:00+04:00</updated>
-    <id>http://Ponf.github.io/blog/2010/10/O-skoljko-nam-raboty-chudnoi-prinosit-um-nachaljstva-skudnyi</id>
-    <content type="html"><![CDATA[<blockquote><p>Здесь стоит напомнить, что Форд, первый раз повстречавшись с людьми, выдвинул теорию, чтобы объяснить их забавную привычку постоянно говорить и повторять самые-самые очевидные вещи, типа &ldquo;Прекрасная погода&rdquo;, или &ldquo;Как ты вырос&rdquo;, или &ldquo;Ясно. Значит, мы погибнем&rdquo;.</p>
-
-<p>С начала он решил, что если люди не будут упражнять губы, у них зарастут рты.
-Понаблюдав за ними несколько месяцев, он выдвинул вторую теорию: &ldquo;Если люди не будут упражнять губы, у них начнут работать мозги&rdquo;.</p></blockquote>
-
-<p>Адамс Дуглас, &ldquo;Ресторан &#8220;Конец Вселенной&rdquo;&#8221;</p>
 ]]></content>
   </entry>
   
