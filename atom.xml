@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-03-02T18:30:00+04:00</updated>
+  <updated>2014-04-10T23:25:18+04:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Apps в жизни]]></title>
+    <link href="http://Ponf.github.io/blog/2014/04/apps-v-zhizni/"/>
+    <updated>2014-04-10T22:42:17+04:00</updated>
+    <id>http://Ponf.github.io/blog/2014/04/apps-v-zhizni</id>
+    <content type="html"><![CDATA[<p>= Flashback =
+Первый мой собственный сотовый телефон появился у меня году этак в 2003 и это был Siemens M55. Прекрасно помню, как я ходил по радио-рынкам, искал подходящие data-кабели для того, чтобы загрузить на него какие-нибудь простенькие java игры. Да, в те времена платформеры типа принца Персии были, пожалуй, пределом мечтаний.</p>
+
+<p>С тех времен у меня сменилось множество гаджетов, и практически все они были либо смартфонами, либо коммуникаторами. Были одни из первых смартфонов Nokia &ndash; NGage QD, девайсы на Windows Mobile &ndash; Eten G500, и, наверное, мой самый любимый девайс &ndash; Nokia N82. Затем с Symbian я перешел на Android, а потом, быстро поняв, что это не моё, перешел на только появившийся Windows Phone. Ну и последний год я пользуюсь iPhone, и только теперь я понимаю, что телефон это не только звонилка+чатики+игры, а действительно незаменимый девайс в повседневной жизни.</p>
+
+<p>= Мобильные приложения =
+Если посмотреть на мобильные приложения, то еще несколько лет назад они делились на 2 группы:
+* бизнес-приложения (начиная почтой и заканчивая проприетарными приложениями, который использовались in-house)
+* убийцы времени (всевозможные мессенджеры и игры)
+То есть реально приложений, которые бы упрощали людям жизнь, практически не было.</p>
+
+<p>Сейчас же появляется множество приложений для образования, работы (в том числе и узкоспециализированные), а самое главное &ndash; приложения для повседневной жизни. Я не буду писать про твиттеры и инстаграммы, это и так понятно :) Эти приложения можно смело отнести ко второй категории &ndash; убийцы времени. Намного интереснее посмотреть приложения, которые качественно улучшают жизнь. Например, сейчас когда я собираюсь в путешествие, я всегда скачиваю различные путеводители (Афиша Мир &ndash; один из любимых), схемы метро и прочие информационные приложения к себе на телефон и активно ими пользуюсь, не говоря о Google Maps. Я всегда смотрю по отзывам куда стоит сходить, а на что можно не тратить время, а придя в незнакомый ресторан/бар/кафе смотрю на Foursquare кто что из меню рекомендует.</p>
+
+<p>Не так давно я воспользовался MNP и перешел с Мегафона на Билайн. Не могу сказать, что Билайн оправдал все мои надежды, но и речь сейчас не об этом. Речь о мобильном приложении Билайна для iOS. Будучи на Мегафоне, меня просто поразило, что мобильный оператор не может ни сделать нормальное приложение для телефона, ни сделать адаптивный дизайн сайта, который можно будет нормально смотреть с телефона. Получается какой-то сапожник без сапог. А приложение Билайна, напротив, меня очень приятно удивило, и теперь всё, что у Мегафона приходилось делать либо через веб (Сервис-Гид), либо отправляя старые-добрые SMS для управления услугами, я делаю в несколько касаний на телефоне. Единственное, что не очень нравится &ndash; детализацию нужно заказывать отдельно (хотя тоже через приложение), и она приходит на почту. В остальном к приложению никаких нареканий.</p>
+
+<p>Или, например, интернет- и мобильный банкинг. Уже несколько лет являюсь клиентом Райффайзена, и единственное полезное что умеет их приложение &ndash; поиск ближайших банкоматов. Недавно я получил карточку Рокетбанка, где вообще вся работа с банком осуществляется через мобильное приложение, и это просто прекрасно. Не нужно ездить никуда в офис, не нужно висеть на линии у службы поддержки, слушиая какую-то унылую музыку, ожидая свободного оператора. Кроме это, у рокетбанка еще много и других, не менее интересных плюшек, но все плюсы и минусы я распишу через пару месяцев, когда пройдет начальный восторг, и найдется хотя бы один косяк :)</p>
+
+<p>Также сейчас обретает моду целый зоопарк носимых девайсов &ndash; всевозможные умные часы, трекеры физической активности, и так далее. Несколько месяцев я пользовался Jawbone Up, затем он приказал долго жить. Но я не могу сказать, что эти гаджеты как-то сильно влияют на качество жизни &ndash; пока что это больше похоже на игрушки.</p>
+
+<p>А какими приложениями пользуетесь вы?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Кросс-платформенная разработка для Windows Phone и Windows 8]]></title>
@@ -2029,111 +2057,6 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
 <p>На этом основные требования подходят к концу. С полным перечнем требований вы можете ознакомиться по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843.aspx">Application Certification Requirements for Windows Phone</a>.</p>
 
 <p><strong>Всем удачного прохождения сертификации! :)</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Виды InputScope в Windows Phone 7]]></title>
-    <link href="http://Ponf.github.io/blog/2011/08/Vidy-InputScope-v-Windows-Phone-7/"/>
-    <updated>2011-08-24T19:37:00+04:00</updated>
-    <id>http://Ponf.github.io/blog/2011/08/Vidy-InputScope-v-Windows-Phone-7</id>
-    <content type="html"><![CDATA[<p>Windows Phone 7 позволяет разработчикам в зависимости от их целей показывать различные раскладки софтварной клавиатуры пользователям. Реализуется это c помощью свойства <strong>InputScope.</strong></p>
-
-<p><TextBox Height="300" Width="440" VerticalAlignment="Top" InputScope="Text" /></p>
-
-<p>К сожалению при выборе свойства InputScope Intellisense не работает. Для того чтобы устранить эту неприятность достаточно использовать следующий код:</p>
-
-<figure class='code'><figcaption><span>Использование Input Scope</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;TextBox</span> <span class="na">Height=</span><span class="s">&quot;300&quot;</span> <span class="na">Width=</span><span class="s">&quot;440&quot;</span> <span class="na">VerticalAlignment=</span><span class="s">&quot;Top&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;TextBox.InputScope&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;InputScope&gt;</span>
-</span><span class='line'>          <span class="nt">&lt;InputScopeName</span> <span class="na">NameValue=</span><span class="s">&quot;Text&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;/InputScope&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/TextBox.InputScope&gt;</span>
-</span><span class='line'><span class="nt">&lt;/TextBox&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<!--more-->
-
-
-<p></p>
-
-<p>В таком случае вы увидите все возможные варианты свойства InputScope (коих больше 60):</p>
-
-<ol>
-<li>AddressCity</li>
-<li>AddressCountryName</li>
-<li>AddressCountryShortName</li>
-<li>AddressStateOrProvince</li>
-<li>AddressStreet</li>
-<li>AlphanumericFullWidth</li>
-<li>AlphanumericHalfWidth</li>
-<li>ApplicationEnd</li>
-<li>Bopomofo</li>
-<li>Chat</li>
-<li>CurrencyAmount</li>
-<li>CurrencyAmountAndSymbol</li>
-<li>CurrencyChinese</li>
-<li>Date</li>
-<li>DateDay</li>
-<li>DateDayName</li>
-<li>DateMonth</li>
-<li>DateMonthName</li>
-<li>DateYear</li>
-<li>Default</li>
-<li>Digits</li>
-<li>EmailNameOrAddress</li>
-<li>EmailSmtpAddress</li>
-<li>EmailUserName</li>
-<li>EnumString</li>
-<li>FileName</li>
-<li>FullFilePath</li>
-<li>Hanja</li>
-<li>Hiragana</li>
-<li>KatakanaFullWidth</li>
-<li>KatakanaHalfWidth</li>
-<li>LogOnName</li>
-<li>Maps</li>
-<li>NameOrPhoneNumber</li>
-<li>Number</li>
-<li>NumberFullWidth</li>
-<li>OneChar</li>
-<li>Password</li>
-<li>PersonalFullName</li>
-<li>PersonalGivenName</li>
-<li>PersonalMiddleName</li>
-<li>PersonalNamePrefix</li>
-<li>PersonalNameSuffix</li>
-<li>PersonalSurname</li>
-<li>PhraseList</li>
-<li>PostalAddress</li>
-<li>PostalCode</li>
-<li>Private</li>
-<li>RegularExpression</li>
-<li>Search</li>
-<li>Srgs</li>
-<li>TelephoneAreaCode</li>
-<li>TelephoneCountryCode</li>
-<li>TelephoneLocalNumber</li>
-<li>TelephoneNumber</li>
-<li>Text</li>
-<li>Time</li>
-<li>TimeHour</li>
-<li>TimeMinorSec</li>
-<li>Url</li>
-<li>Xml</li>
-<li>Yomi</li>
-</ol>
-
 ]]></content>
   </entry>
   
