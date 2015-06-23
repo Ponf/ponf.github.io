@@ -4,7 +4,7 @@
   <title><![CDATA[blog.ponfius.com]]></title>
   <link href="http://Ponf.github.io/atom.xml" rel="self"/>
   <link href="http://Ponf.github.io/"/>
-  <updated>2014-06-05T15:06:51+04:00</updated>
+  <updated>2015-06-23T14:49:28+03:00</updated>
   <id>http://Ponf.github.io/</id>
   <author>
     <name><![CDATA[Filipp Panfilov]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Почему я выбрал стартап]]></title>
+    <link href="http://Ponf.github.io/blog/2015/06/why-startup/"/>
+    <updated>2015-06-25T12:42:45+03:00</updated>
+    <id>http://Ponf.github.io/blog/2015/06/why-startup</id>
+    <content type="html"><![CDATA[<p>Вот и прошел первый месяц моей работы на новом месте &ndash; в небольшом стартапе <strong>babystep.tv</strong>, и я хочу рассказать о моих первых наблюдениях. Но с начала &ndash; почему я решил уйти с насиженного места в большой корпорации.</p>
+
+<h2>Работа в большой компании</h2>
+
+<p>Сразу после окончания университета мне удалось попасть на работу в Mail.Ru, в команду мобильной почты. К этой компании можно относиться по-разному, но чего нельзя отрицать, так этого того, что у Mail.Ru очень высокий уровень экспертизы.  За почти 3 года работы я застал два офиса (старый, с небольшими кабинетами, где было довольно тесно, и новый 27-этажный с огромными опенспейсами, старбаксом, и даже футбольным полем), получил просто невероятное количество опыта, а так же поменял свое направление с .NET платформы на iOS. И я с уверенностью могу сказать, что я работал в одной из самых сильных (если не самой сильной) командой iOS разработки в Москве. Вот основные плюсы работы в большой компании:</p>
+
+<ul>
+<li>Много возможностей для прокачивания себя в разных направлениях</li>
+<li>Условия работы (ДМС-фрукты-тренажерный зал-свободная парковка)</li>
+<li>Продукты, которыми пользуются миллионы людей ежедневно</li>
+<li>Стабильность</li>
+</ul>
+
+
+<p>Вроде бы если все так круто, то почему же я ушел? Наверное основная причина в том, что в большой компании не чувствуется  своя причастность к результату, нет какого-то признания, ответственность за продукт сильно размазана. Ну и вторая причина &ndash; в большой компании очень сложно расти вверх, так как должностей не так много, а конкуренция очень высокая.</p>
+
+<p>Для многих людей эти причины вряд ли имеют какое-то значение. Если человек хочет спокойно работать и не париться на счет завтрашнего дня, то большая компания &ndash; отличный выбор.  Для себя же я решил, что пока я молодой, у меня нет детей и ипотеки, надо выйти из зоны комфорта и реализовать свои амбиции.</p>
+
+<p>Но и помимо этого, у меня есть <strong>мечта</strong>: я хочу жить в месте, где растут пальмы. Как вы понимаете, Москва не очень попадает под это требование :)</p>
+
+<h2>Работа в стартапе</h2>
+
+<h3>Первый день</h3>
+
+<p>Конечно, после большой компании с фантастическим офисом у меня был шок. Он начался с самого утра, когда я пытался найти парковку, продолжился днем, когда я на кресле с колесиками привычным движением оттолкнулся от стола чтобы отъехать от него, а он внезапно улетел в другой конец комнаты, ну и завершился в 8 вечера, когда я понял, что кроме меня в офисе уже никого нет.</p>
+
+<h3>Первая командировка</h3>
+
+<p>Следующий шок был ровно через неделю, когда с утра CTO спросил, есть ли у меня открытая виза в США (она, к счастью, была), и что на следующий день мы утром вылетаем в Сан-Диего чтобы устроить там хакатон и подготовиться к софт-лончу. Сама поездка прошла очень круто, работали по 12-14 часов 7 дней в неделю, успевая утром поиграть в баскетбол, днем искупаться в океане, а вечером &ndash; поотмокать в джакузи.  Единственное, что расстраивало &ndash; мысль, что скоро придется расстаться с моим белым мустангом с опускающейся крышей и вернуться в московские пробки и метро.</p>
+
+<h3>Скорость</h3>
+
+<blockquote><p>My dear, here we must run as fast as we can, just to stay in place. And if you wish to go anywhere you must run twice as fast as that.</p><footer><strong>Lewis Carroll</strong> <cite>Alice in Wonderland</cite></footer></blockquote>
+
+
+<p>Для стартапа очень важна скорость. Вообще она всегда важна, но в большой компании из-за сложности процессов скорость очень сильно падает. В стартапе получить нужный софт или новый макбук можно за несколько часов, в Mail.Ru это иногда занимало месяцы.</p>
+
+<p>Чтобы лучше понять, вот несколько ключевых моментов за первый месяц работы:</p>
+
+<ul>
+<li>26 мая я вышел на работу</li>
+<li>3 июня я уже был в Сан-Диего</li>
+<li>5 июня выдал первую бета-версию нашего iOS приложения</li>
+<li>15 июня babystep.tv 1.0 отправилась на ревью в AppStore</li>
+</ul>
+
+
+<p>Итого 3 недели для создания первой версии приложения с нуля. Конечно первая версия получилась довольно сырой, я успел сделать не все, что хотел, но больше, чем мы планировали на первый релиз. Изначально моя оценка была 3 месяца,  но мы справились за 3 недели. <del>3 недели, Карл!!!</del></p>
+
+<h2>Вместо заключения</h2>
+
+<p>Многие наверное слышали крылатое выражение, что если человек найдет работу мечты, то ему больше ни одного дня не придется работать. Если в Mail.Ru я с первого дня понимал, что это не работа моей мечты, а скорее способ круто прокачать свои навыки, то babystep.tv &ndash; с большой долей вероятности как раз работа мечты для меня.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Apps в жизни]]></title>
@@ -220,7 +280,7 @@
   <entry>
     <title type="html"><![CDATA[Материалы к моему докладу на]]></title>
     <link href="http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-yamobile/"/>
-    <updated>2012-05-16T20:10:00+04:00</updated>
+    <updated>2012-05-16T16:10:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2012/05/Materialy-k-moemu-dokladu-na-yamobile</id>
     <content type="html"><![CDATA[<h2>Презентация:</h2>
 
@@ -234,7 +294,7 @@
   <entry>
     <title type="html"><![CDATA[Немного о разработке под Win8]]></title>
     <link href="http://Ponf.github.io/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8/"/>
-    <updated>2012-04-01T22:58:00+04:00</updated>
+    <updated>2012-04-01T18:58:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2012/04/Nemnogo-o-razrabotke-pod-Win8</id>
     <content type="html"><![CDATA[<p>На прошлой неделе после твита <a href="https://twitter.com/#!/shwars">@shwars</a></p>
 
@@ -290,7 +350,7 @@
   <entry>
     <title type="html"><![CDATA[Краткий обзор Windows 8 Consumer Preview]]></title>
     <link href="http://Ponf.github.io/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview/"/>
-    <updated>2012-02-29T23:41:00+04:00</updated>
+    <updated>2012-02-29T19:41:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2012/02/Kratkii-obzor-Windows-8-Consumer-Preview</id>
     <content type="html"><![CDATA[<p>Как многие уже слышали, сегодня <strong>Microsoft</strong> на <strong>MWC</strong> представили <strong>Windows 8 Consumer Preview</strong>.</p>
 
@@ -365,7 +425,7 @@
   <entry>
     <title type="html"><![CDATA[Все о Splash Screen в Windows Phone]]></title>
     <link href="http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone/"/>
-    <updated>2012-02-25T13:17:00+04:00</updated>
+    <updated>2012-02-25T09:17:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2012/02/Vse-o-Splash-Screen-v-Windows-Phone</id>
     <content type="html"><![CDATA[<p>Какое бы вы приложение не писали, даже самое простое, его запуск на телефоне будет занимать некоторое время, поэтому хорошей идеей будет показывать какой-нибудь Splash Screen во время загрузки. Существует несколько вариантов использования Splash Screen:</p>
 
@@ -540,7 +600,7 @@
   <entry>
     <title type="html"><![CDATA[Шпаргалка по сертификации приложения на WP7]]></title>
     <link href="http://Ponf.github.io/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7/"/>
-    <updated>2011-12-26T13:40:00+04:00</updated>
+    <updated>2011-12-26T09:40:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Shpargalka-po-sertifikatcii-prilozheniia-na-WP7</id>
     <content type="html"><![CDATA[<p>Выкладываю давно обещанную шпаргалку по сертификации приложений на Windows Phone. Эта шпаргалка &ndash; краткое содержимое одной из моих прошлых <a href="http://mne.p0x.ru/2011/08/windows-phone-7.html">статей</a>.</p>
 
@@ -555,7 +615,7 @@
   <entry>
     <title type="html"><![CDATA[Скрытые смайлы в Windows Phone]]></title>
     <link href="http://Ponf.github.io/blog/2011/12/Skrytye-smaily-v-Windows-Phone/"/>
-    <updated>2011-12-23T15:13:00+04:00</updated>
+    <updated>2011-12-23T11:13:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Skrytye-smaily-v-Windows-Phone</id>
     <content type="html"><![CDATA[<p>Кстати, а вы знали, что в Windows Phone есть скрытые смайлы? Достаточно отправить другу с Windows Phone какую-нибудь комбинацию, из представленных ниже, чтобы он получил забавную картинку :)</p>
 
@@ -575,7 +635,7 @@
   <entry>
     <title type="html"><![CDATA[Как склеить несколько Texture2D / Howto merge few Texture2D]]></title>
     <link href="http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D--Howto-merge-few-Texture2D/"/>
-    <updated>2011-12-16T18:19:00+04:00</updated>
+    <updated>2011-12-16T14:19:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Kak-skleitj-neskoljko-Texture2D&#8211;Howto-merge-few-Texture2D</id>
     <content type="html"><![CDATA[<p>Решил попробовать написать этот пост и на русском, и на английском, так как очень долго гуглил о том как склеить несколько текстур формата Texture2D и сохранить результат, но не нашел ничего подходящего: либо метод не поддерживался в Windows Phone, либо меня не устраивала его производительность.</p>
 
@@ -665,7 +725,7 @@
   <entry>
     <title type="html"><![CDATA[Интеграция приложения с хабом "Фото"]]></title>
     <link href="http://Ponf.github.io/blog/2011/12/Integratciia-prilozheniia-s-khabom-Foto/"/>
-    <updated>2011-12-14T14:08:00+04:00</updated>
+    <updated>2011-12-14T10:08:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/12/Integratciia-prilozheniia-s-khabom-Foto</id>
     <content type="html"><![CDATA[<p>Однажды мне понадобилось интегрировать приложение в хаб &ldquo;Фото&rdquo; в Windows Phone 7. Что я понимаю под интеграцией:</p>
 
@@ -1023,7 +1083,7 @@
   <entry>
     <title type="html"><![CDATA[Как разработчику WP7 бесплатно попасть на {.тостер}]]></title>
     <link href="http://Ponf.github.io/blog/2011/11/Kak-razrabotchiku-WP7-besplatno-popastj-na-toster/"/>
-    <updated>2011-11-20T09:08:00+04:00</updated>
+    <updated>2011-11-20T05:08:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/11/Kak-razrabotchiku-WP7-besplatno-popastj-na-toster</id>
     <content type="html"><![CDATA[<p>Вчера вечером на хабре стартовала одна очень интересная для Windows Phone разработчиков акция.Для тех, кто не в курсе &ndash; <a href="http://toster.ru/"><strong>{.тостер}</strong></a> -  проект компании «Тематические Медиа», известной на рынке как издатель проекта «Хабрахабр» — самого большого в Европе сообщества гиков, людей, интересующихся информационными технологиями.</p>
 
@@ -1051,7 +1111,7 @@
   <entry>
     <title type="html"><![CDATA[ICQ, MRA и Twitter для Windows Phone]]></title>
     <link href="http://Ponf.github.io/blog/2011/11/ICQ-MRA-i-Twitter-dlia-Windows-Phone/"/>
-    <updated>2011-11-16T11:32:00+04:00</updated>
+    <updated>2011-11-16T07:32:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/11/ICQ-MRA-i-Twitter-dlia-Windows-Phone</id>
     <content type="html"><![CDATA[<p>Сегодня компания Mail.Ru в рамках проходящего Форума Технологий анонсировала выход 2-х своих приложений для Windows Phone: ICQ-клиента, который все так долго просили, и Mail.Ru Agent.</p>
 
@@ -1093,7 +1153,7 @@
   <entry>
     <title type="html"><![CDATA[Ноябрьский номер журнала MSDeveloper.RU]]></title>
     <link href="http://Ponf.github.io/blog/2011/11/Noiabrjskii-nomer-zhurnala-MSDeveloperRU/"/>
-    <updated>2011-11-15T13:16:00+04:00</updated>
+    <updated>2011-11-15T09:16:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/11/Noiabrjskii-nomer-zhurnala-MSDeveloperRU</id>
     <content type="html"><![CDATA[<p>Сегодня вышел ноябрьский номер журнала <strong>MSDeveloper.RU</strong>. Скачать можно по <a href="http://www.msdeveloper.ru/magazine/download.aspx/37/item-411/">ссылке</a>.
 Из интересного в этом номере &ndash; репортаж с TechEd Russia, интервью с Михаилом Черномордиковым и Дмитрием Сошниковым.
@@ -1114,7 +1174,7 @@
   <entry>
     <title type="html"><![CDATA[TechEd Russia]]></title>
     <link href="http://Ponf.github.io/blog/2011/11/TechEd-Russia/"/>
-    <updated>2011-11-10T22:37:00+04:00</updated>
+    <updated>2011-11-10T18:37:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/11/TechEd-Russia</id>
     <content type="html"><![CDATA[<p><img src="http://4.bp.blogspot.com/-Tie3I712RMk/TrwbUhqZhbI/AAAAAAAAAEw/QefhuCPVCdo/s320/_DSC8798.JPG"></p>
 
@@ -1135,7 +1195,7 @@
   <entry>
     <title type="html"><![CDATA[Работа с базой данных в WP7 для ленивых :)]]></title>
     <link href="http://Ponf.github.io/blog/2011/10/Rabota-s-bazoi-dannykh-v-WP7-dlia-lenivykh-%29/"/>
-    <updated>2011-10-11T14:14:00+04:00</updated>
+    <updated>2011-10-11T10:14:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/10/Rabota-s-bazoi-dannykh-v-WP7-dlia-lenivykh-)</id>
     <content type="html"><![CDATA[<p>Так уж получилось, что никогда раньше у меня не было необходимости использовать в моих проектах базы данных для хранения информации, так что все мои знания ограничивались парой посещений лекций по СУБД на втором или третьем курсе :&ndash;[.Но во время написания приложения HabraReader под Windows Phone 7 мной и моим коллегой <a href="http://twitter.com/#!/kin9pin">@kin9pin</a> было принято самое логичное решение &ndash; хранить посты в БД. Погуглив, мы нашли довольно много <a href="http://msdn.microsoft.com/ru-ru/windowsphone/hh425066#mark_15">статей</a> и <a href="http://msdn.microsoft.com/en-us/library/hh202876(v=VS.92">пошаговых инструкций</a>.aspx) по созданию и работе с  БД в Windows Phone, но всё это нас по тем или иным причинам не устраивало (например, из-за привязки к MVVM, до которого всё никак руки не доходят).</p>
 
@@ -1493,7 +1553,7 @@
   <entry>
     <title type="html"><![CDATA[SilverLife]]></title>
     <link href="http://Ponf.github.io/blog/2011/09/SilverLife/"/>
-    <updated>2011-09-30T12:54:00+04:00</updated>
+    <updated>2011-09-30T08:54:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/09/SilverLife</id>
     <content type="html"><![CDATA[<p>Моё новое приложение <strong>SilverLife</strong> опубликовали в <strong>Marketplace</strong>! :)</p>
 
@@ -1529,7 +1589,7 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
   <entry>
     <title type="html"><![CDATA[Конференция Tech∙Ed Russia 2011]]></title>
     <link href="http://Ponf.github.io/blog/2011/09/Konferentciia-TechEd-Russia-2011/"/>
-    <updated>2011-09-30T10:59:00+04:00</updated>
+    <updated>2011-09-30T06:59:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/09/Konferentciia-TechEd-Russia-2011</id>
     <content type="html"><![CDATA[<p><img src="http://2.bp.blogspot.com/-3NqeVpZQtyI/ToVolntQXGI/AAAAAAAAABI/nn1ySa-WOBQ/s1600/1007.50070_3_3FE0EF96.jpg"></p>
 
@@ -1580,7 +1640,7 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
   <entry>
     <title type="html"><![CDATA[Создание игр на Silverlight + XNA. Часть 1. Отличия от XNA.]]></title>
     <link href="http://Ponf.github.io/blog/2011/09/Sozdanie-igr-na-Silverlight-%2B-XNA-Chastj-1-Otlichiia-ot-XNA/"/>
-    <updated>2011-09-18T21:25:00+04:00</updated>
+    <updated>2011-09-18T17:25:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/09/Sozdanie-igr-na-Silverlight-+-XNA-Chastj-1-Otlichiia-ot-XNA</id>
     <content type="html"><![CDATA[<p>С выходом обновления Mango для Windows Phone 7 и обновлением SDK, появилась возможность создавать приложения использующие обе технологии вместе. В этой статье я расскажу вам об этих возможностях и опишу процесс миграции с XNA на Silverlight+XNA.</p>
 
@@ -1808,265 +1868,12 @@ SilverLife &ndash; моя реализации игры Жизнь (The Game of 
   <entry>
     <title type="html"><![CDATA[Вечерняя школа по Windows Phone 7]]></title>
     <link href="http://Ponf.github.io/blog/2011/09/Vecherniaia-shkola-po-Windows-Phone-7/"/>
-    <updated>2011-09-06T17:06:00+04:00</updated>
+    <updated>2011-09-06T13:06:00+00:00</updated>
     <id>http://Ponf.github.io/blog/2011/09/Vecherniaia-shkola-po-Windows-Phone-7</id>
     <content type="html"><![CDATA[<p>В четверг 8 сентября в офисе Microsoft начинает свою работу вечерняя школа, посвященная разработке под Windows Phone 7.Занятия будут проходить 8, 15, 22 и 29 сентября в офисе Microsoft в Крылатском.
 Начало занятий &ndash; 19:00, с собой приносить ноутбук с установленными <a href="http://create.msdn.com/en-us/home/getting_started">средствами разработки</a>.</p>
 
 <p>Официальный анонс в <a href="http://blogs.msdn.com/b/stasus/archive/2011/09/05/windows-phone-evening-school.aspx">блоге Стаса Павлова</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Шпаргалка по сертификации приложений на Windows Phone 7]]></title>
-    <link href="http://Ponf.github.io/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7/"/>
-    <updated>2011-08-31T10:45:00+04:00</updated>
-    <id>http://Ponf.github.io/blog/2011/08/Shpargalka-po-sertifikatcii-prilozhenii-na-Windows-Phone-7</id>
-    <content type="html"><![CDATA[<p>Всем привет! Сегодня я представлю вашему вниманию вольный перевод статьи Peter Kuhn <a href="http://www.silverlightshow.net/items/Windows-Phone-7-Application-Certification-Cheat-Sheet.aspx">&ldquo;Windows Phone 7 Application Certification Cheat Sheet&rdquo;</a>, в которой описываются основные моменты, на которые стоит обратить внимание перед публикацией приложения в Marketplace.</p>
-
-<h2>Приложение в целом</h2>
-
-<p>Перечислены некоторые основные требования к приложениям:</p>
-
-<!--more-->
-
-
-<p></p>
-
-<ul>
-<li>В приложении должны быть: название, номер версии и контакты техподдержки (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.6</a>);</li>
-<li>Приложение должно быть полностью работоспособным после установки из Marketplace (не может требовать какой-то дополнительной оплаты для активации, разблокировки и т.п.) (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.1</a>);</li>
-<li>Приложение не должно продавать или рекламировать тарифные планы мобильных операторов (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.2</a>);</li>
-<li>Если приложению требуется скачать большой объем данных, оно должно предупреждать об этом в описании (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.5</a>);</li>
-<li>Вся реклама в приложении должна соответствовать <a href="http://go.microsoft.com/fwlink/?LinkID=216913">Microsoft Advertising Creative Acceptance Policy Guide</a> (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.4</a>);</li>
-<li>Если в приложении предусмотрено общение между людьми, приложение должно удостовериться в том, что пользователю больше 13 лет (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.6</a>);</li>
-<li>Если в приложении планируется использовать личную информацию о пользователе необходимо: предоставить пользователю вашу политику конфиденциальности, спросить у пользователя разрешение на использование его информации и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.8</a>);</li>
-<li>Приложение должно быть чем-то большим, чем просто запуск веб-страницы (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.10</a>);</li>
-<li>Разработчик должен убедиться, что все элементы управления видны и легко читаемые со всеми темами телефона (темной/светлой) (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.5.2</a>).</li>
-</ul>
-
-
-<h2>XAP пакет (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.1.1</a>)</h2>
-
-<p>В требованиях к пакету, содержащему ваше приложение, есть следующие пункты:</p>
-
-<p><strong>Максимальный размер:</strong> 225 МБ;</p>
-
-<p><strong>Требуемое содержимое:</strong></p>
-
-<ul>
-<li>WMAppManifest.xml</li>
-<li>AppManifest.xml</li>
-<li>Файлы для сборки, указанные в AppManifest.xml</li>
-<li>Большая и маленькая иконки приложения</li>
-</ul>
-
-
-<p><strong>Требования к WMAppManifest.xml:</strong></p>
-
-<ul>
-<li>Поле названия не должно быть пустым</li>
-<li>Название должно совпадать с названием, указанным при загрузке приложения в Marketplace</li>
-</ul>
-
-
-<p>Пожалуйста учтите, что эти требования иногда меняются. Так, ранее размер файлов не должен был превышать 400 МБ.</p>
-
-<h2>Проверка кода</h2>
-
-<p>Чтобы успешно пройти проверку кода приложение должно соответствовать следующим требованиям:</p>
-
-<ul>
-<li>Приложение не должно вызывать нативный код с помощью P/Invoke или COM-совместимостей (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.2</a>);</li>
-<li>Приложение должно быть собрано в режиме &ldquo;Release&rdquo;; не должна содержаться отладочная информация (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.3</a>);</li>
-<li>Приложение не должно копировать функции телефона (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.4</a>); (?)</li>
-<li>Приложение не должно использовать XNA Game или Graphics одновременно с System.Windows.Controls (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.2.5</a>).</li>
-</ul>
-
-
-<h2>Возможности телефона (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.3</a>)</h2>
-
-<p>Возможности, которые использует приложение, содержатся в файле WMAppManifest.xml и автоматически определяются во время отправки приложения в Marketplace.</p>
-
-<ul>
-<li>Приложение должно работать с использованием автоматически распознанных возможностей. Майкрософт рекомендует вам использовать <a href="http://msdn.microsoft.com/en-us/library/gg180730.aspx">Capability Detection Tool</a> для проверки работоспособности с возможностями, распознанными во время отправки приложения (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.3</a>).</li>
-</ul>
-
-
-<h2>Языки</h2>
-
-<p>Каждое приложение должно поддерживать как минимум один из перечисленных языков (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.4</a>):</p>
-
-<ul>
-<li>Английский</li>
-<li>Французский</li>
-<li>Итальянский</li>
-<li>Немецкий</li>
-<li>Испанский</li>
-</ul>
-
-
-<p>Так же есть дополнительные требования:</p>
-
-<ul>
-<li>Должен быть установлен нейтральный язык (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.4</a>);</li>
-<li>Для каждого поддерживаемого языка должны быть переведены описание и пользовательский интерфейс (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.5.1</a>).</li>
-</ul>
-
-
-<h2>Иконки/изображения (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.5, 4.6, 4.7</a>)</h2>
-
-<p>Для более детального изучения иконографии Windows Phone 7 вы можете изучить статью
-<a href="http://www.silverlightshow.net/items/Windows-Phone-7-Iconography-.aspx">Windows Phone 7 Iconography</a>, здесь же находится краткая информация по изображениям и иконкам:</p>
-
-<table border="1" cellspacing="0" cellpadding="2">
-<tbody>
-<tr>
-<td valign="top">Изображение</td>
-<td valign="top">Обязательно</td>
-<td valign="top">Формат</td>
-<td valign="top">Прозрачный фон</td>
-<td valign="top">Размер</td>
-</tr>
-<tr>
-<td valign="top">Маленькая иконка приложения</td>
-<td valign="top">Да</td>
-<td valign="top">PNG</td>
-<td valign="top">Да</td>
-<td valign="top">62x62</td>
-</tr>
-<tr>
-<td valign="top">Большая иконка приложения</td>
-<td valign="top">Да</td>
-<td valign="top">PNG</td>
-<td valign="top">Да</td>
-<td valign="top">173x173</td>
-</tr>
-<tr>
-<td valign="top">Маленькая иконка для Marketplace</td>
-<td valign="top">Да</td>
-<td valign="top">PNG</td>
-<td valign="top">Нет</td>
-<td valign="top">99x99</td>
-</tr>
-<tr>
-<td valign="top">Большая иконка для Marketplace</td>
-<td valign="top">Да</td>
-<td valign="top">PNG</td>
-<td valign="top">Нет</td>
-<td valign="top">173x173</td>
-</tr>
-<tr>
-<td valign="top">Большая иконка для Marketplace для PC</td>
-<td valign="top">Да</td>
-<td valign="top">PNG</td>
-<td valign="top">Нет</td>
-<td valign="top">200x200</td>
-</tr>
-<tr>
-<td valign="top">Задний фон</td>
-<td valign="top">Нет</td>
-<td valign="top">PNG</td>
-<td valign="top">Нет</td>
-<td valign="top">1000x800</td>
-</tr>
-<tr>
-<td valign="top">Скриншот приложения</td>
-<td valign="top">Минимум 1, максимум 8</td>
-<td valign="top">PNG</td>
-<td valign="top">Нет</td>
-<td valign="top">480x800</td>
-</tr>
-<tr>
-<td valign="top">Иконка для Application Bar</td>
-<td valign="top">Нет</td>
-<td valign="top">PNG</td>
-<td valign="top">Да</td>
-<td valign="top">48x48 (Содержимое 26x26)</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>Тайлы и иконки должны соответствовать приложению (<a href="http://msdn.microsoft.com/en-us/library/hh184844.aspx">4.7</a>).</p>
-
-<h2>Временные рамки</h2>
-
-<p>Присутствуют следующие специальные временнЫе ограничения:</p>
-
-<ul>
-<li>Приложение должно появляться на экране в течении 5 секунд (экрана заставки достаточно) (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.1 – 5.2.3</a>);</li>
-<li>Приложение должно быть доступно для пользовательского ввода не позднее, чем через 20 секунд после запуска (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.1 – 5.2.3</a>);</li>
-<li>При блокировке интерфейса более чем на 3 секунды необходимо показывать Progress Bar или Busy Indicator (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.1.3</a>).</li>
-</ul>
-
-
-<h2>Кнопка Назад</h2>
-
-<p>При использовании кнопки Назад необходимо учитывать следующие требования:</p>
-
-<ul>
-<li>При нажатии на кнопку Назад приложение должно переходить на предыдущую страницу (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.4, 5.2.4.1</a>);</li>
-<li>Нажатие должно закрывать диалоговое/контекстное меню и оставаться на текущей странице (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.4.3</a>);</li>
-<li>Если нажатие происходит на первой странице приложения, оно должно закрыться (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.4.2</a>);</li>
-<li>Для игр: во время игры нажатие на кнопку Назад может вызывать меню паузы (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.4.4</a>).</li>
-</ul>
-
-
-<p>Кнопку Назад нельзя использовать для каких-либо функций, не обозначенных выше.</p>
-
-<h2>Надежность, безопасность и прочее</h2>
-
-<p>Следующие требования связаны с безопасностью, надежностью и встроенными в телефон функциями:</p>
-
-<ul>
-<li>Приложение должно работать на любом устройстве с Windows Phone 7 (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.1.1</a>);</li>
-<li>Приложение не должно неожиданно закрываться из-за необработанных исключений или других причин (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.1.2, 5.3.3</a>);</li>
-<li>При обработке ошибок приложение должно предоставлять понятные пользователю сообщения (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.1.2</a>);</li>
-<li>Приложение не должно препятствовать использованию функций телефона (звонки, SMS/MMS) (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.3.1</a>);</li>
-<li>Приложение должно продолжать работу после использования функций телефона (звонки, SMS/MMS) (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.3.2</a>);</li>
-<li>Приложение не должно содержать вирусы, вредоносный код или вредоносные функции (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.4.1</a>);</li>
-<li>Приложение не должно запускать небезопасный код или пытаться обойти механизм песочницы (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.4.2, 5.4.3</a>);</li>
-<li>Приложение не должно ставить под угрозу безопасность телефона или Marketplace (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.3</a>);</li>
-<li>Приложение не должно использовать более 90 МБ оперативной памяти в телефонах с 256 (или менее) МБ (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.5</a>);</li>
-<li>Приложение не должно использовать Trial API в цикле (например, игровом). То есть API должен вызываться редко, а значение им возвращенное &ndash; кэшироваться (<a href="http://msdn.microsoft.com/en-us/library/hh184840.aspx">5.2.6</a>).</li>
-</ul>
-
-
-<h2>Приложения, использующие местоположение</h2>
-
-<p>К приложениям, использующим местоположение устройства пользователя предъявляются следующие требования:</p>
-
-<ul>
-<li>Приложение должно использовать Microsoft Location Service API (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.1</a>);</li>
-<li>Информацию о местоположении можно использовать только для функций самого приложения (нельзя использовать для показа таргетированной рекламы) (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.7</a>);</li>
-<li>Приложение должно предупреждать пользователя об использовании данных о его местоположении (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.2</a>);</li>
-<li>Приложение должно предоставлять возможность отключения использования данных о местоположении (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.3</a>);</li>
-<li>Приложение должно обеспечивать возможность отказа от использования данных о местоположении, если эти данные станут доступны третьим лицам (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.4</a>);</li>
-<li>Приложение должно защищать полученные данные о местоположении от несанкционированного доступа (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.8</a>);</li>
-<li>Если сервис определения местоположения недоступен, приложение должно оставаться отзывчивым (продолжать реагировать на пользовательский ввод) (<a href="http://msdn.microsoft.com/en-us/library/hh184838.aspx">6.1</a>);</li>
-<li>Приложение не должно вмешиваться в системные функции, связанные с Location Service API (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.5</a>);</li>
-<li>Приложение не должно нарушать работу устройства, делая Location Service недоступным (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.7.6</a>, <a href="http://msdn.microsoft.com/en-us/library/hh184838.aspx">6.1</a>).</li>
-</ul>
-
-
-<h2>Служба Push-уведомлений</h2>
-
-<p>Для использования Push-уведомлений ваше приложение должно удовлетворять следующим требованиям:</p>
-
-<ul>
-<li>У всех используемых Push-уведомлений должно быть описание (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.9.1</a>);</li>
-<li>Приложение должно спросить у пользователя разрешение на использование Push-уведомлений и предоставить механизм, благодаря которому пользователь сможет в любой момент отказаться от них (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.9.1</a>);</li>
-<li>Запрещается злоупотреблять Push-уведомлениями (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.9.2</a>);</li>
-<li>Не разрешается использовать Push-уведомления в отношении вопросов жизни и смерти или других критически важных данных, изменяющихся в реальном времени (<a href="http://msdn.microsoft.com/en-us/library/hh184841.aspx">2.9.3</a>);</li>
-<li>Приложение должно предоставить возможность самостоятельно отключить всплывающие уведомления (<a href="http://msdn.microsoft.com/en-us/library/hh184838.aspx">6.2.1</a>);</li>
-<li>Приложение должно спрашивать разрешение для использования всплывающих уведомлений (<a href="http://msdn.microsoft.com/en-us/library/hh184838.aspx">6.2.2</a>).</li>
-</ul>
-
-
-<p>На этом основные требования подходят к концу. С полным перечнем требований вы можете ознакомиться по ссылке: <a href="http://msdn.microsoft.com/en-us/library/hh184843.aspx">Application Certification Requirements for Windows Phone</a>.</p>
-
-<p><strong>Всем удачного прохождения сертификации! :)</strong></p>
 ]]></content>
   </entry>
   
